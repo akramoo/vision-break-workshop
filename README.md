@@ -14,4 +14,4 @@ for the teaching plan. Full run, deploy and offline-USB instructions will be add
 - `notebook/` - optional Python code track
 - `docs/` - facilitator notes and dry-run results
 
-Licensed under MIT. Data sources and their licenses: see DATA_LICENSES.md (coming with step D4).
+Licensed under MIT. Data sources and their licenses: see [DATA_LICENSES.md](DATA_LICENSES.md).
