@@ -113,3 +113,13 @@ Practical notes:
 - Training slows down if a student switches to another browser tab, because browsers throttle background timers. Ask them to stay on the app.
 - Perturbation sliders take about 12 to 15 seconds for 100 images on a laptop without a GPU. Choose a sample of 50 on slow machines.
 - Adult negatives are labeled "no finding", not "normal", and NIH labels were mined from reports, so a few are wrong.
+
+## Dry-run findings that change what you say
+
+These come from the GPU dry run (see dry-run-results.md for every number).
+
+- Seed 42 gives 82.4% on the Kermany test set, the top of the range over 20 seeds (79.2 to 82.7, mean 80.9). Say "about 81" on stage.
+- The refer-to-a-doctor threshold is a safety fix, not a score fix. Under half credit it lowers the worst-case score: 59.0 at no threshold, 56.0 at 80% and 55.8 at 90%. Only mixing in adult X-rays moves the worst case (51.5 to 59.5). Class weights alone leave it at 51.5. Tell students that abstaining buys safety, not leaderboard points.
+- The closed-world demo works: all six non-X-ray pictures were called pneumonia, four of them at 90% or more. A 90% threshold refers only two of the six.
+- The smallest stamp that fools the model on normal test images is about 32 px (53% flip). At 24 px it is 28%, at 16 px 13%. On the adult images no size reaches 50%.
+- Rotation of 20 degrees or a 70% crop takes the model to chance (about 50% balanced accuracy). Brightness of plus or minus 0.1 barely changes anything.
