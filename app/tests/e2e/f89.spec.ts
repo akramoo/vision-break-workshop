@@ -1,11 +1,10 @@
 // End-to-end scenario for F8 (failure log), F9 (results card, snapshots, print), Reset session and the Steps checklist.
-// Chromium only, one worker, precomputed features (no live 1,020-image extraction). Each test stays well under 2 minutes.
+// Chromium and Firefox, one worker, precomputed features (no live 1,020-image extraction). Each test stays well under 2 minutes.
 import { mkdirSync, readFileSync } from 'node:fs';
 import { test, expect } from './fixtures';
 import { DISCLAIMER, SCREENSHOT_DIR, collectPageErrors, waitForReady } from './helpers';
 import type { Page } from '@playwright/test';
 
-test.skip(({ browserName }) => browserName !== 'chromium', 'chromium only (fake camera / pdf / timing budgets)');
 test.setTimeout(120_000);
 
 const SET_LABELS = { kermany_test: 'Kermany test', adult_test: 'Adult test', stress: 'Kermany stress' } as const;
@@ -375,7 +374,7 @@ test('F9: worst-case leaderboard value, per-set table, snapshots with deltas, pe
   expect(errors).toEqual([]);
 });
 
-test('F9: tau recomputes the card, mode switch is flagged, results JSON, print CSS; Reset session returns to baseline', async ({ page }) => {
+test('F9: tau recomputes the card, mode switch is flagged, results JSON, print CSS; Reset session returns to baseline', async ({ page, browserName }) => {
   const errors = collectPageErrors(page);
   await start(page);
   const baseline = await numTensors(page);
@@ -472,11 +471,14 @@ test('F9: tau recomputes the card, mode switch is flagged, results JSON, print C
   }));
   expect(colors).toEqual({ header: 'rgb(255, 255, 255)', title: 'rgb(0, 0, 0)', body: 'rgb(255, 255, 255)', value: 'rgb(0, 0, 0)' });
   await shot(page, 'print');
-  const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-  const pdfText = pdf.toString('latin1');
-  const pages = (pdfText.match(/\/Type\s*\/Page[^s]/g) ?? []).length;
-  console.log(`[f89] PRINT: pdf pages = ${pages} (${pdf.length} bytes)`);
-  expect(pages).toBe(1);
+  if (browserName === 'chromium') {
+    // page.pdf() exists only in Chromium; Firefox is covered by the emulated print media assertions above.
+    const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
+    const pdfText = pdf.toString('latin1');
+    const pages = (pdfText.match(/\/Type\s*\/Page[^s]/g) ?? []).length;
+    console.log(`[f89] PRINT: pdf pages = ${pages} (${pdf.length} bytes)`);
+    expect(pages).toBe(1);
+  }
   await page.emulateMedia({ media: 'screen' });
   await expect(page.locator('.tabbar')).toBeVisible();
 

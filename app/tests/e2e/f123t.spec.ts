@@ -88,9 +88,15 @@ test('F1 Data: counts, class weights, toggles, lazy loading, gallery paging and 
   // ---- gallery ----
   const grid = page.getByTestId('thumb-grid');
   await expect(grid.locator('img')).toHaveCount(48);
-  // wait until the lazy images have really loaded instead of sleeping
+  // wait until the lazy images near the viewport have really loaded instead of sleeping (off-screen lazy images are
+  // deliberately never fetched: Firefox keeps them incomplete, Chromium loads them within its look-ahead distance)
   await expect
-    .poll(() => grid.locator('img').evaluateAll((imgs) => imgs.every((i) => (i as HTMLImageElement).complete)))
+    .poll(() =>
+      grid.locator('img').evaluateAll((imgs) => {
+        const near = imgs.filter((i) => i.getBoundingClientRect().top < window.innerHeight) as HTMLImageElement[];
+        return near.length > 0 && near.every((i) => i.complete);
+      }),
+    )
     .toBe(true);
   const firstPageJpgs = requests.filter((p) => p.endsWith('.jpg')).length;
   expect(firstPageJpgs, 'jpg requests on first load (lazy; page size 48)').toBeLessThanOrEqual(48);

@@ -1,11 +1,10 @@
 // End-to-end scenario for F1 (Data), F2 (Train) and F3 (Evaluate) in the production build.
-// Chromium only: the timing budgets assume a desktop browser; the numbers are printed for the report.
+// Runs in Chromium and Firefox; timing budgets are tighter on Chromium (see budget()), the numbers are printed for the report.
 import { mkdirSync } from 'node:fs';
 import { test, expect } from './fixtures';
-import { SCREENSHOT_DIR, collectPageErrors, waitForReady } from './helpers';
+import { SCREENSHOT_DIR, budget, collectPageErrors, waitForReady } from './helpers';
 import type { Page } from '@playwright/test';
 
-test.skip(({ browserName }) => browserName !== 'chromium', 'timing budgets are checked in Chromium');
 test.describe.configure({ mode: 'serial' });
 
 const numTensors = (page: Page) => page.evaluate(() => window.__vbw?.numTensors() ?? -1);
@@ -88,7 +87,7 @@ test('Data tab: a broken embeddings file shows a banner and the app falls back t
   await expect(page.getByTestId('train-button')).toBeEnabled();
 });
 
-test('Train, Evaluate, Repeat x5, reload restores the head, live parity', async ({ page }) => {
+test('Train, Evaluate, Repeat x5, reload restores the head, live parity', async ({ page, browserName }) => {
   test.setTimeout(240_000);
   const errors = collectPageErrors(page);
   await page.goto('/?debug=1');
@@ -120,7 +119,7 @@ test('Train, Evaluate, Repeat x5, reload restores the head, live parity', async 
   );
   expect(hist).toHaveLength(20);
   expect(last?.valAcc ?? 0).toBeGreaterThan(0.85);
-  expect(wallMs).toBeLessThan(15_000);
+  expect(wallMs).toBeLessThan(budget(browserName, 15_000));
   expect(afterTrain).toBe(baseline);
   await expect(page.getByTestId('chart-loss')).toBeVisible();
   await expect(page.getByTestId('chart-accuracy').locator('svg').first()).toHaveAttribute('role', 'img');

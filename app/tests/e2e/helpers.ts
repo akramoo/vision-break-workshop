@@ -91,3 +91,11 @@ export async function servePrefixed(prefix: string): Promise<PrefixServer> {
     close: () => new Promise((ok) => server.close(() => ok())),
   };
 }
+
+/**
+ * Timing budget in ms: the given value on Chromium (the tight desktop budget), three times as much elsewhere.
+ * Firefox (software WebGL/CPU backend, different scheduler) is verified for behaviour; its timings are logged.
+ */
+export function budget(browserName: string, ms: number): number {
+  return browserName === 'chromium' ? ms : ms * 3;
+}

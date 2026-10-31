@@ -1,13 +1,12 @@
 // End-to-end scenario for F4 (uploads, webcam), F5 (perturb), F6 (stamp) and F7 (abstain) in the production build.
-// Chromium only: the fake camera flags are configured for it and timing budgets assume a desktop browser.
+// Runs in Chromium and Firefox (both use a fake camera, see playwright.config.ts); timing budgets are tighter on Chromium.
 import { mkdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { deflateSync, crc32 } from 'node:zlib';
 import { test, expect } from './fixtures';
-import { SCREENSHOT_DIR, collectPageErrors, waitForReady } from './helpers';
+import { SCREENSHOT_DIR, budget, collectPageErrors, waitForReady } from './helpers';
 import type { Page } from '@playwright/test';
 
-test.skip(({ browserName }) => browserName !== 'chromium', 'fake camera + timing budgets are checked in Chromium');
 test.setTimeout(240_000);
 
 const DATA = resolve(process.cwd(), 'public', 'data');
@@ -365,7 +364,7 @@ test('F5 perturb: uploads can be perturbed; a sample selector offers 50 / 100 / 
   await expect(page.getByTestId('perturb-results')).toHaveAttribute('data-n', '50', { timeout: 90_000 });
 });
 
-test('F6 stamp: stamp-train + flip rate (precomputed) in under 3 s; custom stamp extracts live with progress, cancel works', async ({ page }) => {
+test('F6 stamp: stamp-train + flip rate (precomputed) in under 3 s; custom stamp extracts live with progress, cancel works', async ({ page, browserName }) => {
   const errors = collectPageErrors(page);
   await start(page);
   const baselineTensors = await numTensors(page);
@@ -395,14 +394,14 @@ test('F6 stamp: stamp-train + flip rate (precomputed) in under 3 s; custom stamp
   };
   console.log(`[f4567] STAMP stamp-train + flip wall=${wallMs} ms; ${await txt('flip-duration')}`);
   console.log(`[f4567] STAMP FLIP RATES (Kermany test, NORMAL images stamped) ${JSON.stringify(numbers, null, 1)}`);
-  expect(wallMs).toBeLessThan(15_000); // training itself (20 epochs) is part of this
+  expect(wallMs).toBeLessThan(budget(browserName, 15_000)); // training itself (20 epochs) is part of this
   // the flip computation alone (precomputed variants already loaded): re-run it and time it
   const tFlip = Date.now();
   await page.getByTestId('flip-compute').click();
   await expect(page.getByTestId('flip-duration')).toContainText('Computed in');
   const flipMs = Date.now() - tFlip;
   console.log(`[f4567] STAMP flip recompute (precomputed) wall=${flipMs} ms`);
-  expect(flipMs).toBeLessThan(3000);
+  expect(flipMs).toBeLessThan(budget(browserName, 3000));
   // the stamp-trained model reacts to the stamp far more than the clean one
   const rate = (s: string) => Number.parseFloat(s);
   expect(rate(numbers.afterNormal.flip)).toBeGreaterThan(rate(numbers.beforeNormal.flip));
