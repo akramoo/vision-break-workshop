@@ -27,11 +27,23 @@ Day 2 ends with fixes: balance the classes, augment the training images, mix in 
 
 ## Status
 
-The app is being built one feature at a time and the live site is updated with each step.
+All nine workshop features are in and the live site is current: data and class counts, training with a live chart, evaluation against the always-pneumonia baseline, the four test sets (Kermany test, adult test, stress, your own uploads) plus the webcam, perturbation sliders, the stamp tool, the "Refer to a doctor" threshold, the failure log, and a results card with the worst-case score.
 
-- Done: data preparation (Kermany subset and MobileNet v2 files), app shell with WebGL, WASM and CPU backends, shared image code, Pages deployment.
-- In progress: loading data and class counts, training with a live chart, evaluation, test sets, perturbations, the stamp tool, the abstain threshold, the failure log and the results card.
-- Optional extras after that: Grad-CAM heatmaps and a Python notebook for students who finish early.
+What has been measured so far, with precomputed features and the default settings (seed 42, 20 epochs, realistic 1:3 training), on a laptop with no GPU:
+
+| | Result |
+| --- | --- |
+| Training time | about 4 seconds |
+| Validation accuracy (180 images) | 98.9% |
+| Kermany test | 82% accuracy, 99.5% sensitivity, 54% specificity |
+| Adult test | 51.5% accuracy (chance is 50%) |
+| Kermany stress | 70% accuracy, 61% balanced accuracy |
+| Worst-case score | 51.5, set by the adult test |
+| Stamp experiment | 94% of normal test X-rays flip to pneumonia after training on stamped pneumonia images |
+
+Mixing in adult X-rays and balancing the classes lifts the worst-case score to about 59.
+
+Still to do: a full timed dry run on a mid-range laptop, a Firefox pass on the Break it tab and the webcam with a real camera, and the optional extras (Grad-CAM heatmaps and a Python notebook for students who finish early).
 
 ## Run it locally
 

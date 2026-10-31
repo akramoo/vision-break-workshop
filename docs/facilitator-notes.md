@@ -96,3 +96,20 @@ Background concepts for running the workshop. **Educational only. Not for clinic
 
 - The official Kermany test set contains 6 pixel-identical duplicate images. This comes from the source dataset, not from our preparation, and there is no overlap with the training data.
 - Kermany images are used under CC BY 4.0 (Kermany et al. 2018, Mendeley Data, doi:10.17632/rscbjbr9sj.3). Full citations: DATA_LICENSES.md.
+
+## What to expect on the day
+
+Numbers from the default run (seed 42, 20 epochs, realistic 1:3 training, precomputed features):
+
+- Validation accuracy is about 99%, but the Kermany test accuracy is about 82%, with specificity around 54%. Frozen MobileNet features with a linear head land a few points below the trained ResNet-18's 85 to 86%, and almost all of the gap is healthy children flagged as pneumonia. Say so honestly.
+- The 180-image validation set shares its distribution with training, so it is optimistic. The Kermany test set comes from a different split and shows the real picture.
+- On the adult test the model scores about 51%, barely above the 50% you get by always answering pneumonia. Mixing in adult X-rays and balancing the classes lifts the worst-case score to about 59.
+- "Refer everything" scores exactly 50 under half credit, the same as the baseline, so the abstain threshold cannot be used to game the leaderboard.
+- The stamp experiment flips about 94% of normal test X-rays to pneumonia. The same model also misses about 42% of unstamped pneumonia, so it learned the marker, not the disease.
+- The 16-image official validation set swings by about 6 points between seeds, against well under 1 point for the 180-image set.
+
+Practical notes:
+
+- Training slows down if a student switches to another browser tab, because browsers throttle background timers. Ask them to stay on the app.
+- Perturbation sliders take about 12 to 15 seconds for 100 images on a laptop without a GPU. Choose a sample of 50 on slow machines.
+- Adult negatives are labeled "no finding", not "normal", and NIH labels were mined from reports, so a few are wrong.
