@@ -32,6 +32,9 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      // measure.spec.ts is the GPU dry run: it only runs on chromium-gpu. measure-compare.spec.ts is the same click path
+      // timed on the software-WebGL browsers. Both are gated behind MEASURE=1 anyway.
+      testIgnore: /measure\.spec\.ts/,
       use: {
         ...devices['Desktop Chrome'],
         launchOptions: {
@@ -40,7 +43,33 @@ export default defineConfig({
       },
     },
     {
+      // The user's installed Google Chrome with the GPU forced on (ANGLE on Direct3D 11). Playwright's bundled headless
+      // chromium renders WebGL in software (SwiftShader), which says nothing about a real laptop. Only the GPU proof and
+      // the dry-run measurements run here: `MEASURE=1 npx playwright test --project=chromium-gpu --workers=1 measure`.
+      name: 'chromium-gpu',
+      testMatch: /(gpu-proof|measure.*)\.spec\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        launchOptions: {
+          args: [
+            '--use-angle=d3d11',
+            '--enable-gpu',
+            '--ignore-gpu-blocklist',
+            '--enable-webgl',
+            '--enable-gpu-rasterization',
+            '--use-fake-device-for-media-stream',
+            '--use-fake-ui-for-media-stream',
+            // The memory soak reads performance.memory and forces a garbage collection before each sample.
+            '--enable-precise-memory-info',
+            '--js-flags=--expose-gc',
+          ],
+        },
+      },
+    },
+    {
       name: 'firefox',
+      testIgnore: /measure\.spec\.ts/,
       use: {
         ...devices['Desktop Firefox'],
         launchOptions: {
