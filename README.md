@@ -6,8 +6,8 @@ imbalance, shortcuts, population shift, image-quality changes and out-of-distrib
 
 **Educational only. Not for clinical use.**
 
-Status: under construction. See [PLAN.md](PLAN.md) for the build plan and [WORKSHOP.md](WORKSHOP.md)
-for the teaching plan. Full run, deploy and offline-USB instructions will be added here.
+Status: under construction. Full run, deploy and offline-USB instructions will be added here.
+Background for facilitators: [docs/facilitator-notes.md](docs/facilitator-notes.md).
 
 - `app/` - Vite + React + TypeScript app
 - `scripts/` - data preparation (Python) and embedding precompute (Node)

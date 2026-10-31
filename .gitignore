@@ -10,3 +10,5 @@ playwright-report/
 .DS_Store
 graphify-out/
 .vitest/
+PLAN.md
+WORKSHOP.md
