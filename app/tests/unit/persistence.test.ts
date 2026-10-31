@@ -4,9 +4,14 @@ import {
   KEY_PREFIX,
   clearPersisted,
   loadSettings,
+  loadTau,
+  loadTrainSettings,
   safeParse,
   saveSettings,
+  saveTau,
+  saveTrainSettings,
 } from '../../src/state/persistence';
+import { DEFAULT_TRAIN_SETTINGS } from '../../src/data/trainingPlan';
 
 /** Minimal in-memory Storage. */
 class MemStorage implements Storage {
@@ -112,6 +117,24 @@ describe('persistence', () => {
     expect(store.getItem('vbw:v1:log')).toBeNull();
     expect(store.getItem('other:key')).toBe('keep');
     expect(loadSettings().usePrecomputed).toBe(true);
+  });
+
+  it('does not store default values, so a fresh or reset session leaves no vbw: keys', () => {
+    saveSettings({ ...DEFAULT_SETTINGS });
+    saveTrainSettings({ ...DEFAULT_TRAIN_SETTINGS });
+    saveTau(0.5);
+    expect(store.length).toBe(0);
+    saveSettings({ usePrecomputed: false });
+    saveTrainSettings({ ...DEFAULT_TRAIN_SETTINGS, epochs: 5 });
+    saveTau(0.9);
+    expect(store.length).toBe(3);
+    expect(loadTau()).toBe(0.9);
+    expect(loadTrainSettings().epochs).toBe(5);
+    // going back to the defaults removes the keys again
+    saveSettings({ ...DEFAULT_SETTINGS });
+    saveTrainSettings({ ...DEFAULT_TRAIN_SETTINGS });
+    saveTau(0.5);
+    expect(store.length).toBe(0);
   });
 
   it('safeParse returns the fallback for null and invalid JSON, parsed value otherwise', () => {

@@ -48,7 +48,8 @@ export function SettingsDrawer() {
             <strong>Use precomputed features</strong>
             <small>
               On: skip running MobileNet on every image (fast). Off: extract live on this laptop (slower, same
-              result).
+              result). You can switch at any time: the next training or evaluation uses the new mode, and every
+              result says which mode produced it.
             </small>
           </span>
         </label>
@@ -60,12 +61,21 @@ export function SettingsDrawer() {
           <dd className="mono">{state.modelHash?.combined ?? 'not available'}</dd>
         </dl>
 
+        <p className="muted">
+          Reset clears the trained models, uploads, camera, failure log, snapshots, checklist and saved settings. The MobileNet model stays
+          loaded.
+        </p>
         <button
           type="button"
           className="btn btn--danger"
+          data-testid="reset-session"
           onClick={() => {
-            if (window.confirm('Reset the session? Saved settings and progress on this computer will be cleared.')) {
-              resetSession(dispatch);
+            if (
+              window.confirm(
+                'Reset the session? The trained models, failure log, snapshots, checklist and saved settings on this computer will be cleared.',
+              )
+            ) {
+              void resetSession(dispatch);
             }
           }}
         >

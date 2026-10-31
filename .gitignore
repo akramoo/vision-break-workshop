@@ -12,3 +12,6 @@ graphify-out/
 .vitest/
 PLAN.md
 WORKSHOP.md
+*.tsbuildinfo
+coverage/
+blob-report/

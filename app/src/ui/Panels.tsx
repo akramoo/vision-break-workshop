@@ -1,7 +1,12 @@
 import { TABS, useSession } from '../state/session';
+import { BreakItPanel } from './BreakItPanel';
+import { DataPanel } from './DataPanel';
+import { EvaluatePanel } from './EvaluatePanel';
+import { FailureLogPanel } from './FailureLogPanel';
+import { ResultsPanel } from './ResultsPanel';
 import { panelDomId, tabDomId } from './Tabs';
+import { TrainPanel } from './TrainPanel';
 
-// Placeholder panels; each step (F1..F9) replaces its entry.
 export function ActivePanel() {
   const { state } = useSession();
   const tab = TABS.find((t) => t.id === state.activeTab) ?? TABS[0];
@@ -13,8 +18,19 @@ export function ActivePanel() {
       className="panel"
       data-testid={`panel-${tab.id}`}
     >
-      <h2>{tab.label}</h2>
-      <p className="panel__placeholder">Coming in {tab.coming}.</p>
+      {tab.id === 'data' ? (
+        <DataPanel />
+      ) : tab.id === 'train' ? (
+        <TrainPanel />
+      ) : tab.id === 'evaluate' ? (
+        <EvaluatePanel />
+      ) : tab.id === 'break' ? (
+        <BreakItPanel />
+      ) : tab.id === 'failures' ? (
+        <FailureLogPanel />
+      ) : (
+        <ResultsPanel />
+      )}
     </section>
   );
 }

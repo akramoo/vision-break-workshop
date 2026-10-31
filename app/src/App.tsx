@@ -3,8 +3,10 @@ import { useSession } from './state/session';
 import { ErrorBanner } from './ui/ErrorBanner';
 import { Footer } from './ui/Footer';
 import { Header } from './ui/Header';
+import { NoticeBar } from './ui/NoticeBar';
 import { ActivePanel } from './ui/Panels';
 import { SettingsDrawer } from './ui/SettingsDrawer';
+import { StepsPanel } from './ui/StepsPanel';
 import { TabBar } from './ui/Tabs';
 
 const debug = new URLSearchParams(window.location.search).get('debug') === '1';
@@ -30,6 +32,8 @@ export function App() {
             hint="Reload the page, or open it with ?backend=wasm to avoid the GPU."
           />
         ) : null}
+        <NoticeBar />
+        <StepsPanel />
         <ActivePanel />
       </main>
       <Footer />

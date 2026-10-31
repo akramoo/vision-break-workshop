@@ -92,7 +92,7 @@ test.describe('shell: disclaimer, tabs, model, backend', () => {
   test('settings drawer shows backend + model SHA-256 and closes with Escape', async ({ page }) => {
     await page.goto('/?backend=wasm');
     await waitForReady(page);
-    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Settings', exact: true }).click();
     const drawer = page.getByTestId('settings-drawer');
     await expect(drawer).toBeVisible();
     await expect(drawer).toContainText(/wasm/i);
@@ -138,7 +138,7 @@ test.describe('?debug=1 memory HUD', () => {
     const before = Number(await tensors.textContent());
     for (let round = 0; round < 3; round++) {
       for (const name of TAB_NAMES) await tabByName(page, name).click();
-      await page.getByRole('button', { name: 'Settings' }).click();
+      await page.getByRole('button', { name: 'Settings', exact: true }).click();
       await page.keyboard.press('Escape');
     }
     await page.waitForTimeout(1500);
@@ -164,7 +164,7 @@ test.describe('model files missing / broken', () => {
       await expect(page.locator('footer')).toContainText(DISCLAIMER);
       await expect(page.locator('header')).toContainText(DISCLAIMER);
     }
-    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Settings', exact: true }).click();
     await expect(page.getByTestId('settings-drawer')).toBeVisible();
     await page.keyboard.press('Escape');
     expect(errors, 'uncaught page errors').toEqual([]);
@@ -215,7 +215,7 @@ test.describe('model files missing / broken', () => {
     await page.route('**/models/mobilenet_v2/model.sha256.json', (route) => route.fulfill({ status: 404, body: '' }));
     await page.goto('/?backend=wasm');
     await waitForReady(page);
-    await page.getByRole('button', { name: 'Settings' }).click();
+    await page.getByRole('button', { name: 'Settings', exact: true }).click();
     await expect(page.getByTestId('settings-drawer')).toContainText('not available');
     expect(errors).toEqual([]);
   });
@@ -225,7 +225,7 @@ test.describe('settings persistence', () => {
   test.setTimeout(120_000);
 
   const precomputed = (page: Page) => page.getByRole('switch', { name: /Use precomputed features/ });
-  const openSettings = (page: Page) => page.getByRole('button', { name: 'Settings' }).click();
+  const openSettings = (page: Page) => page.getByRole('button', { name: 'Settings', exact: true }).click();
 
   test('"Use precomputed features" defaults ON, persists across reload, and Reset session restores ON', async ({
     page,
@@ -304,11 +304,8 @@ test.describe('screenshots', () => {
     await page.goto('/');
     await waitForReady(page);
     mkdirSync(SCREENSHOT_DIR, { recursive: true });
-    await page.screenshot({ path: join(SCREENSHOT_DIR, `shell-${testInfo.project.name}.png`), fullPage: true });
-    await page.getByRole('button', { name: 'Settings' }).click();
-    await page.screenshot({
-      path: join(SCREENSHOT_DIR, `shell-settings-${testInfo.project.name}.png`),
-      fullPage: true,
-    });
+    await page.screenshot({ path: join(SCREENSHOT_DIR, `shell-${testInfo.project.name}.png`) }); // viewport only, keeps docs/ small
+    await page.getByRole('button', { name: 'Settings', exact: true }).click();
+    await page.screenshot({ path: join(SCREENSHOT_DIR, `shell-settings-${testInfo.project.name}.png`) });
   });
 });
