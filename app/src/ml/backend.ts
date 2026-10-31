@@ -15,6 +15,10 @@ export interface BackendInfo {
   reason?: string;
   /** True when the first-choice backend was not the one we ended up with. */
   fellBack: boolean;
+  /** True when WebGL runs on a software renderer (SwiftShader, llvmpipe, ...): "WebGL" but no real GPU. */
+  softwareRenderer: boolean;
+  /** Unmasked WebGL renderer string, when the browser exposes it (it may be hidden for privacy). */
+  renderer?: string;
 }
 
 const ORDER: BackendName[] = ['webgl', 'wasm', 'cpu'];
@@ -34,6 +38,65 @@ function configureWasm(): void {
 export function backendFromQuery(search: string = globalThis.location?.search ?? ''): BackendName | null {
   const value = new URLSearchParams(search).get('backend');
   return value === 'webgl' || value === 'wasm' || value === 'cpu' ? value : null;
+}
+
+const SOFTWARE_RENDERER = /swiftshader|llvmpipe|software|basic render/i;
+
+/** True when an (unmasked) WebGL renderer string names a CPU-based rasteriser rather than a GPU. */
+export function isSoftwareRenderer(renderer: string | undefined | null): boolean {
+  return renderer ? SOFTWARE_RENDERER.test(renderer) : false;
+}
+
+type GlLike = {
+  getExtension(name: string): unknown;
+  getParameter(pname: number): unknown;
+};
+
+function rendererOf(gl: GlLike | null | undefined): string | undefined {
+  try {
+    const ext = gl?.getExtension('WEBGL_debug_renderer_info') as { UNMASKED_RENDERER_WEBGL: number } | null | undefined;
+    if (!gl || !ext) return undefined;
+    const value = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+    return typeof value === 'string' && value ? value : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Unmasked WebGL renderer name, read once at backend init. Prefers the context TensorFlow.js already
+ * created (no second context); falls back to a throwaway canvas. Undefined when it cannot be read.
+ */
+function detectRenderer(): string | undefined {
+  try {
+    if (tf.getBackend() === 'webgl') {
+      const backend = tf.backend() as unknown as { gpgpu?: { gl?: GlLike } };
+      const fromTf = rendererOf(backend.gpgpu?.gl);
+      if (fromTf) return fromTf;
+    }
+    if (typeof document === 'undefined') return undefined;
+    const canvas = document.createElement('canvas');
+    return rendererOf((canvas.getContext('webgl2') ?? canvas.getContext('webgl')) as GlLike | null);
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * Typical live-extraction speed in ms per image before anything has been measured: about 25 on a real GPU,
+ * 120 on software WebGL (measured ~19 and ~116), and rough figures for WASM and plain CPU.
+ */
+export function defaultMsPerImage(info: Pick<BackendInfo, 'backend' | 'softwareRenderer'> | null | undefined): number {
+  switch (info?.backend) {
+    case 'webgl':
+      return info.softwareRenderer ? 120 : 25;
+    case 'wasm':
+      return 350;
+    case 'cpu':
+      return 900;
+    default:
+      return 900;
+  }
 }
 
 function errMessage(e: unknown): string {
@@ -71,13 +134,21 @@ export async function initBackend(): Promise<BackendInfo> {
     const error = await tryBackend(name);
     if (error === null) {
       const fellBack = name !== order[0];
+      const renderer = name === 'webgl' ? detectRenderer() : undefined;
+      const softwareRenderer = name === 'webgl' && isSoftwareRenderer(renderer);
       let reason: string | undefined;
       if (fellBack) {
         reason = `${failures.join('; ')}. Using ${name.toUpperCase()} instead.`;
       } else if (forced) {
         reason = `Forced by ?backend=${forced}.`;
       }
-      return reason !== undefined ? { backend: name, reason, fellBack } : { backend: name, fellBack };
+      return {
+        backend: name,
+        fellBack,
+        softwareRenderer,
+        ...(reason !== undefined ? { reason } : {}),
+        ...(renderer !== undefined ? { renderer } : {}),
+      };
     }
     failures.push(`${name.toUpperCase()} unavailable (${error})`);
   }
@@ -85,6 +156,7 @@ export async function initBackend(): Promise<BackendInfo> {
     backend: 'none',
     reason: `No TensorFlow.js backend could start: ${failures.join('; ')}. Try a different browser.`,
     fellBack: true,
+    softwareRenderer: false,
   };
 }
 

@@ -8,9 +8,12 @@ export function Header() {
   const { backend, model } = state;
 
   const backendLabel = backend ? BACKEND_LABEL[backend.backend] : 'Detecting…';
-  const backendTip = backend
+  const baseTip = backend
     ? (backend.reason ?? `Running on ${backendLabel}.`)
     : 'Detecting the fastest available compute backend.';
+  const backendTip = backend?.softwareRenderer
+    ? `${baseTip} Software rendering: WebGL is emulated on the CPU${backend.renderer ? ` (${backend.renderer})` : ''}, so this is slower than a real GPU.`
+    : baseTip;
 
   const modelLabel =
     model.state === 'ready'

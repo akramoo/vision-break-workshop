@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { countUncachedLive, measuredMsPerImage, preloadVariant } from '../data/featureStore';
 import { imageUrl } from '../data/images';
+import { defaultMsPerImage } from '../ml/backend';
 import {
   countOf,
   displayLabel,
@@ -45,11 +46,6 @@ function fmt2(x: number): string {
   return x.toFixed(2);
 }
 
-/** Rough seconds per image for live extraction when nothing has been measured yet. */
-function defaultMsPerImage(backend: string | undefined): number {
-  return backend === 'webgl' ? 120 : backend === 'wasm' ? 350 : 900;
-}
-
 export function DataPanel() {
   const { state, dispatch } = useSession();
   const { manifest, trainSettings: ts, settings, features } = state;
@@ -92,7 +88,7 @@ export function DataPanel() {
     countUncachedLive('base', plan.baseIds) +
     (ts.augmentation ? countUncachedLive('aug', plan.baseIds) : 0) +
     countUncachedLive('base', plan.valIds);
-  const msPer = measuredMsPerImage() ?? defaultMsPerImage(state.backend?.backend);
+  const msPer = measuredMsPerImage() ?? defaultMsPerImage(state.backend);
   const estimate = formatDuration(toExtract * msPer);
 
   if (manifest.state === 'loading') {
