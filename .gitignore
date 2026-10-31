@@ -9,3 +9,4 @@ test-results/
 playwright-report/
 .DS_Store
 graphify-out/
+.vitest/

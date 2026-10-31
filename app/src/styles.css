@@ -1,0 +1,343 @@
+/* Plain CSS, system fonts, high contrast, large type for projectors. */
+:root {
+  --ink: #111827;
+  --ink-soft: #374151;
+  --bg: #ffffff;
+  --bg-soft: #f3f4f6;
+  --line: #9ca3af;
+  --brand: #1e3a8a;
+  --brand-ink: #ffffff;
+  --accent: #1d4ed8;
+  --ok: #166534;
+  --ok-bg: #dcfce7;
+  --warn: #92400e;
+  --warn-bg: #fef3c7;
+  --err: #991b1b;
+  --err-bg: #fee2e2;
+  --radius: 10px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2 {
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  word-break: break-all;
+  font-size: 0.8em;
+}
+
+:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  background: var(--brand);
+  color: var(--brand-ink);
+  padding: 0.75rem max(1.5rem, calc((100% - 1200px) / 2 + 1.5rem)) 0.5rem;
+}
+
+.app-header__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.app-header__status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.disclaimer {
+  margin: 0.25rem 0 0;
+  font-weight: 700;
+  font-size: 1.1rem; /* ~20px at the 18px root */
+  color: var(--ink);
+}
+
+.app-header .disclaimer {
+  color: #ffffff;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: #ffffff;
+  color: var(--ink);
+  border: 2px solid transparent;
+  cursor: default;
+}
+
+.badge--warn {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+
+.badge--ready {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.badge--error {
+  background: var(--err-bg);
+  color: var(--err);
+}
+
+.badge--loading {
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--ink);
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--bg-soft);
+}
+
+.btn--ghost {
+  border-color: #ffffff;
+  background: transparent;
+  color: #ffffff;
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.drawer .btn--ghost {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.drawer .btn--ghost:hover {
+  background: var(--bg-soft);
+}
+
+.btn--danger {
+  border-color: var(--err);
+  color: var(--err);
+}
+
+/* Tabs */
+.tabbar {
+  background: var(--bg-soft);
+  border-bottom: 2px solid var(--line);
+  overflow-x: auto;
+}
+
+/* Same width, centering and side padding as .app-main so the left edges line up. */
+.tabbar__list {
+  display: flex;
+  gap: 0.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* 1.25rem is the tab's own inner padding: its label (not its box) lines up with the content. */
+  padding: 0 1.5rem 0 0.25rem;
+}
+
+.tab {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--ink);
+  background: #e5e7eb;
+}
+
+.tab--active {
+  color: var(--brand);
+  border-bottom-color: var(--accent);
+  background: var(--bg);
+}
+
+/* Main */
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.panel h2 {
+  font-size: 1.5rem;
+}
+
+.panel__placeholder {
+  color: var(--ink-soft);
+}
+
+/* Error banner */
+.error-banner {
+  border: 2px solid var(--err);
+  background: var(--err-bg);
+  color: var(--err);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.error-banner p {
+  margin: 0.25rem 0 0;
+  color: var(--ink);
+}
+
+.error-banner__hint {
+  font-weight: 600;
+}
+
+/* Footer */
+.app-footer {
+  border-top: 2px solid var(--line);
+  background: var(--bg-soft);
+  padding: 0.75rem max(1.5rem, calc((100% - 1200px) / 2 + 1.5rem));
+  text-align: left;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-footer .disclaimer {
+  color: #000000;
+  font-size: 1.15rem;
+}
+
+.app-footer__note {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+/* Settings drawer */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 50;
+}
+
+.drawer {
+  width: min(28rem, 100%);
+  background: var(--bg);
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer__head h2 {
+  margin: 0;
+}
+
+.switch {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.switch input {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.2rem;
+  accent-color: var(--accent);
+}
+
+.switch small {
+  display: block;
+  color: var(--ink-soft);
+}
+
+.drawer__info dt {
+  font-weight: 700;
+}
+
+.drawer__info dd {
+  margin: 0 0 0.75rem;
+}
+
+/* Memory HUD (?debug=1) */
+.memory-hud {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: #111827;
+  color: #86efac;
+  font: 0.8rem ui-monospace, Menlo, Consolas, monospace;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  z-index: 100;
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 16px;
+  }
+  .app-title {
+    font-size: 1.4rem;
+  }
+}
