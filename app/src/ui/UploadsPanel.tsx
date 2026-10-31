@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
 import {
   ACCEPTED_TYPES,
   MAX_UPLOADS,
@@ -19,6 +19,7 @@ import { alwaysPneumoniaBaseline, metricsWithAbstain } from '../ml/metrics';
 import { pixelsToBatch } from '../ml/predictImage';
 import { labelName, type LogDraftBase } from '../state/failureLog';
 import { useSession } from '../state/session';
+import { HeatmapOverlay } from './HeatmapOverlay';
 import { LogThis, useLogConfig } from './LogThis';
 import { MetricsTable, type MetricRow } from './MetricsTable';
 import { pixelsToDataUrl } from './PixelCanvas';
@@ -220,6 +221,7 @@ export function UploadResults({ negativeName = 'normal' }: { negativeName?: stri
   const { head, uploads, abstainTau: tau } = state;
   const { probs, error } = useUploadProbs(uploads, head, state.extractor);
   const logConfig = useLogConfig();
+  const [heatOpen, setHeatOpen] = useState<string | null>(null);
 
   const buildDraft = (u: UploadMeta, p: number) => async (): Promise<LogDraftBase> => {
     const px = getUploadPixels(u.id);
@@ -298,21 +300,47 @@ export function UploadResults({ negativeName = 'normal' }: { negativeName?: stri
             <th scope="col">Your label</th>
             <th scope="col">Model says</th>
             <th scope="col">Failure log</th>
+            <th scope="col">Heatmap</th>
           </tr>
         </thead>
         <tbody>
-          {uploads.map((u, i) => (
-            <tr key={u.id} data-testid={`upload-pred-${i}`}>
-              <td>
-                <img src={u.thumb} alt="" width={48} height={48} /> <span className="mono">{u.name}</span>
-              </td>
-              <td>{u.label}</td>
-              <td>{probs ? <PredictionBadge p={probs[i] as number} tau={tau} negativeName={negativeName} /> : <span className="muted">...</span>}</td>
-              <td>
-                {probs ? <LogThis build={buildDraft(u, probs[i] as number)} testId={`upload-log-${i}`} /> : null}
-              </td>
-            </tr>
-          ))}
+          {uploads.map((u, i) => {
+            const pixels = heatOpen === u.id ? getUploadPixels(u.id) : undefined;
+            return (
+              <Fragment key={u.id}>
+                <tr data-testid={`upload-pred-${i}`}>
+                  <td>
+                    <img src={u.thumb} alt="" width={48} height={48} /> <span className="mono">{u.name}</span>
+                  </td>
+                  <td>{u.label}</td>
+                  <td>{probs ? <PredictionBadge p={probs[i] as number} tau={tau} negativeName={negativeName} /> : <span className="muted">...</span>}</td>
+                  <td>{probs ? <LogThis build={buildDraft(u, probs[i] as number)} testId={`upload-log-${i}`} /> : null}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn--small"
+                      aria-expanded={heatOpen === u.id}
+                      data-testid={`upload-heatmap-btn-${i}`}
+                      onClick={() => setHeatOpen(heatOpen === u.id ? null : u.id)}
+                    >
+                      Heatmap
+                    </button>
+                  </td>
+                </tr>
+                {heatOpen === u.id ? (
+                  <tr className="heatmap-row" data-testid={`upload-heatmap-row-${i}`}>
+                    <td colSpan={5}>
+                      {pixels ? (
+                        <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={`upload-heatmap-${i}`} />
+                      ) : (
+                        <p className="inline-warn">This image is no longer in memory. Remove it and add it again.</p>
+                      )}
+                    </td>
+                  </tr>
+                ) : null}
+              </Fragment>
+            );
+          })}
         </tbody>
       </table>
       <p className="muted">

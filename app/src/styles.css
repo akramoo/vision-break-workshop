@@ -1673,3 +1673,44 @@ fieldset.segmented {
     break-inside: avoid;
   }
 }
+
+/* Grad-CAM heatmap overlay (stretch S1) */
+.heatmap {
+  margin: 0.5rem 0;
+}
+
+.heatmap__controls {
+  align-items: center;
+  gap: 1rem;
+}
+
+.heatmap__class {
+  display: flex;
+  gap: 0.75rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  max-width: 240px;
+}
+
+.heatmap__bar {
+  flex: 1;
+  height: 0.7rem;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+}
+
+.heatmap__caption {
+  margin: 0.4rem 0 0;
+}
+
+.heatmap-row > td {
+  background: rgba(15, 23, 42, 0.03);
+}

@@ -26,6 +26,7 @@ import { DEFAULT_STAMP, STAMP_POSITIONS, applyStamp, resolveStampConfig, type St
 import { labelName } from '../state/failureLog';
 import { useSession } from '../state/session';
 import { formatDuration } from './format';
+import { HeatmapOverlay, type HeatmapHead } from './HeatmapOverlay';
 import { EntryEditor, useAddLog, useLogConfig } from './LogThis';
 import { MetricsTable, type MetricRow } from './MetricsTable';
 import { PixelCanvas, pixelsToDataUrl } from './PixelCanvas';
@@ -355,6 +356,9 @@ export function StampPanel() {
     );
     setLastLoggedId(entry ? entry.id : null);
   }
+  const heatHeads: HeatmapHead[] = [];
+  if (head) heatHeads.push({ id: 'before', label: 'Before (normal model)', head });
+  if (stampedHead) heatHeads.push({ id: 'after', label: 'After (stamp-trained model)', head: stampedHead.head });
   const lastEntry = lastLoggedId ? state.failureLog.find((f) => f.id === lastLoggedId) : undefined;
 
   function setField<K extends keyof StampConfig>(key: K, value: StampConfig[K]) {
@@ -658,6 +662,7 @@ export function StampPanel() {
                     </tr>
                   </tbody>
                 </table>
+                <HeatmapOverlay pixels={detail.shown} heads={heatHeads} size={192} testId="stamp-heatmap" />
                 <button type="button" className="btn btn--small" onClick={logDetail} data-testid="stamp-log">
                   Log this
                 </button>
@@ -764,7 +769,7 @@ function FlipTable({ flip, stale, hasAfter, tau }: { flip: FlipResult; stale: bo
       </table>
       <p className="note" data-testid="flip-explain">
         For the normal images, "said pneumonia without stamp" is the false-alarm rate on clean images. If the stamp-trained model's rate jumps
-        when the stamp is added, it has learned the marker, not the disease. The normal model should barely react.
+        when the stamp is added, it has learned the marker, not the disease. The normal model should react much less than the stamp-trained one.
       </p>
       <h5>Accuracy on the clean (unstamped) images</h5>
       <p className="muted">A shortcut model usually still scores well here, which is why nobody notices it.</p>

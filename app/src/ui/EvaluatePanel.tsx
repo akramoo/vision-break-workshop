@@ -4,6 +4,7 @@ import type { FeatureProgress } from '../data/featureStore';
 import { imageUrl } from '../data/images';
 import { displayLabel, indexById, type ManifestEntry } from '../data/manifest';
 import { evaluateSet } from '../ml/evaluate';
+import type { Head } from '../ml/head';
 import { entryPixels } from '../ml/logPixels';
 import {
   alwaysPneumoniaBaseline,
@@ -19,6 +20,7 @@ import { useSession, type EvalResult } from '../state/session';
 import { ConfidenceThreshold } from './ConfidenceThreshold';
 import { ConfusionMatrix } from './ConfusionMatrix';
 import { formatDuration } from './format';
+import { HeatmapOverlay } from './HeatmapOverlay';
 import { LogForm, useLogConfig } from './LogThis';
 import { MetricsTable, type MetricRow } from './MetricsTable';
 import { pixelsToDataUrl } from './PixelCanvas';
@@ -154,7 +156,7 @@ export function EvaluatePanel() {
             </div>
           ) : null}
 
-          {!isUploads && fresh && result ? <Results def={def} result={result} tau={state.abstainTau} entries={entries} /> : null}
+          {!isUploads && fresh && result ? <Results def={def} result={result} tau={state.abstainTau} entries={entries} head={head} /> : null}
         </>
       )}
     </>
@@ -193,7 +195,7 @@ function SetPicker({ selected, onSelect }: { selected: SetChoice; onSelect: (id:
   );
 }
 
-function Results({ def, result, tau, entries }: { def: EvalSetDef; result: EvalResult; tau: number; entries: readonly ManifestEntry[] }) {
+function Results({ def, result, tau, entries, head }: { def: EvalSetDef; result: EvalResult; tau: number; entries: readonly ManifestEntry[]; head: Head }) {
   const m = useMemo(() => metricsWithAbstain(result.labels, result.probs, tau), [result, tau]);
   const baseline = useMemo(() => alwaysPneumoniaBaseline(result.labels), [result]);
   const showAbstain = tau > 0.5;
@@ -249,17 +251,18 @@ function Results({ def, result, tau, entries }: { def: EvalSetDef; result: EvalR
         pneumonia can mean a child goes home untreated.
       </p>
 
-      <PredictionList def={def} result={result} tau={tau} entries={entries} />
+      <PredictionList def={def} result={result} tau={tau} entries={entries} head={head} />
     </div>
   );
 }
 
-function PredictionList({ def, result, tau, entries }: { def: EvalSetDef; result: EvalResult; tau: number; entries: readonly ManifestEntry[] }) {
+function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; result: EvalResult; tau: number; entries: readonly ManifestEntry[]; head: Head }) {
   const [mistakesFirst, setMistakesFirst] = useState(true);
   const byId = useMemo(() => indexById(entries), [entries]);
   const logConfig = useLogConfig();
   const [logOpen, setLogOpen] = useState<string | null>(null);
   const [logged, setLogged] = useState<ReadonlySet<string>>(new Set());
+  const [heatOpen, setHeatOpen] = useState<string | null>(null);
 
   const buildDraft = (r: { id: string; p: number; truth: number; d: ReturnType<typeof decide> }) => async (): Promise<LogDraftBase> => {
     const entry = byId.get(r.id);
@@ -304,6 +307,7 @@ function PredictionList({ def, result, tau, entries }: { def: EvalSetDef; result
             <th scope="col">Model says</th>
             <th scope="col">Confidence</th>
             <th scope="col">Failure log</th>
+            <th scope="col">Heatmap</th>
           </tr>
         </thead>
         <tbody>
@@ -336,10 +340,32 @@ function PredictionList({ def, result, tau, entries }: { def: EvalSetDef; result
                   </button>
                   {logged.has(r.id) && logOpen !== r.id ? <span className="log-this__saved" role="status"> Saved</span> : null}
                 </td>
+                <td>
+                  <button
+                    type="button"
+                    className="btn btn--small"
+                    aria-expanded={heatOpen === r.id}
+                    data-testid="pred-heatmap-btn"
+                    onClick={() => setHeatOpen(heatOpen === r.id ? null : r.id)}
+                  >
+                    Heatmap
+                  </button>
+                </td>
               </tr>
+              {heatOpen === r.id ? (
+                <tr className="heatmap-row" data-testid="pred-heatmap-row">
+                  <td colSpan={6}>
+                    {entry ? (
+                      <RowHeatmap entry={entry} stress={def.id === 'stress'} head={head} testId="pred-heatmap" />
+                    ) : (
+                      <p className="muted">This X-ray is not in the list of shipped images.</p>
+                    )}
+                  </td>
+                </tr>
+              ) : null}
               {logOpen === r.id ? (
                 <tr className="log-row">
-                  <td colSpan={5}>
+                  <td colSpan={6}>
                     <LogForm
                       build={buildDraft(r)}
                       onCancel={() => setLogOpen(null)}
@@ -359,4 +385,35 @@ function PredictionList({ def, result, tau, entries }: { def: EvalSetDef; result
       <p className="muted">Showing the first {LIST_LIMIT} rows of {result.ids.length}.</p>
     </section>
   );
+}
+
+/** Loads the pixels the model saw for one shipped X-ray (with the stress transform for the stress set) and shows its heatmap. */
+function RowHeatmap({ entry, stress, head, testId }: { entry: ManifestEntry; stress: boolean; head: Head; testId: string }) {
+  const [pixels, setPixels] = useState<Float32Array | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    setPixels(null);
+    setError(null);
+    entryPixels(entry, stress).then(
+      (p) => {
+        if (!cancelled) setPixels(p);
+      },
+      (e: unknown) => {
+        if (!cancelled) setError(e instanceof Error ? e.message : String(e));
+      },
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [entry, stress]);
+  if (error) {
+    return (
+      <p className="inline-warn" role="alert">
+        Could not load this X-ray: {error}
+      </p>
+    );
+  }
+  if (!pixels) return <p className="muted" role="status">Loading the X-ray...</p>;
+  return <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={testId} />;
 }

@@ -3,6 +3,10 @@ import { FEATURE_DIM, FEATURE_OUTPUT_NODE, IMG_SIZE } from '../shared/pixelOps.j
 
 const MODEL_DIR = 'models/mobilenet_v2';
 
+/** Last conv block (after Conv_1 + ReLU6): [n, 7, 7, 1280]. AvgPool 7x7 + Squeeze of this gives the 1280-d features. */
+export const ACTIVATION_NODE = 'module_apply_default/MobilenetV2/Conv_1/Relu6';
+export const ACTIVATION_SIDE = 7;
+
 /** Relative URL of a file in the vendored model folder (works with `base: './'`). */
 function modelUrl(file: string): string {
   return `${import.meta.env.BASE_URL}${MODEL_DIR}/${file}`;
@@ -17,12 +21,39 @@ export class ModelLoadError extends Error {
   }
 }
 
+export interface ActivationResult {
+  /** n * 1280 pooled features, row-major (same values as extractBatch). */
+  features: Float32Array;
+  /** n * 7 * 7 * 1280 activations of the last conv layer, NHWC row-major. */
+  activations: Float32Array;
+}
+
+/**
+ * One forward pass that returns both the pooled features and the last conv activations (for heatmaps).
+ * tidy-safe: the input is never disposed and every temporary tensor is released.
+ */
+export async function extractWithActivationsFrom(model: tf.GraphModel, imgs01: tf.Tensor4D): Promise<ActivationResult> {
+  const [, h, w, c] = imgs01.shape;
+  if (h !== IMG_SIZE || w !== IMG_SIZE || c !== 3) {
+    throw new Error(`extractWithActivations expects [n, ${IMG_SIZE}, ${IMG_SIZE}, 3], got [${imgs01.shape.join(', ')}]`);
+  }
+  const outs = tf.tidy(() => model.execute({ images: imgs01 }, [FEATURE_OUTPUT_NODE, ACTIVATION_NODE]) as tf.Tensor[]);
+  try {
+    const [f, a] = outs as [tf.Tensor, tf.Tensor];
+    return { features: (await f.data()) as Float32Array, activations: (await a.data()) as Float32Array };
+  } finally {
+    outs.forEach((t) => t.dispose());
+  }
+}
+
 export interface Extractor {
   readonly model: tf.GraphModel;
   /** Features for a batch [n, 224, 224, 3] in [0, 1]. Returns n * 1280 floats, row-major. */
   extractBatch(imgs01: tf.Tensor4D): Promise<Float32Array>;
   /** Features for one image [224, 224, 3] in [0, 1]. Returns 1280 floats. */
   extractFromTensor3D(img01: tf.Tensor3D): Promise<Float32Array>;
+  /** Features AND last-conv activations for a batch, from one forward pass (Grad-CAM heatmaps). */
+  extractWithActivations(imgs01: tf.Tensor4D): Promise<ActivationResult>;
   dispose(): void;
 }
 
@@ -154,7 +185,9 @@ export async function loadExtractor(onProgress?: (fraction: number) => void): Pr
   await warm.data();
   warm.dispose();
 
-  return { model, extractBatch, extractFromTensor3D, dispose: () => model.dispose() };
+  const extractWithActivations = (imgs01: tf.Tensor4D) => extractWithActivationsFrom(model, imgs01);
+
+  return { model, extractBatch, extractFromTensor3D, extractWithActivations, dispose: () => model.dispose() };
 }
 
 export interface ModelHash {
