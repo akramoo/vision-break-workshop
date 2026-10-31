@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vite/
+*.log
+__pycache__/
+.venv/
+scripts/.cache/
+test-results/
+playwright-report/
+.DS_Store
+graphify-out/
