@@ -445,7 +445,7 @@ describe('applyPerturbation', () => {
   });
 
   it('STRESS_PRESET has the documented values and darkens a mid-gray ramp', async () => {
-    expect(STRESS_PRESET).toEqual({ brightness: -0.25, contrast: 0.7, rotationDeg: 10, cropFrac: 0.85 });
+    expect(STRESS_PRESET).toEqual({ brightness: -0.2, contrast: 0.8, rotationDeg: 5, cropFrac: 0.95 });
     const img = ramp();
     const out = applyPerturbation(tf, img, STRESS_PRESET);
     expect(mean(await read(out))).toBeLessThan(mean(await read(img)) - 0.1);

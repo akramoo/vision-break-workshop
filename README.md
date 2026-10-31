@@ -90,7 +90,15 @@ node scripts/tests/verify_model.mjs
 
 ## Deploying
 
-Pages serves the contents of the `gh-pages` branch. To publish a new build, run `npm run build` in `app/` and push the contents of `app/dist` to that branch. There is also a GitHub Actions workflow in `.github/workflows/pages.yml` that does the same on every push to `main`, if Actions is available on the account.
+The live site is served from the `gh-pages` branch, not from a GitHub Actions workflow, because Actions is not available on this account at the moment. One command builds the app and publishes it:
+
+```bash
+node scripts/deploy_pages.mjs
+```
+
+It runs `npm run build` in `app/`, pushes the contents of `app/dist` to `gh-pages`, and asks GitHub to rebuild Pages. The site is updated about a minute later. You need the GitHub CLI (`gh`) logged in with push access.
+
+The workflow in `.github/workflows/pages.yml` is kept for the day Actions works again. It only runs when started by hand, and Pages would need its source switched back to "GitHub Actions".
 
 The app uses relative paths throughout, so it works under any repository name.
 

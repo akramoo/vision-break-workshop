@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Manual only. Pages currently serves the gh-pages branch (see scripts/deploy_pages.mjs)
+# because Actions is unavailable on the owner's account. To switch back, set the Pages
+# source to "GitHub Actions" and add a push trigger here.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

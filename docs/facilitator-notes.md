@@ -25,7 +25,7 @@ Background concepts for running the workshop. **Educational only. Not for clinic
   - It is hand-balanced 50/50 because pneumonia is rare in NIH (about 1.2%), so "always pneumonia" scores 50% here.
   - Caveat: NIH labels were extracted from radiology reports by text software, so some are wrong.
 - **Kermany stress:** the same 624 Kermany test images, each degraded in one fixed way.
-  - The degradation is darker, lower contrast, rotated 10° and cropped to 85%, like a poor scan or a badly positioned patient.
+  - The degradation is darker (−0.2), lower contrast (0.8), rotated 5° and cropped to 95%, like a poor scan or a badly positioned patient.
   - The patients and labels are the same. Only the image quality changes.
   - It answers: *does it survive image-quality changes?* The fix is augmentation.
   - The preset is fixed so every student's leaderboard score is comparable.

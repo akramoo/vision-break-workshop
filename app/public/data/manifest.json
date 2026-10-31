@@ -12878,5 +12878,2805 @@
   "label": "pneumonia",
   "split": "test",
   "source": "kermany"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0001",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0001.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0002",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0002.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0003",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0003.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0004",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0004.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0005",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0005.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0006",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0006.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0007",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0007.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0008",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0008.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0009",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0009.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0010",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0010.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0011",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0011.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0012",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0012.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0013",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0013.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0014",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0014.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0015",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0015.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0016",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0016.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0017",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0017.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0018",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0018.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0019",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0019.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0020",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0020.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0021",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0021.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0022",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0022.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0023",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0023.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0024",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0024.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0025",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0025.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0026",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0026.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0027",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0027.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0028",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0028.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0029",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0029.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0030",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0030.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0031",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0031.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0032",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0032.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0033",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0033.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0034",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0034.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0035",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0035.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0036",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0036.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0037",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0037.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0038",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0038.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0039",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0039.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0040",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0040.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0041",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0041.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0042",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0042.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0043",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0043.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0044",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0044.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0045",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0045.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0046",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0046.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0047",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0047.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0048",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0048.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0049",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0049.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0050",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0050.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0051",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0051.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0052",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0052.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0053",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0053.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0054",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0054.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0055",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0055.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0056",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0056.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0057",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0057.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0058",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0058.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0059",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0059.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0060",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0060.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0061",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0061.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0062",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0062.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0063",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0063.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0064",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0064.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0065",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0065.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0066",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0066.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0067",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0067.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0068",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0068.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0069",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0069.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0070",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0070.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0071",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0071.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0072",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0072.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0073",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0073.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0074",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0074.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0075",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0075.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0076",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0076.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0077",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0077.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0078",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0078.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0079",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0079.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0080",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0080.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0081",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0081.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0082",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0082.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0083",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0083.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0084",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0084.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0085",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0085.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0086",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0086.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0087",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0087.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0088",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0088.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0089",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0089.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0090",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0090.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0091",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0091.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0092",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0092.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0093",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0093.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0094",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0094.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0095",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0095.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0096",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0096.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0097",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0097.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0098",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0098.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0099",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0099.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_pneumonia_0100",
+  "path": "adult/train_adult/pneumonia/nih_train_adult_pneumonia_0100.jpg",
+  "label": "pneumonia",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0001",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0001.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0002",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0002.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0003",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0003.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0004",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0004.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0005",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0005.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0006",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0006.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0007",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0007.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0008",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0008.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0009",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0009.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0010",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0010.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0011",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0011.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0012",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0012.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0013",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0013.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0014",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0014.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0015",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0015.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0016",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0016.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0017",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0017.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0018",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0018.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0019",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0019.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0020",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0020.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0021",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0021.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0022",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0022.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0023",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0023.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0024",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0024.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0025",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0025.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0026",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0026.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0027",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0027.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0028",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0028.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0029",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0029.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0030",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0030.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0031",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0031.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0032",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0032.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0033",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0033.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0034",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0034.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0035",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0035.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0036",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0036.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0037",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0037.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0038",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0038.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0039",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0039.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0040",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0040.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0041",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0041.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0042",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0042.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0043",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0043.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0044",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0044.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0045",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0045.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0046",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0046.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0047",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0047.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0048",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0048.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0049",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0049.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0050",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0050.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0051",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0051.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0052",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0052.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0053",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0053.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0054",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0054.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0055",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0055.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0056",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0056.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0057",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0057.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0058",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0058.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0059",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0059.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0060",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0060.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0061",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0061.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0062",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0062.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0063",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0063.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0064",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0064.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0065",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0065.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0066",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0066.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0067",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0067.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0068",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0068.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0069",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0069.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0070",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0070.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0071",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0071.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0072",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0072.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0073",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0073.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0074",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0074.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0075",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0075.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0076",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0076.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0077",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0077.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0078",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0078.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0079",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0079.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0080",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0080.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0081",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0081.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0082",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0082.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0083",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0083.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0084",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0084.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0085",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0085.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0086",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0086.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0087",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0087.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0088",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0088.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0089",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0089.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0090",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0090.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0091",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0091.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0092",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0092.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0093",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0093.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0094",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0094.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0095",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0095.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0096",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0096.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0097",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0097.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0098",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0098.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0099",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0099.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_train_adult_normal_0100",
+  "path": "adult/train_adult/normal/nih_train_adult_normal_0100.jpg",
+  "label": "normal",
+  "split": "train_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0001",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0001.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0002",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0002.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0003",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0003.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0004",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0004.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0005",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0005.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0006",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0006.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0007",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0007.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0008",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0008.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0009",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0009.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0010",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0010.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0011",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0011.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0012",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0012.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0013",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0013.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0014",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0014.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0015",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0015.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0016",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0016.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0017",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0017.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0018",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0018.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0019",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0019.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0020",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0020.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0021",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0021.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0022",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0022.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0023",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0023.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0024",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0024.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0025",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0025.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0026",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0026.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0027",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0027.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0028",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0028.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0029",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0029.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0030",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0030.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0031",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0031.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0032",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0032.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0033",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0033.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0034",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0034.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0035",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0035.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0036",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0036.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0037",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0037.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0038",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0038.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0039",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0039.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0040",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0040.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0041",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0041.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0042",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0042.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0043",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0043.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0044",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0044.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0045",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0045.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0046",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0046.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0047",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0047.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0048",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0048.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0049",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0049.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0050",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0050.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0051",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0051.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0052",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0052.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0053",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0053.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0054",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0054.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0055",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0055.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0056",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0056.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0057",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0057.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0058",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0058.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0059",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0059.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0060",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0060.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0061",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0061.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0062",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0062.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0063",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0063.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0064",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0064.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0065",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0065.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0066",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0066.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0067",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0067.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0068",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0068.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0069",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0069.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0070",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0070.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0071",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0071.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0072",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0072.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0073",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0073.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0074",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0074.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0075",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0075.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0076",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0076.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0077",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0077.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0078",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0078.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0079",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0079.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0080",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0080.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0081",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0081.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0082",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0082.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0083",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0083.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0084",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0084.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0085",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0085.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0086",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0086.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0087",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0087.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0088",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0088.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0089",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0089.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0090",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0090.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0091",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0091.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0092",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0092.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0093",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0093.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0094",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0094.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0095",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0095.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0096",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0096.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0097",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0097.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0098",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0098.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0099",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0099.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_pneumonia_0100",
+  "path": "adult/test_adult/pneumonia/nih_test_adult_pneumonia_0100.jpg",
+  "label": "pneumonia",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0001",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0001.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0002",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0002.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0003",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0003.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0004",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0004.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0005",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0005.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0006",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0006.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0007",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0007.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0008",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0008.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0009",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0009.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0010",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0010.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0011",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0011.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0012",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0012.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0013",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0013.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0014",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0014.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0015",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0015.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0016",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0016.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0017",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0017.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0018",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0018.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0019",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0019.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0020",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0020.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0021",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0021.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0022",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0022.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0023",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0023.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0024",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0024.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0025",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0025.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0026",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0026.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0027",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0027.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0028",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0028.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0029",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0029.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0030",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0030.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0031",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0031.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0032",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0032.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0033",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0033.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0034",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0034.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0035",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0035.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0036",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0036.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0037",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0037.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0038",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0038.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0039",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0039.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0040",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0040.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0041",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0041.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0042",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0042.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0043",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0043.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0044",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0044.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0045",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0045.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0046",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0046.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0047",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0047.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0048",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0048.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0049",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0049.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0050",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0050.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0051",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0051.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0052",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0052.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0053",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0053.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0054",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0054.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0055",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0055.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0056",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0056.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0057",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0057.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0058",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0058.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0059",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0059.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0060",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0060.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0061",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0061.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0062",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0062.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0063",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0063.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0064",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0064.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0065",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0065.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0066",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0066.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0067",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0067.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0068",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0068.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0069",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0069.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0070",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0070.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0071",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0071.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0072",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0072.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0073",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0073.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0074",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0074.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0075",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0075.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0076",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0076.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0077",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0077.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0078",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0078.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0079",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0079.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0080",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0080.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0081",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0081.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0082",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0082.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0083",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0083.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0084",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0084.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0085",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0085.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0086",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0086.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0087",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0087.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0088",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0088.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0089",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0089.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0090",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0090.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0091",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0091.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0092",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0092.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0093",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0093.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0094",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0094.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0095",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0095.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0096",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0096.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0097",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0097.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0098",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0098.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0099",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0099.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
+ },
+ {
+  "id": "nih_test_adult_normal_0100",
+  "path": "adult/test_adult/normal/nih_test_adult_normal_0100.jpg",
+  "label": "normal",
+  "split": "test_adult",
+  "source": "nih"
  }
 ]

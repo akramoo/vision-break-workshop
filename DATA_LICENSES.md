@@ -18,7 +18,7 @@
 - Source images: NIH Clinical Center, ChestX-ray14, released under CC0 1.0. https://nihcc.app.box.com/v/ChestXray-NIHCC
 - ChestMNIST (224x224 version) from MedMNIST+, Zenodo record 10519652. https://zenodo.org/records/10519652
 - Used in `app/public/data/adult/`: 200 images for the adult test set and 200 for the optional "mix in adult X-rays" fix, balanced 50/50 between pneumonia and no finding.
-- Limitations: adult patients at another hospital. Labels were mined from radiology reports by text software, so some are wrong. Pneumonia is rare in this dataset (about 1.2%), which is why the samples are hand-balanced.
+- Limitations: adult patients at another hospital. Labels were mined from radiology reports by text software, so some are wrong. Pneumonia is rare in this dataset (about 1.2%), which is why the samples are hand-balanced. The pneumonia-positive NIH images may also carry other findings, while the negatives are "no finding" (all 14 labels 0), so the app calls the adult negatives "no finding" rather than "normal" in the UI.
 
 ## Model: MobileNet v2 (Apache-2.0)
 

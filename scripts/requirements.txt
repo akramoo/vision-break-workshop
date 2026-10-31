@@ -1,4 +1,4 @@
-datasets
-pillow
-numpy
-medmnist
+datasets==5.1.0
+medmnist==3.0.2
+numpy==2.5.4
+pillow==13.0.0

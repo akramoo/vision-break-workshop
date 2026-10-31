@@ -1,0 +1,13 @@
+{
+  "name": "vision-break-workshop-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node ensure_tfjs_node.mjs",
+    "precompute": "node precompute_embeddings.mjs"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0"
+  }
+}
