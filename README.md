@@ -43,7 +43,7 @@ What has been measured so far, with precomputed features and the default setting
 
 Mixing in adult X-rays and balancing the classes lifts the worst-case score to about 59.
 
-Still to do: a full timed dry run on a mid-range laptop, a Firefox pass on the Break it tab and the webcam with a real camera, and the optional extras (Grad-CAM heatmaps and a Python notebook for students who finish early).
+Also done: Grad-CAM heatmaps on the stamp view, Evaluate rows and uploads, the Python code track, and a GPU dry run of the whole workshop path (see `docs/dry-run-results.md`). Still to do: a Firefox and Chrome check of the webcam with a real camera, and a dry run on a mid-range laptop without a GPU.
 
 ## Run it locally
 

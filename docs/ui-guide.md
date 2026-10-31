@@ -638,3 +638,13 @@ These are quirks, not bugs. Know them before you are in front of the room.
 12. **Log this behaves differently by location.** Evaluate and Perturb ask for a tag before saving. Stamp and webcam save immediately with a default tag ("shortcut" or "other"), and show an editor afterwards. If students forget to edit, the log fills with "other".
 13. **"normal" versus "no finding".** Adult negatives are "no finding" everywhere. Uploads use the labels "pneumonia" and "normal" regardless of what the picture is.
 14. **Natural letter markers.** Many X-rays already carry small "R" or "L" letters in a corner. The stamp is a much larger, white, deliberate "R".
+
+## Heatmaps
+
+Three places have a heatmap button: the single-image view on Break it, Stamp (both models side by side), every row of the prediction list on Evaluate, and every uploaded image.
+
+The colours show where the model found evidence for the class you choose with "Evidence for: pneumonia | normal". Warm means more evidence. The strength slider fades the colours in and out. The map is only 7 by 7 cells, so each cell covers a 32 pixel square and the picture is blurry. Treat it as a hint, not proof.
+
+The useful demo is the stamp. Train the stamp model on the Stamp tab, pick a normal test image, switch its stamp on and press Show heatmap. The normal model ("Before") lights up inside the lungs. The stamp-trained model ("After") lights up on the white R box in the corner. In the dry run this held for 10 of 10 images.
+
+If a map looks plain, the model found no evidence for the class you chose. Switch the other class on.
