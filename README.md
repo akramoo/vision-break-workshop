@@ -100,6 +100,10 @@ scripts/.venv/Scripts/python scripts/tests/verify_data.py
 node scripts/tests/verify_model.mjs
 ```
 
+## Python code track
+
+Students who finish early can repeat the experiments as code in `notebook/code_track.ipynb`: frozen MobileNetV3-Large features, a scikit-learn logistic regression, the imbalance, stamp and adult-shift experiments, a Grad-CAM heatmap, and five exercises. It runs on a CPU in a couple of minutes and downloads the pretrained weights (about 21 MB) once. Set it up with `scripts/requirements.txt` and see [notebook/README.md](notebook/README.md) for how to open it.
+
 ## Deploying
 
 The live site is served from the `gh-pages` branch, not from a GitHub Actions workflow, because Actions is not available on this account at the moment. One command builds the app and publishes it:

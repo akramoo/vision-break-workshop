@@ -15,3 +15,5 @@ WORKSHOP.md
 *.tsbuildinfo
 coverage/
 blob-report/
+notebook/.cache/
+.ipynb_checkpoints/
