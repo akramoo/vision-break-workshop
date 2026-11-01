@@ -25,6 +25,12 @@ interface Props {
   autoShow?: boolean;
   testId?: string;
   initialOpacity?: number;
+  /**
+   * Class the "Evidence for" control opens on: pass the class the model PREDICTED for this image, so a missed sick child
+   * is not explained with a pneumonia map by default. The student can still switch. Defaults to 'pneumonia'. If the value
+   * changes (a different image or prediction), the control follows it again.
+   */
+  initialClass?: CamClass;
 }
 
 function kernelOf(head: Head): Float32Array | null {
@@ -39,11 +45,17 @@ const LEGEND_GRADIENT = `linear-gradient(to right, ${[0, 0.25, 0.5, 0.75, 1]
   .map((t) => `rgb(${jetColor(t).join(',')}) ${t * 100}%`)
   .join(', ')})`;
 
-export function HeatmapOverlay({ pixels, heads, size = 224, autoShow = false, testId = 'heatmap', initialOpacity = 0.5 }: Props) {
+export function HeatmapOverlay({ pixels, heads, size = 224, autoShow = false, testId = 'heatmap', initialOpacity = 0.5, initialClass }: Props) {
   const { state } = useSession();
   const extractor = state.extractor;
   const [shown, setShown] = useState(autoShow);
-  const [cls, setCls] = useState<CamClass>('pneumonia');
+  const [cls, setCls] = useState<CamClass>(initialClass ?? 'pneumonia');
+  // Follow a changed prediction (e.g. the stamp was toggled): set state while rendering, no extra effect.
+  const [seenInitial, setSeenInitial] = useState(initialClass);
+  if (seenInitial !== initialClass) {
+    setSeenInitial(initialClass);
+    if (initialClass) setCls(initialClass);
+  }
   const [opacity, setOpacity] = useState(initialOpacity);
   const [acts, setActs] = useState<{ pixels: Float32Array; data: Float32Array } | null>(null);
   const [error, setError] = useState<string | null>(null);

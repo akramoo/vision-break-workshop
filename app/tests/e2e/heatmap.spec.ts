@@ -35,6 +35,17 @@ async function trainHead(page: Page) {
   await expect(page.getByTestId('train-status')).toContainText(/Finished 20 epochs/, { timeout: 60_000 });
 }
 
+type Cls = 'pneumonia' | 'normal';
+
+/** Which "Evidence for" radio is checked for a heatmap with this test-id prefix. */
+async function checkedClass(page: Page, prefix: string): Promise<Cls> {
+  const pneu = await page.getByTestId(`${prefix}-class-pneumonia`).isChecked();
+  const norm = await page.getByTestId(`${prefix}-class-normal`).isChecked();
+  expect(pneu !== norm, `exactly one class radio is checked for ${prefix}`).toBe(true);
+  return pneu ? 'pneumonia' : 'normal';
+}
+const other = (c: Cls): Cls => (c === 'pneumonia' ? 'normal' : 'pneumonia');
+
 async function start(page: Page) {
   await page.goto('/?debug=1');
   await waitForReady(page);
@@ -133,7 +144,12 @@ test('Evaluate: a row heatmap renders, the class and strength controls change it
   await expect(page.getByTestId('pred-heatmap-status')).toHaveCount(0);
   await expect(page.getByTestId('pred-heatmap-error')).toHaveCount(0);
   await expect(page.getByTestId('pred-heatmap-caption')).toContainText('hint, not proof');
-  await expect(page.getByTestId('pred-heatmap-class-pneumonia')).toBeChecked();
+  // The control opens on the class the model PREDICTED for this row (intentional change: it used to always open on
+  // 'pneumonia'). With 'Mistakes first' the first row can be either a false alarm or a miss.
+  const saysFirst = ((await page.getByTestId('pred-row').first().locator('td').nth(2).textContent()) ?? '').trim();
+  const firstCls: Cls = saysFirst.startsWith('pneumonia') ? 'pneumonia' : 'normal';
+  expect(await checkedClass(page, 'pred-heatmap')).toBe(firstCls);
+  const secondCls = other(firstCls);
 
   // not a blank or uniform canvas: 224 x 224, many colours, real spread of brightness
   const pneu = await canvasInfo(page, 'pred-heatmap-canvas-main');
@@ -145,19 +161,25 @@ test('Evaluate: a row heatmap renders, the class and strength controls change it
   expect(await main.getAttribute('data-opacity')).toBe('0.5');
   await expect(page.getByTestId('pred-heatmap-opacity-value')).toHaveText('50%');
 
-  // evidence for "normal" draws a different image
-  await page.getByTestId('pred-heatmap-class-normal').check();
+  // evidence for the other class draws a different image
+  await page.getByTestId(`pred-heatmap-class-${secondCls}`).check();
   await expect.poll(async () => (await canvasInfo(page, 'pred-heatmap-canvas-main')).hash).not.toBe(pneu.hash);
   const normal = await canvasInfo(page, 'pred-heatmap-canvas-main');
   expect(normal.distinct).toBeGreaterThan(50);
   console.log(`[heatmap:${browserName}] EVAL normal map peak ${await main.getAttribute('data-peak')}, ${normal.distinct} colours`);
+
+  // Back to the predicted class for the strength checks: for a very confident row the OTHER class can have no evidence at
+  // all (an all-zero map), and then the strength slider has nothing to change.
+  await page.getByTestId(`pred-heatmap-class-${firstCls}`).check();
+  await expect.poll(async () => (await canvasInfo(page, 'pred-heatmap-canvas-main')).hash).toBe(pneu.hash);
+  const atHalf = pneu;
 
   // strength slider: attribute and pixels follow; 0% shows the plain X-ray (no colour overlay)
   await page.getByTestId('pred-heatmap-opacity').fill('1');
   await expect(main).toHaveAttribute('data-opacity', '1');
   await expect(page.getByTestId('pred-heatmap-opacity-value')).toHaveText('100%');
   const strong = await canvasInfo(page, 'pred-heatmap-canvas-main');
-  expect(strong.hash).not.toBe(normal.hash);
+  expect(strong.hash).not.toBe(atHalf.hash);
   await page.getByTestId('pred-heatmap-opacity').fill('0');
   await expect(main).toHaveAttribute('data-opacity', '0');
   const plain = await canvasInfo(page, 'pred-heatmap-canvas-main');
@@ -171,8 +193,8 @@ test('Evaluate: a row heatmap renders, the class and strength controls change it
   await expect(main).toHaveCount(0);
   await page.getByTestId('pred-heatmap-show').click();
   await expect(main).toBeVisible({ timeout: 30_000 });
-  await page.getByTestId('pred-heatmap-class-normal').check();
-  await page.getByTestId('pred-heatmap-class-pneumonia').check();
+  await page.getByTestId(`pred-heatmap-class-${secondCls}`).check();
+  await page.getByTestId(`pred-heatmap-class-${firstCls}`).check();
 
   await row.scrollIntoViewIfNeeded();
   await shot(page, 'heatmap-evaluate');
@@ -244,9 +266,11 @@ test('Stamp: the stamp-trained model puts its evidence on the stamp (peak in cel
       expect(a1.distinct).toBeGreaterThan(50);
       expect(b1.distinct).toBeGreaterThan(50);
       expect(a1.hash).not.toBe(b1.hash);
-      await page.getByTestId('stamp-heatmap-class-normal').check();
+      // the control opens on the class the stamp-trained (after) model predicted for this image
+      const c0 = await checkedClass(page, 'stamp-heatmap');
+      await page.getByTestId(`stamp-heatmap-class-${other(c0)}`).check();
       await expect.poll(async () => (await canvasInfo(page, 'stamp-heatmap-canvas-after')).hash).not.toBe(a1.hash);
-      await page.getByTestId('stamp-heatmap-class-pneumonia').check();
+      await page.getByTestId(`stamp-heatmap-class-${c0}`).check();
       await expect.poll(async () => (await canvasInfo(page, 'stamp-heatmap-canvas-after')).hash).toBe(a1.hash);
     }
     if (i === 1) {
@@ -295,7 +319,8 @@ test('Uploads: an uploaded image gets a heatmap', async ({ page, browserName }) 
   console.log(`[heatmap:${browserName}] UPLOAD canvas ${info.w}x${info.h}, ${info.distinct} colours, std ${info.std.toFixed(1)}, peak ${await main.getAttribute('data-peak')}`);
   expect(info.distinct).toBeGreaterThan(50);
   expect(info.std).toBeGreaterThan(10);
-  await page.getByTestId('upload-heatmap-0-class-normal').check();
+  const upCls = await checkedClass(page, 'upload-heatmap-0'); // the class the model predicted for this upload
+  await page.getByTestId(`upload-heatmap-0-class-${other(upCls)}`).check();
   await expect.poll(async () => (await canvasInfo(page, 'upload-heatmap-0-canvas-main')).hash).not.toBe(info.hash);
 
   // closing the row removes it
@@ -308,6 +333,37 @@ test('Uploads: an uploaded image gets a heatmap', async ({ page, browserName }) 
   await expect(page.getByTestId('upload-count')).toHaveText('2 images');
   await page.getByTestId('upload-heatmap-btn-1').click();
   await expect(page.getByTestId('upload-heatmap-1-canvas-main')).toBeVisible({ timeout: 30_000 });
+
+  expect(pageErrors).toEqual([]);
+  expect(consoleErrors).toEqual([]);
+});
+
+test('Evaluate: the heatmap opens on the class the model predicted, so a missed sick child starts on "normal" and can be switched', async ({ page }) => {
+  const pageErrors = collectPageErrors(page);
+  const consoleErrors = collectConsoleErrors(page);
+  await start(page);
+  await openTab(page, 'Evaluate');
+  await expect(page.getByTestId('eval-results')).toBeVisible({ timeout: 30_000 });
+  await page.getByTestId('pred-mode-only-mistakes').check();
+
+  // false alarms (true normal, model said pneumonia) open on 'pneumonia'; misses (true pneumonia, model said normal) on 'normal'
+  for (const [trueClass, expected] of [['negative', 'pneumonia'], ['pneumonia', 'normal']] as const) {
+    await page.getByTestId(`pred-class-${trueClass}`).check();
+    const rows = page.getByTestId('pred-row');
+    const n = Math.min(await rows.count(), 3);
+    for (let i = 0; i < n; i++) {
+      await rows.nth(i).getByTestId('pred-heatmap-btn').click();
+      await expect(page.getByTestId('pred-heatmap-canvas-main')).toBeVisible({ timeout: 30_000 });
+      expect(await checkedClass(page, 'pred-heatmap'), `${trueClass} mistake ${i}`).toBe(expected);
+      if (i === 0) {
+        // the student can still switch
+        await page.getByTestId(`pred-heatmap-class-${other(expected)}`).check();
+        await expect(page.getByTestId(`pred-heatmap-class-${other(expected)}`)).toBeChecked();
+      }
+      await rows.nth(i).getByTestId('pred-heatmap-btn').click();
+      await expect(page.getByTestId('pred-heatmap-row')).toHaveCount(0);
+    }
+  }
 
   expect(pageErrors).toEqual([]);
   expect(consoleErrors).toEqual([]);

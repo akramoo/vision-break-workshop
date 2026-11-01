@@ -19,6 +19,7 @@ import {
   type StampTarget,
 } from '../ml/stampLab';
 import { currentGeneration } from '../ml/generation';
+import { predictedCamClass } from '../ml/gradcam';
 import { FALLBACK_NOTICE, isRunActive } from '../ml/trainRunner';
 import type { Head } from '../ml/head';
 import { isAbortError } from '../ml/yield';
@@ -662,7 +663,7 @@ export function StampPanel() {
                     </tr>
                   </tbody>
                 </table>
-                <HeatmapOverlay pixels={detail.shown} heads={heatHeads} size={192} testId="stamp-heatmap" />
+                <HeatmapOverlay pixels={detail.shown} heads={heatHeads} size={192} testId="stamp-heatmap" initialClass={predictedCamClass(detail.pAfter ?? detail.pBefore)} />
                 <button type="button" className="btn btn--small" onClick={logDetail} data-testid="stamp-log">
                   Log this
                 </button>

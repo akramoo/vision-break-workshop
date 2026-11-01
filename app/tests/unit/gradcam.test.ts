@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import * as tf from '@tensorflow/tfjs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { ACTIVATION_NODE, extractWithActivationsFrom } from '../../src/ml/extractor';
-import { blendHeatmap, computeCam, jetColor, peakLocation, upsampleCam } from '../../src/ml/gradcam';
+import { blendHeatmap, computeCam, jetColor, peakLocation, predictedCamClass, upsampleCam } from '../../src/ml/gradcam';
 import { FEATURE_DIM, FEATURE_OUTPUT_NODE, IMG_SIZE, mulberry32 } from '../../src/shared/pixelOps.js';
 
 beforeAll(async () => {
@@ -256,5 +256,20 @@ describe.skipIf(!haveModel)('real MobileNet activations', () => {
     } finally {
       bad.dispose();
     }
+  });
+});
+
+describe('predictedCamClass', () => {
+  it('maps P(pneumonia) to the class the model answered (p >= 0.5 is pneumonia)', () => {
+    expect(predictedCamClass(0.9)).toBe('pneumonia');
+    expect(predictedCamClass(0.5)).toBe('pneumonia');
+    expect(predictedCamClass(0.49)).toBe('normal');
+    expect(predictedCamClass(0)).toBe('normal');
+  });
+
+  it('is undefined when there is no prediction yet', () => {
+    expect(predictedCamClass(null)).toBeUndefined();
+    expect(predictedCamClass(undefined)).toBeUndefined();
+    expect(predictedCamClass(Number.NaN)).toBeUndefined();
   });
 });

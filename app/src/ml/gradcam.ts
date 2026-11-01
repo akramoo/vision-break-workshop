@@ -13,6 +13,11 @@ import { pixelsToBatch } from './predictImage';
 
 export type CamClass = 'pneumonia' | 'normal';
 
+/** The class a model predicts from P(pneumonia): same rule as the "Model says" labels (p >= 0.5 is pneumonia). */
+export function predictedCamClass(p: number | null | undefined): CamClass | undefined {
+  return p === null || p === undefined || Number.isNaN(p) ? undefined : p >= 0.5 ? 'pneumonia' : 'normal';
+}
+
 /** Cells per side of the activation grid. */
 export const CAM_SIDE = 7;
 

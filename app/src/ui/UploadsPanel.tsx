@@ -14,6 +14,7 @@ import {
 } from '../data/uploads';
 import { FEATURE_DIM } from '../shared/pixelOps.js';
 import type { Extractor } from '../ml/extractor';
+import { predictedCamClass } from '../ml/gradcam';
 import type { Head } from '../ml/head';
 import { alwaysPneumoniaBaseline, metricsWithAbstain } from '../ml/metrics';
 import { pixelsToBatch } from '../ml/predictImage';
@@ -331,7 +332,7 @@ export function UploadResults({ negativeName = 'normal' }: { negativeName?: stri
                   <tr className="heatmap-row" data-testid={`upload-heatmap-row-${i}`}>
                     <td colSpan={5}>
                       {pixels ? (
-                        <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={`upload-heatmap-${i}`} />
+                        <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={`upload-heatmap-${i}`} initialClass={probs ? predictedCamClass(probs[i]) : undefined} />
                       ) : (
                         <p className="inline-warn">This image is no longer in memory. Remove it and add it again.</p>
                       )}
