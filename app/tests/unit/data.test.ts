@@ -16,7 +16,7 @@ import {
 } from '../../src/data/manifest';
 import { AUG_VIEWS, DEFAULT_TRAIN_SETTINGS, buildTrainingPlan, trainingRowLabels } from '../../src/data/trainingPlan';
 import { niceTicks, scaleLinear, linePath } from '../../src/ui/chartMath';
-import { formatDuration, formatLr, lrFromSlider, sliderFromLr } from '../../src/ui/format';
+import { floorPercent, formatDuration, formatLr, lrFromSlider, sliderFromLr } from '../../src/ui/format';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const real = parseManifest(JSON.parse(readFileSync(path.resolve(here, '../../public/data/manifest.json'), 'utf8')));
@@ -168,5 +168,24 @@ describe('chart maths and formatting', () => {
     expect(formatDuration(3400)).toBe('3.4 s');
     expect(formatDuration(125000)).toBe('2 min 5 s');
     expect(formatDuration(-1)).toBe('-');
+  });
+
+  it('floorPercent never rounds a confidence up across a threshold', () => {
+    expect(floorPercent(0.7995)).toBe('79%');
+    expect(floorPercent(0.8)).toBe('80%');
+    expect(floorPercent(0.57)).toBe('57%');
+    expect(floorPercent(1)).toBe('100%');
+    expect(floorPercent(0.5)).toBe('50%');
+    expect(floorPercent(Number.NaN)).toBe('n/a');
+  });
+
+  it('rounds the total seconds before splitting into minutes and seconds', () => {
+    expect(formatDuration(119_600)).toBe('2 min 0 s'); // never "1 min 60 s"
+    expect(formatDuration(59_500)).toBe('1 min 0 s');
+    expect(formatDuration(59_400)).toBe('59 s');
+    expect(formatDuration(9_949)).toBe('9.9 s');
+    expect(formatDuration(0)).toBe('0.0 s');
+    expect(formatDuration(60_000)).toBe('1 min 0 s');
+    expect(formatDuration(3_599_700)).toBe('60 min 0 s');
   });
 });

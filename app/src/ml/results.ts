@@ -129,11 +129,19 @@ export function summarizeResults(
 
 // ---- deltas between snapshots ----
 
-/** Difference in percentage points (after - before); null if either is missing. */
+/** A fraction as the percentage the screen shows it (one decimal): 0.8125 -> 81.3, same rounding as formatPercent. */
+export function shownPercent(fraction: number): number {
+  return Number((fraction * 100).toFixed(1));
+}
+
+/**
+ * Difference in percentage points (after - before), computed from the values as they are displayed (rounded to 0.1 points),
+ * so "81.3% to 87.5%" shows a change of 6.2 points, not 6.3. Null if either is missing.
+ */
 export function deltaPoints(before: number | null | undefined, after: number | null | undefined): number | null {
   if (typeof before !== 'number' || typeof after !== 'number') return null;
   if (Number.isNaN(before) || Number.isNaN(after)) return null;
-  return (after - before) * 100;
+  return Number((shownPercent(after) - shownPercent(before)).toFixed(1));
 }
 
 /** "+12.3 pts", "-4.0 pts", "0.0 pts", "n/a". Tiny differences round to 0.0 without a sign. */

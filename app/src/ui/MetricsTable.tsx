@@ -24,12 +24,12 @@ export function MetricsTable({ rows, showAbstain, testId = 'metrics-table', who 
       <thead>
         <tr>
           <th scope="col">Predictor</th>
-          <th scope="col">Accuracy</th>
+          <th scope="col">{showAbstain ? 'Accuracy (answered cases)' : 'Accuracy'}</th>
           <th scope="col">
-            Sensitivity <small>sick {who} caught</small>
+            {showAbstain ? 'Sensitivity (answered)' : 'Sensitivity'} <small>sick {who} caught</small>
           </th>
           <th scope="col">
-            Specificity <small>{who === 'children' ? 'healthy children' : 'patients with no finding'} cleared</small>
+            {showAbstain ? 'Specificity (answered)' : 'Specificity'} <small>{who === 'children' ? 'healthy children' : 'patients with no finding'} cleared</small>
           </th>
           <th scope="col">Balanced accuracy</th>
           {showAbstain ? (

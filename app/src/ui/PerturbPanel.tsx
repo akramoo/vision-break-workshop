@@ -345,15 +345,19 @@ export function PerturbPanel() {
                 <MetricsTable rows={rows} showAbstain={tau > 0.5} testId="perturb-metrics" who={setId === 'kermany_test' ? 'children' : 'patients'} />
               ) : (
                 <p className="muted" data-testid="perturb-unlabeled">
-                  Label your uploaded images (pneumonia or normal) to get accuracy scores. The change in confidence is shown below anyway.
+                  Label your uploaded images (pneumonia or normal) to get accuracy scores. The change in the model's answer is shown below anyway.
                 </p>
               )}
               <p className="big" data-testid="perturb-summary">
                 <strong data-testid="perturb-flips">
                   {stats.flips} of {stats.n} predictions changed
                 </strong>{' '}
-                compared with the original images. Mean absolute change in confidence:{' '}
+                compared with the original images. Mean absolute change in P(pneumonia):{' '}
                 <strong data-testid="perturb-delta">{formatPercent(stats.meanAbs)}</strong>.
+              </p>
+              <p className="muted" data-testid="perturb-delta-note">
+                P(pneumonia) is the number the model computes before it decides, from 0% to 100%. This is how far it moved on average
+                per image, whichever way it moved.
               </p>
               <p className="muted" data-testid="perturb-duration">
                 Computed in {formatDuration(view.durationMs)} for {stats.n} images

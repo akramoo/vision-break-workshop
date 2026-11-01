@@ -272,9 +272,9 @@ export function ResultsPanel() {
                   <tr>
                     <th scope="col">Test set</th>
                     <th scope="col">Predictor</th>
-                    <th scope="col">Accuracy</th>
-                    <th scope="col">Sensitivity</th>
-                    <th scope="col">Specificity</th>
+                    <th scope="col">{tau > 0.5 ? 'Accuracy (answered cases)' : 'Accuracy'}</th>
+                    <th scope="col">{tau > 0.5 ? 'Sensitivity (answered)' : 'Sensitivity'}</th>
+                    <th scope="col">{tau > 0.5 ? 'Specificity (answered)' : 'Specificity'}</th>
                     <th scope="col">Balanced accuracy</th>
                     <th scope="col">Referred n (%)</th>
                     <th scope="col">Coverage</th>

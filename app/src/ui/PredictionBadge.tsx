@@ -1,4 +1,5 @@
-import { confidenceOf, decide, formatPercent } from '../ml/metrics';
+import { confidenceOf, decide } from '../ml/metrics';
+import { floorPercent } from './format';
 
 interface Props {
   /** P(pneumonia). */
@@ -19,9 +20,9 @@ export function PredictionBadge({ p, tau, negativeName = 'normal', testId }: Pro
     <span className={`pred-badge pred-badge--${refer ? 'refer' : d === 'pneumonia' ? 'pneumonia' : 'normal'}`} {...(testId ? { 'data-testid': testId } : {})} data-decision={d}>
       <strong>{name}</strong>
       <span className="pred-badge__conf">
-        {formatPercent(conf, 0)} sure
+        {floorPercent(conf)} sure
         <span className="confbar" aria-hidden="true">
-          <span className="confbar__fill" style={{ width: `${Math.round(conf * 100)}%` }} />
+          <span className="confbar__fill" style={{ width: `${Math.floor(conf * 100 + 1e-9)}%` }} />
         </span>
       </span>
     </span>

@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { EvalSetId } from '../../src/data/evalSets';
-import { metricsWithAbstain } from '../../src/ml/metrics';
+import { formatPercent, metricsWithAbstain } from '../../src/ml/metrics';
 import { describeModelConfig, modelConfigOf } from '../../src/ml/modelConfig';
 import {
   RESULT_SET_IDS,
@@ -9,6 +9,7 @@ import {
   formatDelta,
   leaderboardOf,
   resultsExportFileName,
+  shownPercent,
   summarizeResults,
   type EvalInput,
   type SetScores,
@@ -127,6 +128,11 @@ describe('deltas', () => {
   it('computes percentage points and formats them with a sign', () => {
     expect(deltaPoints(0.5, 0.62)).toBeCloseTo(12, 10);
     expect(deltaPoints(0.8, 0.7)).toBeCloseTo(-10, 10);
+    // the change is computed from the displayed values: 81.3% -> 87.5% is 6.2 points (exact difference 6.25)
+    expect(formatPercent(0.8125)).toBe('81.3%');
+    expect(formatPercent(0.875)).toBe('87.5%');
+    expect(deltaPoints(0.8125, 0.875)).toBe(6.2);
+    expect(shownPercent(0.8125)).toBe(81.3);
     expect(deltaPoints(null, 0.7)).toBeNull();
     expect(deltaPoints(0.7, undefined)).toBeNull();
     expect(formatDelta(12.34)).toBe('+12.3 pts');

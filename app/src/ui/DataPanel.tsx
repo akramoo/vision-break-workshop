@@ -244,7 +244,7 @@ export function DataPanel() {
         {liveEffective && toExtract > 0 ? (
           <p className={`inline-warn${ts.augmentation ? ' inline-warn--strong' : ''}`} data-testid="live-estimate">
             Live mode: about {toExtract} images still need to be processed by MobileNet, roughly {estimate} on this laptop
-            {ts.augmentation ? ' (augmentation triples the work)' : ''}. Turn on "Use precomputed features" in Settings to skip this.
+            {ts.augmentation ? ' (augmentation makes it about 2.7 times the work)' : ''}. Turn on "Use precomputed features" in Settings to skip this.
           </p>
         ) : null}
       </div>

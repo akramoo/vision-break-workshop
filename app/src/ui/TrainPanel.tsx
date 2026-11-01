@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildTrainingPlan, type ValSet } from '../data/trainingPlan';
 import { formatPercent, rangeOf } from '../ml/metrics';
+import { shownPercent } from '../ml/results';
 import { cancelRun, REPEAT_RUNS, runRepeat, runTraining, type RunEnv } from '../ml/trainRunner';
 import { useSession, type RepeatRun, type SessionState } from '../state/session';
 import { formatDuration, formatLr, lrFromSlider, sliderFromLr } from './format';
@@ -257,7 +258,8 @@ function pctRange(values: (number | null)[]): string {
 
 function spreadPts(values: (number | null)[]): string {
   const r = rangeOf(values);
-  return r ? `${(r.spread * 100).toFixed(1)} points` : 'n/a';
+  // From the displayed (0.1-rounded) endpoints, so "81.3% to 87.5%" reads 6.2 points and not 6.3.
+  return r ? `${(shownPercent(r.max) - shownPercent(r.min)).toFixed(1)} points` : 'n/a';
 }
 
 function RepeatPanel({ state, canStart, onStart }: { state: SessionState; canStart: boolean; onStart: () => void }) {
