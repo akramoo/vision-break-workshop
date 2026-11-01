@@ -23,11 +23,22 @@ import { formatDuration } from './format';
 import { HeatmapOverlay } from './HeatmapOverlay';
 import { LogForm, useLogConfig } from './LogThis';
 import { MetricsTable, type MetricRow } from './MetricsTable';
+import { Pager } from './Pager';
+import {
+  DEFAULT_PAGE_SIZE,
+  applyView,
+  buildRows,
+  categoryCounts,
+  classCounts,
+  countsLabel,
+  effectiveMode,
+  pageInfo,
+  type ClassFilter,
+  type ViewMode,
+} from './paging';
 import { pixelsToDataUrl } from './PixelCanvas';
 import { ProgressBar } from './ProgressBar';
 import { UploadResults, UploadsManager } from './UploadsPanel';
-
-const LIST_LIMIT = 40;
 
 export function EvaluatePanel() {
   const { state, dispatch } = useSession();
@@ -257,7 +268,10 @@ function Results({ def, result, tau, entries, head }: { def: EvalSetDef; result:
 }
 
 function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; result: EvalResult; tau: number; entries: readonly ManifestEntry[]; head: Head }) {
-  const [mistakesFirst, setMistakesFirst] = useState(true);
+  const [mode, setMode] = useState<ViewMode>('mistakes-first');
+  const [cls, setCls] = useState<ClassFilter>('all');
+  const [pageSize, setPageSize] = useState<number>(DEFAULT_PAGE_SIZE);
+  const [page, setPage] = useState(1);
   const byId = useMemo(() => indexById(entries), [entries]);
   const logConfig = useLogConfig();
   const [logOpen, setLogOpen] = useState<string | null>(null);
@@ -281,24 +295,80 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
     };
   };
 
-  const rows = useMemo(() => {
-    const all = result.ids.map((id, i) => {
-      const p = result.probs[i] as number;
-      const d = decide(p, tau);
-      const truth = result.labels[i] as number;
-      const wrong = d !== 'refer' && (d === 'pneumonia') !== (truth === 1);
-      return { id, p, d, truth, wrong, i };
-    });
-    const ordered = mistakesFirst ? [...all.filter((r) => r.wrong), ...all.filter((r) => !r.wrong)] : all;
-    return ordered.slice(0, LIST_LIMIT);
-  }, [result, tau, mistakesFirst]);
+  const allRows = useMemo(() => buildRows(result.ids, result.probs, result.labels, tau), [result, tau]);
+  const totals = useMemo(() => categoryCounts(allRows), [allRows]);
+  const classes = useMemo(() => classCounts(allRows), [allRows]);
+  const showReferred = tau > 0.5;
+  const eMode = effectiveMode(mode, tau);
+  // Counts on the chips follow the true-class filter, so each chip says how many rows it would show.
+  const inClass = useMemo(() => applyView(allRows, 'dataset', cls), [allRows, cls]);
+  const chipCounts = useMemo(() => categoryCounts(inClass), [inClass]);
+  const view = useMemo(() => applyView(allRows, eMode, cls), [allRows, eMode, cls]);
+  const info = pageInfo(view.length, page, pageSize);
+  const rows = view.slice(info.start, info.end);
+
+  // Back to page 1 (and close open forms) when the set, the threshold or the head changes.
+  const [seen, setSeen] = useState({ result, tau, headId: head.id });
+  if (seen.result !== result || seen.tau !== tau || seen.headId !== head.id) {
+    setSeen({ result, tau, headId: head.id });
+    setPage(1);
+    setLogOpen(null);
+    setHeatOpen(null);
+  }
+
+  const changeView = (next: { mode?: ViewMode; cls?: ClassFilter; size?: number }) => {
+    if (next.mode !== undefined) setMode(next.mode);
+    if (next.cls !== undefined) setCls(next.cls);
+    if (next.size !== undefined) setPageSize(next.size);
+    setPage(1);
+    setLogOpen(null);
+    setHeatOpen(null);
+  };
+  const goToPage = (p: number) => {
+    setPage(p);
+    setLogOpen(null);
+    setHeatOpen(null);
+  };
+
+  const modeChips: { id: ViewMode; text: string; count: number | null }[] = [
+    { id: 'mistakes-first', text: 'Mistakes first', count: null },
+    { id: 'only-mistakes', text: 'Only mistakes', count: chipCounts.mistakes },
+    ...(showReferred ? [{ id: 'only-referred' as const, text: 'Only referred', count: chipCounts.referred }] : []),
+    { id: 'only-correct', text: 'Only correct', count: chipCounts.correct },
+    { id: 'dataset', text: 'Dataset order', count: null },
+  ];
+  const classChips: { id: ClassFilter; text: string; count: number }[] = [
+    { id: 'all', text: 'All', count: classes.total },
+    { id: 'pneumonia', text: 'pneumonia', count: classes.pneumonia },
+    { id: 'negative', text: def.negativeName, count: classes.negative },
+  ];
 
   return (
     <section aria-labelledby="pred-title">
       <h3 id="pred-title">Individual predictions</h3>
-      <label className="toggle">
-        <input type="checkbox" checked={mistakesFirst} onChange={(e) => setMistakesFirst(e.target.checked)} /> Show mistakes first
-      </label>
+      <p data-testid="pred-counts">
+        <strong>{countsLabel(totals)}</strong>{' '}
+        <span className="muted">of {totals.total} X-rays</span>
+      </p>
+      <fieldset className="segmented chips" data-testid="pred-mode">
+        <legend>Show</legend>
+        {modeChips.map((c) => (
+          <label key={c.id} className={`segmented__option${eMode === c.id ? ' segmented__option--on' : ''}`}>
+            <input type="radio" name="pred-mode" value={c.id} checked={eMode === c.id} onChange={() => changeView({ mode: c.id })} data-testid={`pred-mode-${c.id}`} />
+            <span>{c.count === null ? c.text : `${c.text} (${c.count})`}</span>
+          </label>
+        ))}
+      </fieldset>
+      <fieldset className="segmented chips" data-testid="pred-class">
+        <legend>True label</legend>
+        {classChips.map((c) => (
+          <label key={c.id} className={`segmented__option${cls === c.id ? ' segmented__option--on' : ''}`}>
+            <input type="radio" name="pred-class" value={c.id} checked={cls === c.id} onChange={() => changeView({ cls: c.id })} data-testid={`pred-class-${c.id}`} />
+            <span>{`${c.text} (${c.count})`}</span>
+          </label>
+        ))}
+      </fieldset>
+      <Pager info={info} onPage={goToPage} onPageSize={(size) => changeView({ size })} id="pred" />
       <table className="metrics preds" data-testid="prediction-list">
         <thead>
           <tr>
@@ -382,7 +452,13 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
           })}
         </tbody>
       </table>
-      <p className="muted">Showing the first {LIST_LIMIT} rows of {result.ids.length}.</p>
+      {view.length === 0 ? (
+        <p className="muted" data-testid="pred-empty">
+          No X-ray matches this filter.
+        </p>
+      ) : (
+        <Pager info={info} onPage={goToPage} onPageSize={(size) => changeView({ size })} id="pred-bottom" live={false} />
+      )}
     </section>
   );
 }

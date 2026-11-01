@@ -88,6 +88,7 @@ test('F1 Data: counts, class weights, toggles, lazy loading, gallery paging and 
   // ---- gallery ----
   const grid = page.getByTestId('thumb-grid');
   await expect(grid.locator('img')).toHaveCount(48);
+  await grid.scrollIntoViewIfNeeded();
   // wait until the lazy images near the viewport have really loaded instead of sleeping (off-screen lazy images are
   // deliberately never fetched: Firefox keeps them incomplete, Chromium loads them within its look-ahead distance)
   await expect
@@ -575,7 +576,7 @@ test('F7-path in Evaluate: tau > 0.5 adds Referred / Coverage, matches an indepe
   // UX finding: with "Show mistakes first" ON, the first 40 rows are all mistakes, so referred cases are not visible at tau 0.8.
   const hiddenAtDefault = !(await page.getByTestId('prediction-list').innerText()).includes('Refer to a doctor');
   console.log(`[f123t] ${info.project.name} referred rows visible in default (mistakes-first) list at tau 0.8: ${!hiddenAtDefault}`);
-  await page.getByRole('checkbox', { name: /Show mistakes first/ }).uncheck();
+  await page.getByTestId('pred-mode-dataset').check(); // "Dataset order" (replaced the old "Show mistakes first" checkbox)
   await dispatchAction(page, { type: 'setTau', tau: 0.99 });
   await expect(page.getByTestId('prediction-list')).toContainText('Refer to a doctor');
   await dispatchAction(page, { type: 'setTau', tau: 0.8 });
