@@ -67,23 +67,34 @@ function matchesClass(r: PredRow, cls: ClassFilter): boolean {
   return cls === 'all' || (cls === 'pneumonia') === (r.truth === 1);
 }
 
+/** How sure the model is of its answer: max(p, 1 - p), in [0.5, 1]. */
+function confidence(r: PredRow): number {
+  return Math.max(r.p, 1 - r.p);
+}
+
+/** Most confident first; ties keep dataset order (explicit tiebreak on `i`, so the result never depends on sort stability). */
+function byConfidenceDesc(a: PredRow, b: PredRow): number {
+  return confidence(b) - confidence(a) || a.i - b.i;
+}
+
 /**
- * Filter by true class, then filter/order by view mode. Deterministic and stable: rows that tie keep their dataset order,
- * and the input array is never modified.
+ * Filter by true class, then filter/order by view mode. Deterministic: the input array is never modified.
+ * 'Mistakes first', 'Only mistakes' and 'Only referred' list the MOST CONFIDENT answers first (a confident wrong answer
+ * is the most instructive one); rows that tie keep their dataset order. 'Mistakes first' then lists the rest in dataset order.
  */
 export function applyView(rows: readonly PredRow[], mode: ViewMode, cls: ClassFilter): PredRow[] {
   const byClass = cls === 'all' ? rows : rows.filter((r) => matchesClass(r, cls));
   switch (mode) {
     case 'only-mistakes':
-      return byClass.filter((r) => r.wrong);
+      return byClass.filter((r) => r.wrong).sort(byConfidenceDesc);
     case 'only-referred':
-      return byClass.filter((r) => r.d === 'refer');
+      return byClass.filter((r) => r.d === 'refer').sort(byConfidenceDesc);
     case 'only-correct':
       return byClass.filter((r) => !r.wrong && r.d !== 'refer');
     case 'dataset':
       return byClass.slice();
     case 'mistakes-first':
-      return [...byClass.filter((r) => r.wrong), ...byClass.filter((r) => !r.wrong)];
+      return [...byClass.filter((r) => r.wrong).sort(byConfidenceDesc), ...byClass.filter((r) => !r.wrong)];
   }
 }
 

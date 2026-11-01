@@ -66,13 +66,61 @@ describe('applyView', () => {
   const rows = buildRows(ids, probs, labels, 0.8);
   const idsOf = (r: readonly PredRow[]) => r.map((x) => x.id);
 
-  it('mistakes first: wrong ones first, both groups in dataset order', () => {
+  it('mistakes first: wrong ones first (most confident first), then the rest in dataset order', () => {
     const out = applyView(rows, 'mistakes-first', 'all');
     expect(out).toHaveLength(rows.length);
     const wrong = rows.filter((r) => r.wrong);
-    expect(idsOf(out.slice(0, wrong.length))).toEqual(idsOf(wrong));
+    // at tau 0.8 the wrong answers are b (p 0.2, confidence 0.8) and f (p 0.8, confidence 0.8): a tie, so dataset order
+    expect(idsOf(wrong)).toEqual(['b', 'f']);
+    expect(idsOf(out.slice(0, wrong.length))).toEqual(['b', 'f']);
     const rest = idsOf(out.slice(wrong.length));
     expect(rest).toEqual(idsOf(rows.filter((r) => !r.wrong)));
+  });
+
+  it('orders mistakes by descending confidence max(p, 1 - p); ties keep dataset order', () => {
+    // all wrong at tau 0.5: truth is the opposite of the answer
+    const ids2 = ['a', 'b', 'c', 'd', 'e', 'f'];
+    const probs2 = [0.6, 0.02, 0.9, 0.3, 0.98, 0.1]; // confidences .6 .98 .9 .7 .98 .9
+    const labels2 = [0, 1, 0, 1, 0, 1];
+    const r2 = buildRows(ids2, probs2, labels2, 0.5);
+    expect(r2.every((r) => r.wrong)).toBe(true);
+    const expected = ['b', 'e', 'c', 'f', 'd', 'a']; // .98 .98 .9 .9 .7 .6 with ties b<e and c<f in dataset order
+    expect(idsOf(applyView(r2, 'only-mistakes', 'all'))).toEqual(expected);
+    expect(idsOf(applyView(r2, 'mistakes-first', 'all'))).toEqual(expected);
+    // the class filter keeps the same relative order
+    expect(idsOf(applyView(r2, 'only-mistakes', 'pneumonia'))).toEqual(['b', 'f', 'd']);
+    expect(idsOf(applyView(r2, 'only-mistakes', 'negative'))).toEqual(['e', 'c', 'a']);
+  });
+
+  it('a confident miss on a late page of dataset order comes first in mistakes first', () => {
+    const n = 100;
+    const idsN = Array.from({ length: n }, (_, i) => `x${i}`);
+    // 98 false alarms with confidence 0.6, then 2 confident misses at the very end
+    const probsN = idsN.map((_, i) => (i < 98 ? 0.6 : 0.01));
+    const labelsN = idsN.map((_, i) => (i < 98 ? 0 : 1));
+    const out = applyView(buildRows(idsN, probsN, labelsN, 0.5), 'mistakes-first', 'all');
+    expect(idsOf(out.slice(0, 3))).toEqual(['x98', 'x99', 'x0']);
+    expect(idsOf(out.slice(0, 40)).slice(0, 2)).toEqual(['x98', 'x99']);
+  });
+
+  it('only referred: most confident first, ties in dataset order; only correct stays in dataset order', () => {
+    const ids3 = ['a', 'b', 'c', 'd', 'e'];
+    const probs3 = [0.55, 0.7, 0.45, 0.3, 0.95]; // tau 0.8: a, b, c referred (conf .55 .7 .55), d referred? conf .7 -> yes, e answered
+    const labels3 = [1, 0, 0, 1, 1];
+    const r3 = buildRows(ids3, probs3, labels3, 0.8);
+    expect(idsOf(r3.filter((r) => r.d === 'refer'))).toEqual(['a', 'b', 'c', 'd']);
+    expect(idsOf(applyView(r3, 'only-referred', 'all'))).toEqual(['b', 'd', 'a', 'c']);
+    expect(idsOf(applyView(r3, 'only-correct', 'all'))).toEqual(['e']);
+  });
+
+  it('ordering is stable across repeated calls and does not modify the input', () => {
+    const r2 = buildRows(['a', 'b', 'c'], [0.1, 0.9, 0.1], [1, 0, 1], 0.5); // three wrong answers, equal confidence
+    const copy = r2.map((r) => ({ ...r }));
+    for (const mode of ['mistakes-first', 'only-mistakes'] as const) {
+      expect(idsOf(applyView(r2, mode, 'all'))).toEqual(['a', 'b', 'c']);
+      expect(applyView(r2, mode, 'all')).toEqual(applyView(r2, mode, 'all'));
+    }
+    expect(r2).toEqual(copy);
   });
 
   it('dataset order returns every row in place', () => {

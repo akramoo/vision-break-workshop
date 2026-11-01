@@ -57,6 +57,12 @@ test('Evaluate: page through all 624 predictions, filter mistakes and classes, c
   // mistakes first: the first rows are wrong, and as many as there are mistakes (up to the page)
   const wrongOnPage = await page.locator('[data-testid="pred-row"][data-wrong="true"]').count();
   expect(wrongOnPage).toBe(Math.min(40, mistakes));
+  // ... and they are listed most confident first (intentional change: it used to be dataset order)
+  const confOnPage = async () =>
+    (await page.getByTestId('prediction-list').locator('tbody tr[data-testid="pred-row"] td:nth-child(4)').allTextContents()).map((t) => parseFloat(t));
+  const wrongConf = (await confOnPage()).slice(0, Math.min(40, mistakes));
+  expect(wrongConf).toEqual([...wrongConf].sort((a, b) => b - a));
+  await expect(page.getByTestId('pred-order-note')).toContainText('most confident answer first');
   await expect(page.getByTestId('pred-label')).toHaveAttribute('aria-live', 'polite');
 
   // ---- page 2, then the last page ----
@@ -92,6 +98,8 @@ test('Evaluate: page through all 624 predictions, filter mistakes and classes, c
     `Page 1 of ${pagesOfMistakes} (rows 1-${Math.min(40, mistakes)} of ${mistakes})`,
   );
   expect(await page.locator('[data-testid="pred-row"][data-wrong="true"]').count()).toBe(await rows(page).count());
+  const onlyConf = await confOnPage();
+  expect(onlyConf).toEqual([...onlyConf].sort((a, b) => b - a));
   await page.getByTestId('pred-last').click();
   await expect(label(page)).toHaveText(`Page ${pagesOfMistakes} of ${pagesOfMistakes} (rows ${(pagesOfMistakes - 1) * 40 + 1}-${mistakes} of ${mistakes})`);
   expect(await rows(page).count()).toBe(lastRows);

@@ -4,6 +4,7 @@ import type { FeatureProgress } from '../data/featureStore';
 import { imageUrl } from '../data/images';
 import { displayLabel, indexById, type ManifestEntry } from '../data/manifest';
 import { evaluateSet } from '../ml/evaluate';
+import { predictedCamClass } from '../ml/gradcam';
 import type { Head } from '../ml/head';
 import { entryPixels } from '../ml/logPixels';
 import {
@@ -331,7 +332,7 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
   };
 
   const modeChips: { id: ViewMode; text: string; count: number | null }[] = [
-    { id: 'mistakes-first', text: 'Mistakes first', count: null },
+    { id: 'mistakes-first', text: 'Mistakes first (most confident first)', count: null },
     { id: 'only-mistakes', text: 'Only mistakes', count: chipCounts.mistakes },
     ...(showReferred ? [{ id: 'only-referred' as const, text: 'Only referred', count: chipCounts.referred }] : []),
     { id: 'only-correct', text: 'Only correct', count: chipCounts.correct },
@@ -359,6 +360,11 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
           </label>
         ))}
       </fieldset>
+      {eMode === 'dataset' || eMode === 'only-correct' ? null : (
+        <p className="muted" data-testid="pred-order-note">
+          {eMode === 'only-referred' ? 'Referred cases' : 'Mistakes'} are listed with the most confident answer first.
+        </p>
+      )}
       <fieldset className="segmented chips" data-testid="pred-class">
         <legend>True label</legend>
         {classChips.map((c) => (
@@ -426,7 +432,7 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
                 <tr className="heatmap-row" data-testid="pred-heatmap-row">
                   <td colSpan={6}>
                     {entry ? (
-                      <RowHeatmap entry={entry} stress={def.id === 'stress'} head={head} testId="pred-heatmap" />
+                      <RowHeatmap entry={entry} stress={def.id === 'stress'} head={head} testId="pred-heatmap" p={r.p} />
                     ) : (
                       <p className="muted">This X-ray is not in the list of shipped images.</p>
                     )}
@@ -464,7 +470,7 @@ function PredictionList({ def, result, tau, entries, head }: { def: EvalSetDef; 
 }
 
 /** Loads the pixels the model saw for one shipped X-ray (with the stress transform for the stress set) and shows its heatmap. */
-function RowHeatmap({ entry, stress, head, testId }: { entry: ManifestEntry; stress: boolean; head: Head; testId: string }) {
+function RowHeatmap({ entry, stress, head, testId, p }: { entry: ManifestEntry; stress: boolean; head: Head; testId: string; p: number }) {
   const [pixels, setPixels] = useState<Float32Array | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
@@ -491,5 +497,5 @@ function RowHeatmap({ entry, stress, head, testId }: { entry: ManifestEntry; str
     );
   }
   if (!pixels) return <p className="muted" role="status">Loading the X-ray...</p>;
-  return <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={testId} />;
+  return <HeatmapOverlay pixels={pixels} heads={[{ id: 'main', label: 'Your model', head }]} size={224} autoShow testId={testId} initialClass={predictedCamClass(p)} />;
 }

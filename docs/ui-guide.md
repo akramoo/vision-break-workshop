@@ -193,7 +193,7 @@ How to read it:
 
 A blue note below explains that a missed sick child usually costs more than a false alarm.
 
-**Individual predictions.** A table of the first 40 rows, "Show mistakes first" ticked by default. Each row has a thumbnail, true label, "Model says", a confidence, and a **Log this** button that opens a small form (tag, hypothesis, "Save to failure log"). Wrong answers are marked "(wrong)". The confidence is how sure the model is of the class it chose, between 50% and 100%.
+**Individual predictions.** A paged table (40 rows per page), "Mistakes first (most confident first)" selected by default: the wrong answers the model was most sure about come first, then the rest in dataset order. Each row has a thumbnail, true label, "Model says", a confidence, and a **Log this** button that opens a small form (tag, hypothesis, "Save to failure log"). Wrong answers are marked "(wrong)". The confidence is how sure the model is of the class it chose, between 50% and 100%.
 
 **The three sets, with expected numbers (tau = 50%).**
 
