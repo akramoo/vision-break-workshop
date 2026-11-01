@@ -1,5 +1,5 @@
 """Independent verification of D2 (adult / NIH ChestMNIST-224 images + manifest merge).
-Run: scripts/.venv/Scripts/python scripts/tests/verify_adult.py [--skip-source] [--skip-rerun]
+Run: .venv/Scripts/python scripts/tests/verify_adult.py [--skip-source] [--skip-rerun]
   --skip-source  skip the (slow, ~1-2 min) streaming label/split verification against the npz
   --skip-rerun   skip the idempotence check (re-runs scripts/prepare_adult.py, ~30 s)
 Exit code is non-zero if any check fails.
@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "app" / "public" / "data"
 MANIFEST = DATA / "manifest.json"
 NPZ = ROOT / "scripts" / ".cache" / "medmnist" / "chestmnist_224.npz"
-PY = ROOT / "scripts" / ".venv" / "Scripts" / "python.exe"
+PY = ROOT / ".venv" / "Scripts" / "python.exe"
 SKIP_SOURCE = "--skip-source" in sys.argv
 SKIP_RERUN = "--skip-rerun" in sys.argv
 

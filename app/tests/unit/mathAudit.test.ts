@@ -1,7 +1,7 @@
 // Independent math audit of the app's calculations (metrics, loss/gradient/Adam, real-data pipeline).
 //
 // Run:   cd app && npx vitest run tests/unit/mathAudit.test.ts
-// Then:  scripts/.venv/Scripts/python scripts/tests/audit_math.py
+// Then:  .venv/Scripts/python scripts/tests/audit_math.py
 //
 // The real-data part trains the app's own head (src/ml/head.ts) on the shipped float16 embeddings with the
 // default recipe and writes probabilities + the app's metrics to $MATH_AUDIT_OUT (default: <tmp>/vision-math-audit)

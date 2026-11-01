@@ -1,5 +1,5 @@
 """Independent verification of D1 (app/public/data/manifest.json + kermany JPEGs).
-Run: scripts/.venv/Scripts/python scripts/tests/verify_data.py
+Run: .venv/Scripts/python scripts/tests/verify_data.py
 Exit code is non-zero if any check fails."""
 import hashlib
 import io

@@ -84,11 +84,11 @@ node dist/serve-offline.mjs      # http://127.0.0.1:8080
 The prepared data is already in the repository, so you only need this if you want to regenerate it. You need Python 3.10 or newer and about 6 GB of free disk space for the downloads.
 
 ```bash
-python -m venv scripts/.venv
-scripts/.venv/Scripts/pip install -r scripts/requirements.txt    # Windows; use scripts/.venv/bin/pip elsewhere
+python -m venv .venv
+.venv/Scripts/pip install -r scripts/requirements.txt    # Windows; use .venv/bin/pip elsewhere
 
 node scripts/fetch_model.mjs                       # MobileNet v2 into app/public/models
-scripts/.venv/Scripts/python scripts/prepare_kermany.py
+.venv/Scripts/python scripts/prepare_kermany.py
 ```
 
 `prepare_kermany.py` takes a seeded sample of 300 normal and 900 pneumonia images from the official training split, holds out 15% of it for validation, and keeps the full official test set (234 normal, 390 pneumonia). The same seed always produces the same files.
@@ -96,7 +96,7 @@ scripts/.venv/Scripts/python scripts/prepare_kermany.py
 The scripts check their own output. To confirm a fresh copy is intact:
 
 ```bash
-scripts/.venv/Scripts/python scripts/tests/verify_data.py
+.venv/Scripts/python scripts/tests/verify_data.py
 node scripts/tests/verify_model.mjs
 ```
 

@@ -146,9 +146,9 @@ for (const name of ['base', 'stamped', 'aug', 'stress']) {
 
 // ---- control: pixels decoded by PIL (what browsers' accurate decoders give) instead of tfjs-node
 console.log('\n== control: PIL-decoded pixels -> plain tfjs -> compare with stored rows (min cosine must be >= 0.9999)');
-const PY = path.join(root, 'scripts', '.venv', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
+const PY = path.join(root, '.venv', process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
 if (!existsSync(PY)) {
-  console.log(`  SKIP  ${PY} not found (create scripts/.venv to enable the PIL control)`);
+  console.log(`  SKIP  ${PY} not found (create .venv to enable the PIL control)`);
 } else {
   const names = ['base', 'stamped', 'aug', 'stress'];
   const ctl = [];

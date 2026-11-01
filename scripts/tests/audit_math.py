@@ -2,7 +2,7 @@
 
 Run (from the repository root):
     cd app && npx vitest run tests/unit/mathAudit.test.ts          # writes app_outputs.json
-    scripts/.venv/Scripts/python scripts/tests/audit_math.py      # this script
+    .venv/Scripts/python scripts/tests/audit_math.py      # this script
 
 Both use $MATH_AUDIT_OUT (default: <tmp>/vision-math-audit). Exit code 1 on any mismatch.
 Nothing here imports app code: labels come from manifest.json, features from the .f16.bin files (numpy float16).

@@ -2,8 +2,8 @@
 """Execute notebook/code_track.ipynb in place and save it with its outputs.
 
 Usage (from the repository root, with the project venv):
-    scripts/.venv/Scripts/python scripts/run_notebook.py          # Windows
-    scripts/.venv/bin/python scripts/run_notebook.py              # macOS / Linux
+    .venv/Scripts/python scripts/run_notebook.py          # Windows
+    .venv/bin/python scripts/run_notebook.py              # macOS / Linux
 
 The notebook runs with `notebook/` as its working directory and the venv's own
 Python (the default `python3` kernel of the ipykernel installed in that venv).

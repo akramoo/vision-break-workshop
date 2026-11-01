@@ -11,9 +11,9 @@ It reads the same images the web app uses (`../app/public/data`). The numbers co
 From the repository root, with the project's virtual environment (see "Rebuild the data" in the main README for creating it):
 
 ```bash
-scripts/.venv/Scripts/pip install -r scripts/requirements.txt   # Windows; scripts/.venv/bin/pip elsewhere
+.venv/Scripts/pip install -r scripts/requirements.txt   # Windows; .venv/bin/pip elsewhere
 cd notebook
-../scripts/.venv/Scripts/jupyter lab code_track.ipynb            # or: jupyter notebook code_track.ipynb
+../.venv/Scripts/jupyter lab code_track.ipynb            # or: jupyter notebook code_track.ipynb
 ```
 
 Start Jupyter from the `notebook/` folder: the notebook finds the data through `../app/public/data`. Run the cells from the top with Shift+Enter, or choose Run, Run All Cells.
@@ -21,7 +21,7 @@ Start Jupyter from the `notebook/` folder: the notebook finds the data through `
 To re-run it from the command line and save the outputs in the file:
 
 ```bash
-scripts/.venv/Scripts/python scripts/run_notebook.py
+.venv/Scripts/python scripts/run_notebook.py
 ```
 
 ## How long it takes
