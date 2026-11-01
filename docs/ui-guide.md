@@ -12,14 +12,14 @@ Educational only. Not for clinical use. Say it out loud on the first slide; the 
 
 ### What it is
 
-A single web page that trains a pneumonia detector on children's chest X-rays, entirely inside the browser. Nothing is uploaded anywhere. The footer says so: "Runs entirely in your browser. X-rays and models never leave this computer."
+A single web page that trains a 	detector on children's chest X-rays, entirely inside the browser. Nothing is uploaded anywhere. The footer says so: "Runs entirely in your browser. X-rays and models never leave this computer."
 
 The model has two parts:
 
-| Part | Frozen or trained? | What it does |
-|---|---|---|
-| MobileNet v2 | Frozen, never changes | Turns each X-ray into 1,280 numbers. It was trained by Google on everyday photos. |
-| The head | Trained by the student, takes a few seconds | One layer (logistic regression) that turns the 1,280 numbers into P(pneumonia), a probability between 0 and 1. |
+| Part         | Frozen or trained?                          | What it does                                                                                                   |
+| ------------ | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| MobileNet v2 | Frozen, never changes                       | Turns each X-ray into 1,280 numbers. It was trained by Google on everyday photos.                              |
+| The head     | Trained by the student, takes a few seconds | One layer (logistic regression) that turns the 1,280 numbers into P(pneumonia), a probability between 0 and 1. |
 
 So when a student clicks Train, they are only fitting the head. That is why it takes about 3 seconds and why everyone can retrain many times.
 
@@ -31,11 +31,11 @@ So when a student clicks Train, they are only fitting the head. That is why it t
 
 ### The header
 
-| Item | What it shows | What to do about it |
-|---|---|---|
+| Item                                  | What it shows                                                                                                                                                        | What to do about it                                                                                                                                                          |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Backend badge (left of the green one) | `WebGL`, `WASM`, `CPU`, `No backend`, or `Detecting…`. Hover for a tooltip. A yellowish badge means the app wanted WebGL, could not use it and fell back. | WebGL is the fast case. WASM is fine and still quick for this model. If a laptop shows CPU, expect slow Perturb and live extraction. Force a backend with `?backend=wasm`. |
-| Model badge (green) | `Loading model… 40%` while MobileNet loads, then `Ready`. `Model unavailable` is the failure state, and a red banner explains it. | Nobody can train until it says Ready. Normally under a few seconds. |
-| Settings button | Opens the settings drawer (below). | |
+| Model badge (green)                   | `Loading model… 40%` while MobileNet loads, then `Ready`. `Model unavailable` is the failure state, and a red banner explains it.                             | Nobody can train until it says Ready. Normally under a few seconds.                                                                                                          |
+| Settings button                       | Opens the settings drawer (below).                                                                                                                                   |                                                                                                                                                                              |
 
 ### The tab bar
 
@@ -78,14 +78,14 @@ Repeats "Educational only. Not for clinical use." and the "runs entirely in your
 
 **The count table.** Read it row by row:
 
-| Set | Normal | Pneumonia | Total | Used for |
-|---|---|---|---|---|
-| Kermany train | 255 | 765 | 1020 | Training (children) |
-| Kermany validation (ours) | 45 | 135 | 180 | Progress check while training |
-| Kermany validation (official) | 8 | 8 | 16 | Only the "dishonest evaluation" demo |
-| Kermany test | 234 | 390 | 624 | The final exam. Never used for training. |
-| Adult train pool | 100 (no finding) | 100 | 200 | Optional fix: mix into training |
-| Adult test | 100 (no finding) | 100 | 200 | Shift test (adults, another hospital) |
+| Set                           | Normal           | Pneumonia | Total | Used for                                 |
+| ----------------------------- | ---------------- | --------- | ----- | ---------------------------------------- |
+| Kermany train                 | 255              | 765       | 1020  | Training (children)                      |
+| Kermany validation (ours)     | 45               | 135       | 180   | Progress check while training            |
+| Kermany validation (official) | 8                | 8         | 16    | Only the "dishonest evaluation" demo     |
+| Kermany test                  | 234              | 390       | 624   | The final exam. Never used for training. |
+| Adult train pool              | 100 (no finding) | 100       | 200   | Optional fix: mix into training          |
+| Adult test                    | 100 (no finding) | 100       | 200   | Shift test (adults, another hospital)    |
 
 The line under the table reminds you that "Kermany stress" is not new data. It is the same 624 test X-rays, made darker, lower in contrast, rotated and cropped.
 
@@ -99,6 +99,7 @@ The line under the table reminds you that "Kermany stress" is not new data. It i
 **The gallery.** "Browse the X-rays" with two dropdowns (Set, Label) and Previous/Next. Thumbnails carry a green "normal" or red "pneumonia" chip; adult images show "no finding" under the Normal label.
 
 **What to demo.**
+
 1. Filter to Kermany train, normal, then pneumonia. Ask: "Can you tell them apart?" Most cannot.
 2. Point at the 255 / 765 counts. Say "three to one" before anyone sees a score.
 3. Filter to Adult test and flip through a page. Ask what looks different (larger body, different contrast, different machine).
@@ -106,6 +107,7 @@ The line under the table reminds you that "Kermany stress" is not new data. It i
 **What to ask.** "If a model always said pneumonia, what accuracy would it get on the test set?" Let them compute 390 out of 624. Write 62.5% on the board.
 
 **Gotchas.**
+
 - Changing the recipe here does not change a model that is already trained. The Train tab's "Recipe" line shows the new settings immediately, but the existing model keeps the old ones until you press "Train again". Evaluate and Results describe the model that was actually trained.
 - Adult "normal" images are called "no finding" everywhere in the app. They are adults whose report mentioned none of the 14 listed conditions. That is not the same claim as "healthy". The labels were mined from reports by software, so a few are wrong.
 - Many of the children's X-rays carry a small letter marker (an "R" or "L") in a corner. These are natural side markers. Someone will ask whether they count as a shortcut. It is a good question: they appear on both classes, so they carry no information, which is exactly the point of the stamp lab.
@@ -116,34 +118,37 @@ The line under the table reminds you that "Kermany stress" is not new data. It i
 **What students see.** An intro sentence, a recipe card, two charts, an "Advanced settings" fold, and a "Repeat x5 with new seeds" card.
 
 **Recipe card.**
+
 - "Recipe (change it in the Data tab): realistic class balance. 1020 training rows."
 - **Check progress on:** "Our validation set (180 images)" (default) or "Official validation set (16 images)". This only changes which images the validation line is drawn on. It never touches the test set.
 - **Train** button (it becomes **Train again** after the first run) and **Cancel**. While running, a status line reads "Training: epoch 7 of 20, 1.2 s elapsed" and a progress bar fills. When done: "Finished 20 epochs in 3.0 s. Validation accuracy 98.9%."
 
 **The two charts.**
 
-| Chart | Reading it |
-|---|---|
-| Loss (lower is better) | The error the model is trying to shrink. Solid blue is training, dashed orange is validation. Both should fall from about 0.27 to about 0.05 and flatten. |
-| Accuracy (higher is better) | Share correct. Both climb quickly to about 99% by epoch 8 or so. |
+| Chart                       | Reading it                                                                                                                                                |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Loss (lower is better)      | The error the model is trying to shrink. Solid blue is training, dashed orange is validation. Both should fall from about 0.27 to about 0.05 and flatten. |
+| Accuracy (higher is better) | Share correct. Both climb quickly to about 99% by epoch 8 or so.                                                                                          |
 
 Both lines finishing near 99% is the trap. It looks like a great model. That score is on the validation set, which comes from the same pool of children as the training set. Tell students to remember "99%" because the next tab will take it away.
 
 **Advanced settings (collapsed).**
+
 - **Epochs** (passes over the training data), 20 by default.
 - **Learning rate** (step size), slider, 1.0e-3 by default.
 - **Seed** (same seed, same result), 42 by default, with a **New seed** button. Same seed and same settings give the same numbers on every laptop. Use this to get a classroom of identical results; change it to show that numbers move.
 
 **Repeat x5 with new seeds.** Trains the same recipe five times with seeds 1 to 5 and shows a table:
 
-| Run (seed) | Validation accuracy, 16 images | Validation accuracy, 180 images | Kermany test accuracy |
-|---|---|---|---|
-| Seed 1 to 5 | 81.3% to 87.5% | 98.9% to 99.4% | 79.2% to 81.3% |
-| Spread | about 6.3 points | about 0.6 points | about 2.1 points |
+| Run (seed)  | Validation accuracy, 16 images | Validation accuracy, 180 images | Kermany test accuracy |
+| ----------- | ------------------------------ | ------------------------------- | --------------------- |
+| Seed 1 to 5 | 81.3% to 87.5%                 | 98.9% to 99.4%                  | 79.2% to 81.3%        |
+| Spread      | about 6.3 points               | about 0.6 points                | about 2.1 points      |
 
 One image on the 16-image set is worth 6.25 points, so its score jumps. This is the "dishonest evaluation" demo: if you picked your best model using the official 16-image validation set, you would be choosing noise. It does not replace the student's model; it leaves the current head alone and throws its five models away.
 
 **What to demo.**
+
 1. Click Train with the projector on the charts. Talk over the 3 seconds about transfer learning: the big network is frozen, only the last layer learns.
 2. When it finishes, say the validation accuracy aloud (about 99%) and do not comment on it yet.
 3. Open Advanced, change the seed, retrain: the numbers move slightly. Change back to 42.
@@ -152,6 +157,7 @@ One image on the 16-image set is worth 6.25 points, so its score jumps. This is 
 **What to ask.** "Is 99% good?" Expect "yes". Reply: "Compared with what?"
 
 **Gotchas.**
+
 - Training needs the Ready badge and the X-ray list loaded. Until then the button is disabled and a grey reason sits next to it.
 - If a student switches to another browser tab, the browser slows the page's timers and training stretches out. Ask them to stay on the app.
 - A model from a previous visit is restored automatically. The status then reads "A trained model from your last visit was restored. Train again to replace it." This is convenient but means a rehearsal laptop starts with a model already trained.
@@ -165,12 +171,13 @@ There is no Evaluate button. The scoring runs automatically the moment you open 
 
 **The results block** for Kermany test, default model:
 
-| Predictor | Accuracy | Sensitivity | Specificity | Balanced accuracy |
-|---|---|---|---|---|
-| Our model | 82.4% | 99.5% | 53.8% | 76.7% |
-| Always say "pneumonia" | 62.5% | 100.0% | 0.0% | 50.0% |
+| Predictor              | Accuracy | Sensitivity | Specificity | Balanced accuracy |
+| ---------------------- | -------- | ----------- | ----------- | ----------------- |
+| Our model              | 82.4%    | 99.5%       | 53.8%       | 76.7%             |
+| Always say "pneumonia" | 62.5%    | 100.0%      | 0.0%        | 50.0%             |
 
 How to read it:
+
 - **Accuracy:** share of all 624 X-rays called correctly. Compare it with the baseline row, never with 100%.
 - **Sensitivity** (sick children caught): of the 390 children with pneumonia, 388 were flagged.
 - **Specificity** (healthy children cleared): of the 234 healthy children, only 126 were cleared. The other 108 were false alarms.
@@ -179,10 +186,10 @@ How to read it:
 
 **The confusion matrix.** Rows are the true class, columns what the model said. Green cells are right, red cells are wrong. Each cell shows a count, "x% of row" and a plain word.
 
-| | Model said normal | Model said pneumonia |
-|---|---|---|
-| True normal (n = 234) | 126 correctly cleared | 108 false alarm |
-| True pneumonia (n = 390) | 2 missed | 388 caught |
+|                          | Model said normal     | Model said pneumonia |
+| ------------------------ | --------------------- | -------------------- |
+| True normal (n = 234)    | 126 correctly cleared | 108 false alarm      |
+| True pneumonia (n = 390) | 2 missed              | 388 caught           |
 
 A blue note below explains that a missed sick child usually costs more than a false alarm.
 
@@ -190,11 +197,11 @@ A blue note below explains that a missed sick child usually costs more than a fa
 
 **The three sets, with expected numbers (tau = 50%).**
 
-| Set | What it tests | Accuracy | Sensitivity | Specificity | Balanced | Baseline |
-|---|---|---|---|---|---|---|
-| Kermany test (624) | Same kind of patient as training | 82.4% | 99.5% | 53.8% | 76.7% | 62.5% |
-| Adult test (200) | New population (shift) | 51.5% | 90.0% | 13.0% | 51.5% | 50.0% |
-| Kermany stress (624) | Darker, lower contrast, rotated, cropped | 70.4% | 99.2% | 22.2% | 60.7% | 62.5% |
+| Set                  | What it tests                            | Accuracy | Sensitivity | Specificity | Balanced | Baseline |
+| -------------------- | ---------------------------------------- | -------- | ----------- | ----------- | -------- | -------- |
+| Kermany test (624)   | Same kind of patient as training         | 82.4%    | 99.5%       | 53.8%       | 76.7%    | 62.5%    |
+| Adult test (200)     | New population (shift)                   | 51.5%    | 90.0%       | 13.0%       | 51.5%    | 50.0%    |
+| Kermany stress (624) | Darker, lower contrast, rotated, cropped | 70.4%    | 99.2%       | 22.2%       | 60.7%    | 62.5%    |
 
 On the adult test the table headers change to "sick patients caught" and "patients with no finding cleared", and the matrix reads "no finding" instead of "normal".
 
@@ -203,17 +210,20 @@ On the adult test the table headers change to "sick patients caught" and "patien
 **The Refer to a doctor slider.** "Refer to a doctor when the model is less than X% sure." Details in the next section, because it appears here and in Break it.
 
 **What to demo.**
+
 1. Open Evaluate on Kermany test. Read the baseline row first. "62.5% for a model that does not look. Ours is 82.4%. Better, but look at specificity."
 2. Point at the 108. "Our model cleared barely half the healthy children." Sensitivity is 99.5% because it leans hard toward answering pneumonia, which is what an imbalanced training set teaches.
 3. Switch to Adult test. The accuracy drops to about 51.5%. The baseline there is 50%. The model is barely better than a coin.
 4. Switch to Kermany stress. Accuracy is 70.4%, only eight points above the 62.5% baseline, and balanced accuracy is 60.7%, barely ten points above the 50% floor. Specificity has collapsed to 22.2%.
 
 **What to ask.**
+
 - "Which number would you quote to a hospital: 99%, 82% or 51%?" (The point is that 99% was on validation.)
 - "Which mistake is worse here, a miss or a false alarm?"
 - "Why does the adult test baseline say 50% when the Kermany baseline says 62.5%?" (Because we hand-picked 100 and 100. Real NIH data has about 1.2% pneumonia.)
 
 **Gotchas.**
+
 - Train before evaluating. Without a trained model the tab only shows the empty-state message.
 - Training again discards every cached evaluation. Results and Evaluate recompute for the new model. Students who retrain right before the leaderboard step must press "Evaluate all three sets now" again.
 - The precomputed switch matters here: a line under the table says "Features for this evaluation: precomputed (shipped with the app)" or "extracted live on this laptop". With the switch off, evaluating the 624 test images takes about a minute or more on a weak laptop.
@@ -230,6 +240,7 @@ This slider sits on Evaluate and on Break it. It is one shared setting. Moving i
 - Raising it is not "making the model more accurate". It is making the model say less.
 
 **Two new columns appear once the slider is above 50%.**
+
 - **Referred:** how many cases, and what percentage of the set, were handed to a doctor.
 - **Coverage:** the share of cases the model dared to answer. It is 100% minus the referred share.
 
@@ -240,6 +251,7 @@ At 90% on Kermany test with the default model: accuracy rises to 90.4%, 157 case
 **What to demo.** Evaluate on Kermany test, drag to 90%, watch accuracy jump to 90.4% and the Referred column fill. Then go to Results and show the half-credit score. Ask: "Is the model better, or just quieter?"
 
 **Gotchas.**
+
 - The slider is remembered across reloads. Reset session puts it back to 50%.
 - The baseline row never refers anything, so it always shows a dash in those columns.
 - On the adult set the model is so unsure of itself (or so confidently wrong) that raising the bar to 90% refers 34% of cases but leaves the half-credit score near 51.5%. The leaderboard value does not move. That is the right outcome: abstention cannot rescue a model that is wrong with high confidence.
@@ -252,24 +264,24 @@ A heading, a one-line lead, three sub-buttons (**Perturb**, **Stamp**, **Your im
 
 **What students see.** A card with "Test images" (Kermany test, Adult test, Your uploaded images) and "Sample" (50 images, 100 images, all images (slow)). Then four sliders, each with its own Reset button, and a Reset all.
 
-| Slider | Range | What it does |
-|---|---|---|
-| Brightness | -0.50 to +0.50 | Adds or subtracts brightness. |
-| Contrast | 0.50 to 1.50 | 1.00 is unchanged. Below 1 flattens the picture. |
-| Rotation | -30° to +30° | Tilts the image. |
-| Crop (keep the center) | 60% to 100% | Zooms in on the middle. 100% is unchanged. |
+| Slider                 | Range          | What it does                                     |
+| ---------------------- | -------------- | ------------------------------------------------ |
+| Brightness             | -0.50 to +0.50 | Adds or subtracts brightness.                    |
+| Contrast               | 0.50 to 1.50   | 1.00 is unchanged. Below 1 flattens the picture. |
+| Rotation               | -30° to +30° | Tilts the image.                                 |
+| Crop (keep the center) | 60% to 100%    | Zooms in on the middle. 100% is unchanged.       |
 
 After about a third of a second of not touching the sliders, the app re-runs the model on the sample, with a progress bar and "Recomputing 100 images... 45%". Moving a slider mid-run cancels the old run and starts a new one.
 
 **Results.** A table with three rows:
 
-| Row | Meaning |
-|---|---|
-| Our model, with your changes | Scores on the altered pictures. |
-| Our model, original images | Scores on the same sample, unaltered. This is your control. |
-| Always say "pneumonia" | The lazy baseline for this sample (63.0% on the 100-image Kermany sample, not exactly 62.5%). |
+| Row                          | Meaning                                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------------------- |
+| Our model, with your changes | Scores on the altered pictures.                                                               |
+| Our model, original images   | Scores on the same sample, unaltered. This is your control.                                   |
+| Always say "pneumonia"       | The lazy baseline for this sample (63.0% on the 100-image Kermany sample, not exactly 62.5%). |
 
-Under the table: "8 of 100 predictions changed compared with the original images. Mean absolute change in confidence: 8.8%." plus the compute time.
+Under the table: "8 of 100 predictions changed compared with the original images. Mean absolute change in P(pneumonia): 8.8%." with a short line explaining it, plus the compute time.
 
 Example, brightness -0.40 on the Kermany sample of 100: accuracy 79.0% falls to 71.0%, sensitivity 100% to 98.4%, specificity 43.2% to 24.3%, balanced accuracy 71.6% to about 61%.
 
@@ -280,6 +292,7 @@ Example, brightness -0.40 on the Kermany sample of 100: accuracy 79.0% falls to 
 **What to ask.** "What would a radiologist do with a dark image?" (Ask for a retake.) "What did the model do?" (Answered anyway.)
 
 **Gotchas.**
+
 - Perturb always runs MobileNet live, regardless of the precomputed switch. Expect about 10 to 15 seconds for 100 images on a laptop without a GPU. Choose "50 images" on slow machines. Avoid "all images (slow)" in class.
 - The sample is fixed and stratified, so everyone sees the same images and the same pneumonia share.
 - With "Your uploaded images" selected, the Sample dropdown is disabled and only labelled uploads get scores. If none are labelled the table is replaced by a hint.
@@ -290,6 +303,7 @@ Example, brightness -0.40 on the Kermany sample of 100: accuracy 79.0% falls to 
 This is the shortcut lab. It is a long panel with four numbered cards. A blue "Why this matters" note explains the idea.
 
 **1. Design the stamp.**
+
 - "Put the stamp on the training images of": **Pneumonia images** (default), Normal images, or Both classes. "Both classes" puts the marker on everything, so it carries no information. That is the fix.
 - Size (8 to 96 px, default 48), Corner (top-left default), Offset x and Offset y (8 px), Opacity (100%).
 - Two previews: "Without stamp" and "With stamp", showing a white "R" in the corner.
@@ -302,19 +316,19 @@ This is the shortcut lab. It is a long panel with four numbered cards. A blue "W
 
 Expected values on Kermany test, stamping the normal test images:
 
-| Model | Class | Said "pneumonia" without stamp | with stamp | Flip rate |
-|---|---|---|---|---|
-| Before: normal model | Normal (234) | 46.2% | 63.7% | 17.5% (41 of 234) |
-| After: stamp-trained | Normal (234) | 1.3% | 94.9% | 93.6% (219 of 234) |
+| Model                | Class        | Said "pneumonia" without stamp | with stamp | Flip rate          |
+| -------------------- | ------------ | ------------------------------ | ---------- | ------------------ |
+| Before: normal model | Normal (234) | 46.2%                          | 63.7%      | 17.5% (41 of 234)  |
+| After: stamp-trained | Normal (234) | 1.3%                           | 94.9%      | 93.6% (219 of 234) |
 
 Plain meaning of the flip rate: the share of images where the answer changed after the stamp was added. The stamp-trained model flips about 94% of healthy children to pneumonia just because a letter appeared in the corner. The normal model reacts a little too (17.5%), which is useful for comparison but not zero.
 
 **The trap just below.** A second table shows accuracy on the clean, unstamped images:
 
-| Predictor | Accuracy | Sensitivity | Specificity | Balanced |
-|---|---|---|---|---|
-| Before: normal model | 82.4% | 99.5% | 53.8% | 76.7% |
-| After: stamp-trained model | 73.4% | 58.2% | 98.7% | 78.5% |
+| Predictor                  | Accuracy | Sensitivity | Specificity | Balanced |
+| -------------------------- | -------- | ----------- | ----------- | -------- |
+| Before: normal model       | 82.4%    | 99.5%       | 53.8%       | 76.7%    |
+| After: stamp-trained model | 73.4%    | 58.2%       | 98.7%       | 78.5%    |
 
 The shortcut model has a higher balanced accuracy than the honest one, so on clean data it looks as good or better. The tell is its sensitivity: it misses about 42% of unstamped pneumonia, because it learned "marker present means pneumonia" and not lung features. Without the stamp experiment, nobody would notice.
 
@@ -323,11 +337,13 @@ The shortcut model has a higher balanced accuracy than the honest one, so on cle
 **What to demo.** The order on the screen is the order to teach: default stamp, retrain (3 seconds), read the flip table, read the clean-accuracy table, then do the single-image click.
 
 **What to ask.**
+
 - "Why did a model that is wrong this often still look good on the exam?" (Because the exam images had no stamps.)
 - "Where could a real marker come from?" (A scanner label, a hospital tag, a portable machine's pattern.)
 - "How would you fix this?" (Stamp both classes, or remove the marker.) Let them try "Both classes" and retrain.
 
 **Gotchas.**
+
 - **Keep the stamp at the default for the instant path.** Any change to size, corner, offsets or opacity makes the app extract features live for the stamped images. That means a progress bar and a wait of minutes on a slow laptop. Use custom stamps only for the "smallest stamp" challenge, on fast machines, and warn students.
 - The same is true if the precomputed switch is off.
 - Train the normal model first. The panel says so when there is none. The stamp-trained model does not replace it.
@@ -354,6 +370,7 @@ Good uploads: a photo of a cup, a face, a landscape, a cartoon, a random meme. T
 **What to ask.** "Did the model ever say 'I don't know'? Why can't it?"
 
 **Gotchas.**
+
 - The camera works only on `https://` or `localhost`. The hosted link is https. Opening the page from a file or a plain `http://` address on another machine shows "The camera needs a secure page".
 - Camera denied: "Camera permission was denied. Click the camera or lock icon in the browser address bar, set Camera to Allow for this site, then reload the page and press Start camera again." Ask students to allow the camera once before the session.
 - "The camera is busy" means another tab or app (a video call) is using it. "No camera found" means none was detected.
@@ -367,15 +384,15 @@ Good uploads: a photo of a cup, a face, a landscape, a cartoon, a random meme. T
 
 **The seven tags.**
 
-| Tag | Meaning in the app's words | When to use it |
-|---|---|---|
-| imbalance | One class is much more common in the training data, so the model leans towards it. | Healthy children called pneumonia on the Kermany test. |
-| shortcut | The model reacts to a marker or artefact (a stamp, a label, a corner) instead of the lungs. | Stamp flips. |
-| shift | The image comes from a different population or machine than the training images (children vs adults). | Adult test mistakes. |
-| quality | The picture is darker, lower contrast, tilted or badly framed compared with the clean training images. | Perturb and stress mistakes. |
-| closed-world | The model must answer pneumonia or normal even when the picture shows something else (a cup, a hand). | Webcam and non-X-ray uploads. |
-| evaluation | The score itself misleads: too few test images, the wrong metric, or test data that leaked into training. | The 16-image validation demo. |
-| other | None of the above, or not sure yet. | Anything else. |
+| Tag          | Meaning in the app's words                                                                                | When to use it                                         |
+| ------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| imbalance    | One class is much more common in the training data, so the model leans towards it.                        | Healthy children called pneumonia on the Kermany test. |
+| shortcut     | The model reacts to a marker or artefact (a stamp, a label, a corner) instead of the lungs.               | Stamp flips.                                           |
+| shift        | The image comes from a different population or machine than the training images (children vs adults).     | Adult test mistakes.                                   |
+| quality      | The picture is darker, lower contrast, tilted or badly framed compared with the clean training images.    | Perturb and stress mistakes.                           |
+| closed-world | The model must answer pneumonia or normal even when the picture shows something else (a cup, a hand).     | Webcam and non-X-ray uploads.                          |
+| evaluation   | The score itself misleads: too few test images, the wrong metric, or test data that leaked into training. | The 16-image validation demo.                          |
+| other        | None of the above, or not sure yet.                                                                       | Anything else.                                         |
 
 Clicking a chip filters the list to that tag. Clicking it again clears the filter.
 
@@ -383,12 +400,12 @@ Clicking a chip filters the list to that tag. Clicking it again clears the filte
 
 **How entries get in.** There are four routes, and they behave a little differently:
 
-| Where | Button | What happens |
-|---|---|---|
-| Evaluate, prediction list; uploads list | Log this | Opens a small form. The student must pick a tag and may type a hypothesis, then **Save to failure log**. |
-| Break it, Perturb | Log the changed image | Same form. Saves the altered image. |
-| Break it, Stamp, single images | Log this | Saves at once. Tag is "shortcut" if the stamp is on, else "other". An editor appears to change it. |
-| Break it, webcam | Freeze & log | Saves at once with tag "other". An editor appears. |
+| Where                                   | Button                | What happens                                                                                                   |
+| --------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Evaluate, prediction list; uploads list | Log this              | Opens a small form. The student must pick a tag and may type a hypothesis, then **Save to failure log**. |
+| Break it, Perturb                       | Log the changed image | Same form. Saves the altered image.                                                                            |
+| Break it, Stamp, single images          | Log this              | Saves at once. Tag is "shortcut" if the stamp is on, else "other". An editor appears to change it.             |
+| Break it, webcam                        | Freeze & log          | Saves at once with tag "other". An editor appears.                                                             |
 
 **Export JSON** downloads a file named like `vision-failures-20261101-1015.json`, containing every entry with its thumbnail and settings.
 
@@ -397,6 +414,7 @@ Clicking a chip filters the list to that tag. Clicking it again clears the filte
 **What to ask.** "Which of your hypotheses could you actually test?" Push for one that names a change they could make and a number that would move.
 
 **Gotchas.**
+
 - The log holds at most 100 entries. When it is full, a yellow notice says to export and delete some.
 - It is saved in the browser, so it survives a reload. Reset session clears it.
 - If the browser refuses to store it (private mode, full storage), a notice warns that it only lives in this tab. Export before closing.
@@ -407,6 +425,7 @@ Clicking a chip filters the list to that tag. Clicking it again clears the filte
 **What students see.** A control card, then the "Results card" (this is what Print prints, and it mirrors the paper handout).
 
 **Control card.**
+
 - **Evaluate all three sets now:** scores any of Kermany test, Adult test and Kermany stress that have not been scored yet. It is greyed out when all three are done.
 - **Re-run all three with the current settings:** redoes all three, for example after flipping the precomputed switch.
 - **Download results JSON** (`vision-results-YYYYMMDD-HHMM.json`) and **Print**.
@@ -428,13 +447,13 @@ What it is: the lowest of the three sets' half-credit scores. At tau 50% (nobody
 
 Default model versus "balanced plus adult mix":
 
-| | Before fix | After fix 1 |
-|---|---|---|
-| Model | realistic, adult mix off | balanced, adult mix on |
-| Leaderboard value | 51.5% (Adult test) | 59.5% (+8.0 pts, still Adult test) |
-| Kermany test: acc / sens / spec / half-credit | 82.4 / 99.5 / 53.8 / 76.7 | 83.8 / 97.7 / 60.7 / 79.2 |
-| Adult test: acc / sens / spec / half-credit | 51.5 / 90.0 / 13.0 / 51.5 | 59.5 / 41.0 / 78.0 / 59.5 |
-| Kermany stress: acc / sens / spec / half-credit | 70.4 / 99.2 / 22.2 / 60.7 | 76.8 / 96.7 / 43.6 / 70.1 |
+|                                                 | Before fix                | After fix 1                        |
+| ----------------------------------------------- | ------------------------- | ---------------------------------- |
+| Model                                           | realistic, adult mix off  | balanced, adult mix on             |
+| Leaderboard value                               | 51.5% (Adult test)        | 59.5% (+8.0 pts, still Adult test) |
+| Kermany test: acc / sens / spec / half-credit   | 82.4 / 99.5 / 53.8 / 76.7 | 83.8 / 97.7 / 60.7 / 79.2          |
+| Adult test: acc / sens / spec / half-credit     | 51.5 / 90.0 / 13.0 / 51.5 | 59.5 / 41.0 / 78.0 / 59.5          |
+| Kermany stress: acc / sens / spec / half-credit | 70.4 / 99.2 / 22.2 / 60.7 | 76.8 / 96.7 / 43.6 / 70.1          |
 
 Notice what the fix traded away: sensitivity on the adult set fell from 90% to 41% while specificity rose from 13% to 78%. The score improved, but a sick adult is now missed more often than caught. A good point for the closer.
 
@@ -443,6 +462,7 @@ Notice what the fix traded away: sensitivity on the adult set fell from 90% to 4
 **What to ask.** "Which set is the weakest? What does that tell you to fix first?"
 
 **Gotchas.**
+
 - **Save the "Before fix" snapshot before changing the recipe.** Once a student toggles a fix and retrains, the old model and its evaluations are gone, and there is nothing left to snapshot. Sequence it: evaluate all three, save "Before fix", then fix, retrain, evaluate all three, save "After fix 1".
 - Snapshots survive reload and are wiped by Reset session.
 - If the precomputed switch was changed after some sets were scored, a yellow note says which sets used which mode and suggests re-running all three.
@@ -455,50 +475,50 @@ Notice what the fix traded away: sensitivity on the adult set fell from 90% to 4
 
 Every term the UI uses, in plain words, with a number from this app where possible.
 
-| Term | Plain meaning |
-|---|---|
-| **Backend** | The part of the browser that does the maths: WebGL (graphics card, fastest), WASM (CPU, quick), CPU (slowest). |
-| **P(pneumonia)** | The model's output: a number from 0 to 1. At 0.5 or above the model says pneumonia. |
-| **Confidence** | How sure the model is of whatever it said: the larger of P and 1 minus P, so always 50% to 100%. A confident wrong answer is common. |
-| **Sensitivity** | Of the children who really have pneumonia, the share the model caught. Default model on the Kermany test: 388 of 390, 99.5%. |
-| **Specificity** | Of the healthy children, the share the model correctly cleared. Default: 126 of 234, 53.8%. On the adult test: 13%. |
-| **Accuracy** | Share of all cases called correctly. Misleading when classes are unequal: always answering pneumonia gives 62.5% on the Kermany test. |
-| **Balanced accuracy** | The average of sensitivity and specificity. Any model that ignores the picture scores 50%. Default on the Kermany test: 76.7%. |
-| **Confusion matrix** | A 2 by 2 table of right and wrong answers per true class. Four boxes: correctly cleared, false alarm, missed, caught. |
-| **Always say "pneumonia" baseline** | A pretend model that never looks at the picture. 62.5% on the Kermany test, 50% on the adult test. Your real model has to beat it. |
-| **Class weights** | How much each class counts in the training error. Realistic: 1.00 and 1.00. Balanced: normal 2.00, pneumonia 0.67, so a normal X-ray counts three times as much. |
-| **Realistic vs balanced** | The Data tab's class balance choice. Realistic keeps the natural 1:3 mix with equal weights. Balanced uses the class weights above. |
-| **Augmentation** | Adding randomly brightened, darkened, rotated or cropped copies of each training image (+2 views per image). It teaches the model that these changes are not the disease. |
-| **Mix in adult X-rays** | A Day 2 fix: adds 100 pneumonia plus 100 no-finding adult images to the training set. |
-| **Epoch** | One pass over all training images. Default 20. |
-| **Learning rate** | The size of each correction step. Default 0.001. |
-| **Seed** | The starting point for the random numbers. Same seed and settings give the same model, which is why the whole room can match. Default 42. |
-| **Loss** | The error number the training is shrinking. Lower is better. |
-| **Training set** | The 1,020 images the model learns from. |
-| **Validation set** | Images used while training to watch progress. Ours has 180 images from the same pool, so it is optimistic: about 99%. |
-| **Official validation set** | The dataset authors' 16-image set. One image is worth 6.25 points, so scores jump. Used only to show why a tiny validation set is untrustworthy. |
-| **Test set** | Images the model never saw. The Kermany test has 624. This is the honest score for the same kind of patient: about 82%. |
-| **Adult test** | 200 adult X-rays from another hospital, 100 pneumonia and 100 "no finding". Default accuracy: 51.5%. |
-| **Stress set** (Kermany stress) | The same 624 test images, made darker, lower in contrast, rotated 5° and cropped to 95%. Default accuracy 70.4%, balanced 60.7%. |
-| **Distribution shift** | The new data looks different from the training data (other age group, hospital or machine), and the score drops. Here from 82% to 51%. |
-| **Perturbation** | A deliberate change to the test picture: brightness, contrast, rotation or crop. |
-| **Shortcut** | A cue that predicts the label in the training set but is not the disease, such as a stamped "R". The stamp-trained model flips 93.6% of healthy test X-rays. |
-| **Stamp** | The white "R" the app draws in a corner of selected images. |
-| **Flip rate** | Of the images that got the stamp, the share whose answer changed. 93.6% for the stamp-trained model, 17.5% for the normal one. |
-| **Closed world** | The model only knows two answers, so it must pick one for anything, a cup included. |
-| **Refer to a doctor** (referral, abstaining) | The model declines to answer when its confidence is below the threshold chosen on the slider. |
-| **Tau** | The name of that threshold. 50% means never refer. |
-| **Referred** | How many cases were handed to a doctor, and what percentage of the set. |
-| **Coverage** | The share of cases the model answered. At tau 90% on the Kermany test: 74.8%. |
-| **Half credit** | Scoring rule for the leaderboard: a referred case counts as half right. Referring everything gives exactly 50. |
-| **Half-credit score** | Per set: the average over the two classes of (correct plus half the referred) divided by the class size. At tau 50% it equals balanced accuracy. |
-| **Worst-case score** | The lowest half-credit score of the three sets. The leaderboard value. Default: 51.5% (adult test). After balanced plus adult mix: 59.5%. |
-| **Snapshot** | A saved copy of all three sets' scores and the model settings, so before and after can sit side by side. Up to 8. |
-| **Precomputed features** | MobileNet's 1,280 numbers per image, calculated once beforehand and shipped as files, so students skip the slow step. Same numbers as live extraction. |
-| **Live extraction** | Running MobileNet on every image on the student's laptop. Slow but identical. |
-| **MobileNet v2** | The frozen network that turns an image into 1,280 numbers. |
-| **Head** | The small trainable layer on top of MobileNet. About 1,281 numbers. |
-| **Failure log / tag / hypothesis** | The record of a failure, the category of why it failed, and the student's testable guess about why. |
+| Term                                               | Plain meaning                                                                                                                                                             |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Backend**                                  | The part of the browser that does the maths: WebGL (graphics card, fastest), WASM (CPU, quick), CPU (slowest).                                                            |
+| **P(pneumonia)**                             | The model's output: a number from 0 to 1. At 0.5 or above the model says pneumonia.                                                                                       |
+| **Confidence**                               | How sure the model is of whatever it said: the larger of P and 1 minus P, so always 50% to 100%. A confident wrong answer is common.                                      |
+| **Sensitivity**                              | Of the children who really have pneumonia, the share the model caught. Default model on the Kermany test: 388 of 390, 99.5%.                                              |
+| **Specificity**                              | Of the healthy children, the share the model correctly cleared. Default: 126 of 234, 53.8%. On the adult test: 13%.                                                       |
+| **Accuracy**                                 | Share of all cases called correctly. Misleading when classes are unequal: always answering pneumonia gives 62.5% on the Kermany test.                                     |
+| **Balanced accuracy**                        | The average of sensitivity and specificity. Any model that ignores the picture scores 50%. Default on the Kermany test: 76.7%.                                            |
+| **Confusion matrix**                         | A 2 by 2 table of right and wrong answers per true class. Four boxes: correctly cleared, false alarm, missed, caught.                                                     |
+| **Always say "pneumonia" baseline**          | A pretend model that never looks at the picture. 62.5% on the Kermany test, 50% on the adult test. Your real model has to beat it.                                        |
+| **Class weights**                            | How much each class counts in the training error. Realistic: 1.00 and 1.00. Balanced: normal 2.00, pneumonia 0.67, so a normal X-ray counts three times as much.          |
+| **Realistic vs balanced**                    | The Data tab's class balance choice. Realistic keeps the natural 1:3 mix with equal weights. Balanced uses the class weights above.                                       |
+| **Augmentation**                             | Adding randomly brightened, darkened, rotated or cropped copies of each training image (+2 views per image). It teaches the model that these changes are not the disease. |
+| **Mix in adult X-rays**                      | A Day 2 fix: adds 100 pneumonia plus 100 no-finding adult images to the training set.                                                                                     |
+| **Epoch**                                    | One pass over all training images. Default 20.                                                                                                                            |
+| **Learning rate**                            | The size of each correction step. Default 0.001.                                                                                                                          |
+| **Seed**                                     | The starting point for the random numbers. Same seed and settings give the same model, which is why the whole room can match. Default 42.                                 |
+| **Loss**                                     | The error number the training is shrinking. Lower is better.                                                                                                              |
+| **Training set**                             | The 1,020 images the model learns from.                                                                                                                                   |
+| **Validation set**                           | Images used while training to watch progress. Ours has 180 images from the same pool, so it is optimistic: about 99%.                                                     |
+| **Official validation set**                  | The dataset authors' 16-image set. One image is worth 6.25 points, so scores jump. Used only to show why a tiny validation set is untrustworthy.                          |
+| **Test set**                                 | Images the model never saw. The Kermany test has 624. This is the honest score for the same kind of patient: about 82%.                                                   |
+| **Adult test**                               | 200 adult X-rays from another hospital, 100 pneumonia and 100 "no finding". Default accuracy: 51.5%.                                                                      |
+| **Stress set** (Kermany stress)              | The same 624 test images, made darker, lower in contrast, rotated 5° and cropped to 95%. Default accuracy 70.4%, balanced 60.7%.                                         |
+| **Distribution shift**                       | The new data looks different from the training data (other age group, hospital or machine), and the score drops. Here from 82% to 51%.                                    |
+| **Perturbation**                             | A deliberate change to the test picture: brightness, contrast, rotation or crop.                                                                                          |
+| **Shortcut**                                 | A cue that predicts the label in the training set but is not the disease, such as a stamped "R". The stamp-trained model flips 93.6% of healthy test X-rays.              |
+| **Stamp**                                    | The white "R" the app draws in a corner of selected images.                                                                                                               |
+| **Flip rate**                                | Of the images that got the stamp, the share whose answer changed. 93.6% for the stamp-trained model, 17.5% for the normal one.                                            |
+| **Closed world**                             | The model only knows two answers, so it must pick one for anything, a cup included.                                                                                       |
+| **Refer to a doctor** (referral, abstaining) | The model declines to answer when its confidence is below the threshold chosen on the slider.                                                                             |
+| **Tau**                                      | The name of that threshold. 50% means never refer.                                                                                                                        |
+| **Referred**                                 | How many cases were handed to a doctor, and what percentage of the set.                                                                                                   |
+| **Coverage**                                 | The share of cases the model answered. At tau 90% on the Kermany test: 74.8%.                                                                                             |
+| **Half credit**                              | Scoring rule for the leaderboard: a referred case counts as half right. Referring everything gives exactly 50.                                                            |
+| **Half-credit score**                        | Per set: the average over the two classes of (correct plus half the referred) divided by the class size. At tau 50% it equals balanced accuracy.                          |
+| **Worst-case score**                         | The lowest half-credit score of the three sets. The leaderboard value. Default: 51.5% (adult test). After balanced plus adult mix: 59.5%.                                 |
+| **Snapshot**                                 | A saved copy of all three sets' scores and the model settings, so before and after can sit side by side. Up to 8.                                                         |
+| **Precomputed features**                     | MobileNet's 1,280 numbers per image, calculated once beforehand and shipped as files, so students skip the slow step. Same numbers as live extraction.                    |
+| **Live extraction**                          | Running MobileNet on every image on the student's laptop. Slow but identical.                                                                                             |
+| **MobileNet v2**                             | The frozen network that turns an image into 1,280 numbers.                                                                                                                |
+| **Head**                                     | The small trainable layer on top of MobileNet. About 1,281 numbers.                                                                                                       |
+| **Failure log / tag / hypothesis**           | The record of a failure, the category of why it failed, and the student's testable guess about why.                                                                       |
 
 ---
 
@@ -517,34 +537,36 @@ Times follow the workshop plan. Each block says where to be in the app and what 
 
 ### Day 1: Train it, then doubt it (1h50)
 
-| Time | Block | Where in the app | What to click and say | Numbers to expect |
-|---|---|---|---|---|
-| 0:00 to 0:10 | Hook | No app | Vote on three X-rays, show the chatbot screenshots, reveal true labels. | |
-| 0:10 to 0:30 | Foundations | No app (or the Data gallery for one picture) | Concepts one to six. One quick look at the gallery to show "an image is numbers". | |
-| 0:30 to 0:40 | Setup | **Data** | Students open the link and wait for Ready. Read the counts table together. Open Workshop steps. Check camera permission on the Break it tab if time. | 255 / 765 train, 45 / 135 validation, 234 / 390 test, 3 pneumonia per 1 normal. |
-| 0:40 to 1:05 | Train v1 | **Train**, then **Evaluate** | Everyone presses Train. Talk over the loss curve about transfer learning. Then Evaluate, Kermany test. Read the baseline row first, then accuracy, then sensitivity and specificity. Show the confusion matrix. Switch to Adult test as a teaser. Students write accuracy, sensitivity and specificity on the handout. | Training about 3 s, validation 98.9%. Kermany: 82.4% accuracy, 99.5% sensitivity, 53.8% specificity, 108 false alarms, 2 missed. Baseline 62.5%. Adult: 51.5%. |
-| 1:05 to 1:15 | Break | | Leave the slides up. | |
-| 1:15 to 1:40 | Predict, then break (round 1) | **Break it** | Hand out prediction cards. Demo one Perturb slider (brightness -0.4) and the webcam on a cup once. Students then work freely: Perturb, Your images & webcam, and the Log this buttons on Evaluate. Optional for fast groups: Train, Repeat x5, to show the 16-image swing. | Brightness -0.4: about 8 of 100 answers change, accuracy about 79% to 71%. Cup: a confident class. Repeat x5: 16-image spread about 6 points, 180-image about 0.6, test about 2. |
-| 1:40 to 1:50 | Debrief | **Failure log** | Project the log, read the tag counts, sort failures on the board. Teaser: "A model once learned which hospital, not which disease." | Whatever the room found. Typical tags: imbalance, quality, closed-world. |
+| Time         | Block                         | Where in the app                             | What to click and say                                                                                                                                                                                                                                                                                                  | Numbers to expect                                                                                                                                                                |
+| ------------ | ----------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0:00 to 0:10 | Hook                          | No app                                       | Vote on three X-rays, show the chatbot screenshots, reveal true labels.                                                                                                                                                                                                                                                |                                                                                                                                                                                  |
+| 0:10 to 0:30 | Foundations                   | No app (or the Data gallery for one picture) | Concepts one to six. One quick look at the gallery to show "an image is numbers".                                                                                                                                                                                                                                      |                                                                                                                                                                                  |
+| 0:30 to 0:40 | Setup                         | **Data**                               | Students open the link and wait for Ready. Read the counts table together. Open Workshop steps. Check camera permission on the Break it tab if time.                                                                                                                                                                   | 255 / 765 train, 45 / 135 validation, 234 / 390 test, 3 pneumonia per 1 normal.                                                                                                  |
+| 0:40 to 1:05 | Train v1                      | **Train**, then **Evaluate**     | Everyone presses Train. Talk over the loss curve about transfer learning. Then Evaluate, Kermany test. Read the baseline row first, then accuracy, then sensitivity and specificity. Show the confusion matrix. Switch to Adult test as a teaser. Students write accuracy, sensitivity and specificity on the handout. | Training about 3 s, validation 98.9%. Kermany: 82.4% accuracy, 99.5% sensitivity, 53.8% specificity, 108 false alarms, 2 missed. Baseline 62.5%. Adult: 51.5%.                   |
+| 1:05 to 1:15 | Break                         |                                              | Leave the slides up.                                                                                                                                                                                                                                                                                                   |                                                                                                                                                                                  |
+| 1:15 to 1:40 | Predict, then break (round 1) | **Break it**                           | Hand out prediction cards. Demo one Perturb slider (brightness -0.4) and the webcam on a cup once. Students then work freely: Perturb, Your images & webcam, and the Log this buttons on Evaluate. Optional for fast groups: Train, Repeat x5, to show the 16-image swing.                                             | Brightness -0.4: about 8 of 100 answers change, accuracy about 79% to 71%. Cup: a confident class. Repeat x5: 16-image spread about 6 points, 180-image about 0.6, test about 2. |
+| 1:40 to 1:50 | Debrief                       | **Failure log**                        | Project the log, read the tag counts, sort failures on the board. Teaser: "A model once learned which hospital, not which disease."                                                                                                                                                                                    | Whatever the room found. Typical tags: imbalance, quality, closed-world.                                                                                                         |
 
 Day 1 notes:
+
 - If you are tight, drop the Repeat x5 demo. Keep the baseline comparison.
 - The Workshop steps checklist lists "Evaluate on the adult X-rays" on Day 1. That is the quick teaser at the end of Train v1. The full shift lab is on Day 2.
 - Students often keep their models between days if they use the same laptop and browser. That is fine; you do not need to reset.
 
 ### Day 2: Shortcuts, shift and the human in the loop (about 1h50)
 
-| Time | Block | Where in the app | What to click and say | Numbers to expect |
-|---|---|---|---|---|
-| 0:00 to 0:10 | Recap and story | **Failure log** | Show yesterday's tag counts. Tell the Zech 2018 hospital story. If a laptop lost its model (a new browser), press Train on defaults, seed 42; it reproduces yesterday's numbers. | |
-| 0:10 to 0:40 | Shortcut lab | **Break it**, **Stamp** | Leave the stamp at the default. Press **Stamp training set and retrain**. Read the flip table. Read the clean-accuracy table. Then click a normal X-ray in step 4 and watch "After" flip. Students record the flip rate. Challenge for fast finishers: smaller stamp. Try "Both classes" and retrain to show the fix. | Flip rate 93.6% (219 of 234) for the stamp-trained model, 17.5% for the normal one. Clean test for the stamp model: accuracy 73.4%, sensitivity 58.2%, specificity 98.7%. |
-| 0:40 to 1:00 | New population | **Evaluate** (Adult test), then **Results** | Open Evaluate on Adult test. Record the drop. Ask for two differences between the datasets. Then go to Results, press **Evaluate all three sets now** and save a snapshot named "Before fix". | Adult 51.5% (sensitivity 90%, specificity 13%, 87 of 100 no-finding patients called pneumonia). Results card: 51.5%, Adult test. |
-| 1:00 to 1:10 | Break | | | |
-| 1:10 to 1:35 | Fix it | **Data**, **Train**, **Results** | In Data, tick at least two fixes: Balanced, Mix in adult X-rays, Augmentation. Train again. Go to Results, press **Evaluate all three sets now**, **Save snapshot** ("After fix 1"). Try the refer slider and note it barely changes the worst-case value. Post the worst-case score to the leaderboard. | Balanced plus adult mix: 59.5% worst case, adult test still the weakest (+8.0 points). Stress half-credit 60.7% to 70.1%. Kermany test 83.8%. Adding augmentation should lift stress further. |
-| 1:35 to 1:45 | Trend | No app | Big chatbots are not immune. Cut this first if running late. | |
-| 1:45 to 1:55 | Closer | No app (maybe Results on screen) | AI proposes, the doctor decides, with an audit trail. Post-quiz, feedback. | |
+| Time         | Block           | Where in the app                                        | What to click and say                                                                                                                                                                                                                                                                                                       | Numbers to expect                                                                                                                                                                             |
+| ------------ | --------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0:00 to 0:10 | Recap and story | **Failure log**                                   | Show yesterday's tag counts. Tell the Zech 2018 hospital story. If a laptop lost its model (a new browser), press Train on defaults, seed 42; it reproduces yesterday's numbers.                                                                                                                                            |                                                                                                                                                                                               |
+| 0:10 to 0:40 | Shortcut lab    | **Break it**, **Stamp**                     | Leave the stamp at the default. Press **Stamp training set and retrain**. Read the flip table. Read the clean-accuracy table. Then click a normal X-ray in step 4 and watch "After" flip. Students record the flip rate. Challenge for fast finishers: smaller stamp. Try "Both classes" and retrain to show the fix. | Flip rate 93.6% (219 of 234) for the stamp-trained model, 17.5% for the normal one. Clean test for the stamp model: accuracy 73.4%, sensitivity 58.2%, specificity 98.7%.                     |
+| 0:40 to 1:00 | New population  | **Evaluate** (Adult test), then **Results** | Open Evaluate on Adult test. Record the drop. Ask for two differences between the datasets. Then go to Results, press **Evaluate all three sets now** and save a snapshot named "Before fix".                                                                                                                         | Adult 51.5% (sensitivity 90%, specificity 13%, 87 of 100 no-finding patients called pneumonia). Results card: 51.5%, Adult test.                                                              |
+| 1:00 to 1:10 | Break           |                                                         |                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                               |
+| 1:10 to 1:35 | Fix it          | **Data**, **Train**, **Results**      | In Data, tick at least two fixes: Balanced, Mix in adult X-rays, Augmentation. Train again. Go to Results, press **Evaluate all three sets now**, **Save snapshot** ("After fix 1"). Try the refer slider and note it barely changes the worst-case value. Post the worst-case score to the leaderboard.        | Balanced plus adult mix: 59.5% worst case, adult test still the weakest (+8.0 points). Stress half-credit 60.7% to 70.1%. Kermany test 83.8%. Adding augmentation should lift stress further. |
+| 1:35 to 1:45 | Trend           | No app                                                  | Big chatbots are not immune. Cut this first if running late.                                                                                                                                                                                                                                                                |                                                                                                                                                                                               |
+| 1:45 to 1:55 | Closer          | No app (maybe Results on screen)                        | AI proposes, the doctor decides, with an audit trail. Post-quiz, feedback.                                                                                                                                                                                                                                                  |                                                                                                                                                                                               |
 
 Day 2 notes:
+
 - Do not skip the "Before fix" snapshot. Without it there is no before/after column.
 - Remember to tell students to retrain with the same seed so the comparison is fair.
 - If you ran Reset session on Day 2 morning, the Day 1 failure log is gone. Do not reset until after the recap.
@@ -556,37 +578,37 @@ Day 2 notes:
 
 ### Symptoms and fixes
 
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| Page is blank or never leaves "Loading" | Outdated cache, blocked files, or a browser too old | Hard reload (Ctrl+Shift+R). Try Chrome or Edge. If it persists, use the USB copy, served through `localhost` (not by double-clicking `index.html`). |
-| Header shows `No backend` or a red "No compute backend available" banner | The browser cannot start any compute backend | Try another browser. Add `?backend=wasm` to the address. |
-| Header badge is yellowish and says WASM or CPU | The laptop has no usable WebGL | Fine. Training is still seconds with precomputed features. Perturb and live extraction are slower. Use the 50-image sample. |
-| "WebGL context lost" banner | The GPU driver reset, often with many tabs open | Reload, or open with `?backend=wasm`. |
-| Camera does not open | The page is not https or localhost, or permission denied, or the camera is in use | Use the hosted https link. Click the lock icon in the address bar, set Camera to Allow, reload. Close video calls. The webcam is only needed for one demo; uploads do the same job. |
-| Training is slow (minutes, "Running MobileNet on image 200 of 1200") | Precomputed switch is off or the files failed to load | Settings, switch "Use precomputed features" on. On Data, the green dot should say "Using precomputed features". If you see "Precomputed features could not be loaded", press **Try again**. |
-| Training stretches out for no reason | The student is on a different browser tab, which throttles the page | Ask them to stay on the app tab. |
-| The Stamp tab is slow after the student changed the stamp | A custom stamp forces live extraction | Press "Use the default stamp". Keep the precomputed switch on. |
-| Perturb slider takes 10 to 15 seconds | Perturb always runs MobileNet live | Choose "50 images". Pause between slider moves. |
-| Tab is sluggish or memory-heavy after about an hour | Accumulated state in a long session | Settings, **Reset session**. Export the failure log first if it matters. |
-| A student is stuck mid-run | A cancelled or failed job left the page odd | Reload the page. The trained model and the log come back. If still odd, **Reset session**. |
-| Student's numbers differ from yours | Different seed, recipe, precomputed switch, tau, or a model restored from last visit | Compare the grey "Recipe" line on Train and the "The model behind these numbers" block on Results. Reset seed to 42, set tau to 50%, switch precomputed on, press Train again. Live extraction can differ from precomputed by a small amount. |
-| Results shows "Not complete yet" | One or more of the three sets has not been scored | Press **Evaluate all three sets now**. |
-| Results numbers are gone after retraining | Training again discards every stored evaluation | Evaluate all three again. |
-| The stamp flip table says "The models changed since this was measured" | The normal model was retrained after the stamp model | Press **Compute flip rate**, or retrain the stamp model. |
-| Failure log full (100 entries) or a storage warning | The log is capped, or the browser blocks storage | Export JSON, delete entries. For storage warnings, export before closing the tab. |
-| Internet drops mid-session | Wi-Fi | Nothing to do once the page has loaded. A reload without internet fails, so do not reload. If a student must, give them the USB copy. |
-| Everything breaks | | Run the session from your own laptop on the projector and have students watch. |
+| Symptom                                                                    | Likely cause                                                                         | Fix                                                                                                                                                                                                                                           |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Page is blank or never leaves "Loading"                                    | Outdated cache, blocked files, or a browser too old                                  | Hard reload (Ctrl+Shift+R). Try Chrome or Edge. If it persists, use the USB copy, served through `localhost` (not by double-clicking `index.html`).                                                                                       |
+| Header shows `No backend` or a red "No compute backend available" banner | The browser cannot start any compute backend                                         | Try another browser. Add `?backend=wasm` to the address.                                                                                                                                                                                    |
+| Header badge is yellowish and says WASM or CPU                             | The laptop has no usable WebGL                                                       | Fine. Training is still seconds with precomputed features. Perturb and live extraction are slower. Use the 50-image sample.                                                                                                                   |
+| "WebGL context lost" banner                                                | The GPU driver reset, often with many tabs open                                      | Reload, or open with `?backend=wasm`.                                                                                                                                                                                                       |
+| Camera does not open                                                       | The page is not https or localhost, or permission denied, or the camera is in use    | Use the hosted https link. Click the lock icon in the address bar, set Camera to Allow, reload. Close video calls. The webcam is only needed for one demo; uploads do the same job.                                                           |
+| Training is slow (minutes, "Running MobileNet on image 200 of 1200")       | Precomputed switch is off or the files failed to load                                | Settings, switch "Use precomputed features" on. On Data, the green dot should say "Using precomputed features". If you see "Precomputed features could not be loaded", press **Try again**.                                             |
+| Training stretches out for no reason                                       | The student is on a different browser tab, which throttles the page                  | Ask them to stay on the app tab.                                                                                                                                                                                                              |
+| The Stamp tab is slow after the student changed the stamp                  | A custom stamp forces live extraction                                                | Press "Use the default stamp". Keep the precomputed switch on.                                                                                                                                                                                |
+| Perturb slider takes 10 to 15 seconds                                      | Perturb always runs MobileNet live                                                   | Choose "50 images". Pause between slider moves.                                                                                                                                                                                               |
+| Tab is sluggish or memory-heavy after about an hour                        | Accumulated state in a long session                                                  | Settings, **Reset session**. Export the failure log first if it matters.                                                                                                                                                                |
+| A student is stuck mid-run                                                 | A cancelled or failed job left the page odd                                          | Reload the page. The trained model and the log come back. If still odd, **Reset session**.                                                                                                                                              |
+| Student's numbers differ from yours                                        | Different seed, recipe, precomputed switch, tau, or a model restored from last visit | Compare the grey "Recipe" line on Train and the "The model behind these numbers" block on Results. Reset seed to 42, set tau to 50%, switch precomputed on, press Train again. Live extraction can differ from precomputed by a small amount. |
+| Results shows "Not complete yet"                                           | One or more of the three sets has not been scored                                    | Press **Evaluate all three sets now**.                                                                                                                                                                                                  |
+| Results numbers are gone after retraining                                  | Training again discards every stored evaluation                                      | Evaluate all three again.                                                                                                                                                                                                                     |
+| The stamp flip table says "The models changed since this was measured"     | The normal model was retrained after the stamp model                                 | Press **Compute flip rate**, or retrain the stamp model.                                                                                                                                                                                |
+| Failure log full (100 entries) or a storage warning                        | The log is capped, or the browser blocks storage                                     | Export JSON, delete entries. For storage warnings, export before closing the tab.                                                                                                                                                             |
+| Internet drops mid-session                                                 | Wi-Fi                                                                                | Nothing to do once the page has loaded. A reload without internet fails, so do not reload. If a student must, give them the USB copy.                                                                                                         |
+| Everything breaks                                                          |                                                                                      | Run the session from your own laptop on the projector and have students watch.                                                                                                                                                                |
 
 ### URL parameters
 
 Add them to the end of the web address.
 
-| Parameter | Effect |
-|---|---|
-| `?backend=wasm` | Use WebAssembly instead of WebGL. The header tooltip says "Forced by ?backend=wasm". |
-| `?backend=cpu` | Use plain CPU. Slowest, last resort. |
-| `?backend=webgl` | Force WebGL first. Falls back automatically if it cannot start. |
-| `?debug=1` | Shows a small green box in the bottom right: "tensors: 106 | bytes: 8827272". It counts the numbers the browser is holding in memory. Useful if you suspect a leak after a long session; otherwise leave it off. Several of the screenshots in `docs/screenshots/` show it. |
+| Parameter          | Effect                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| `?backend=wasm`  | Use WebAssembly instead of WebGL. The header tooltip says "Forced by ?backend=wasm". |
+| `?backend=cpu`   | Use plain CPU. Slowest, last resort.                                                 |
+| `?backend=webgl` | Force WebGL first. Falls back automatically if it cannot start.                      |
+| `?debug=1`       | Shows a small green box in the bottom right: "tensors: 106                           |
 
 Combine them with `&`, for example `?backend=wasm&debug=1`.
 
@@ -600,18 +622,18 @@ Build once ahead of time (`npm run build` in `app/`), copy `app/dist` to at leas
 
 Default run: seed 42, 20 epochs, realistic training, precomputed, tau 50%.
 
-| # | Number | Where it appears | What it proves |
-|---|---|---|---|
-| 1 | **62.5%** | Evaluate, baseline row on Kermany test (390 of 624) | A model that never looks at the picture already scores this. Every score is judged against it. |
-| 2 | **1:3** (255 normal, 765 pneumonia) | Data tab | The training data is imbalanced, so the model leans toward answering pneumonia. |
-| 3 | **99% validation** (98.9%) | Train tab, status line and charts | The in-sample check looks perfect. It is optimistic because it comes from the same pool as training. |
-| 4 | **82% test** (82.4%), sensitivity 99.5%, specificity 53.8% | Evaluate, Kermany test | The honest score for the same kind of patient. Almost all the damage is healthy children called pneumonia (108 of 234). |
-| 5 | **51% adult** (51.5%, specificity 13%) | Evaluate, Adult test | Distribution shift. Barely better than the 50% baseline. 87 of 100 no-finding adults flagged. |
-| 6 | **61% stress balanced** (60.7%; accuracy 70.4%) | Evaluate, Kermany stress | Darkening, flattening and tilting the picture slightly already breaks the model. Accuracy flatters it. |
-| 7 | **94% stamp flip** (93.6%, 219 of 234) | Break it, Stamp | The model learned the marker, not the disease. The normal model flips only 17.5%. |
-| 8 | **42% of unstamped pneumonia missed** (sensitivity 58.2%) | Break it, Stamp, clean-accuracy table | The shortcut model fails on clean data too. Its balanced accuracy (78.5%) still looks fine, which is why shortcuts hide. |
-| 9 | **6-point val16 spread** (6.25 points per image) against about 0.6 for the 180-image set | Train, Repeat x5 | A 16-image validation set is noise. Never choose a model with it. |
-| 10 | **Worst case 51.5, then 59.5** | Results | The leaderboard value is the weakest of the three sets (adult test). Balanced plus adult mix lifts it by about 8 points but still leaves adult sensitivity at 41%. |
+| #  | Number                                                                                         | Where it appears                                    | What it proves                                                                                                                                                     |
+| -- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1  | **62.5%**                                                                                | Evaluate, baseline row on Kermany test (390 of 624) | A model that never looks at the picture already scores this. Every score is judged against it.                                                                     |
+| 2  | **1:3** (255 normal, 765 pneumonia)                                                      | Data tab                                            | The training data is imbalanced, so the model leans toward answering pneumonia.                                                                                    |
+| 3  | **99% validation** (98.9%)                                                               | Train tab, status line and charts                   | The in-sample check looks perfect. It is optimistic because it comes from the same pool as training.                                                               |
+| 4  | **82% test** (82.4%), sensitivity 99.5%, specificity 53.8%                               | Evaluate, Kermany test                              | The honest score for the same kind of patient. Almost all the damage is healthy children called pneumonia (108 of 234).                                            |
+| 5  | **51% adult** (51.5%, specificity 13%)                                                   | Evaluate, Adult test                                | Distribution shift. Barely better than the 50% baseline. 87 of 100 no-finding adults flagged.                                                                      |
+| 6  | **61% stress balanced** (60.7%; accuracy 70.4%)                                          | Evaluate, Kermany stress                            | Darkening, flattening and tilting the picture slightly already breaks the model. Accuracy flatters it.                                                             |
+| 7  | **94% stamp flip** (93.6%, 219 of 234)                                                   | Break it, Stamp                                     | The model learned the marker, not the disease. The normal model flips only 17.5%.                                                                                  |
+| 8  | **42% of unstamped pneumonia missed** (sensitivity 58.2%)                                | Break it, Stamp, clean-accuracy table               | The shortcut model fails on clean data too. Its balanced accuracy (78.5%) still looks fine, which is why shortcuts hide.                                           |
+| 9  | **6-point val16 spread** (6.25 points per image) against about 0.6 for the 180-image set | Train, Repeat x5                                    | A 16-image validation set is noise. Never choose a model with it.                                                                                                  |
+| 10 | **Worst case 51.5, then 59.5**                                                           | Results                                             | The leaderboard value is the weakest of the three sets (adult test). Balanced plus adult mix lifts it by about 8 points but still leaves adult sensitivity at 41%. |
 
 Two more worth having in your pocket:
 
@@ -638,13 +660,3 @@ These are quirks, not bugs. Know them before you are in front of the room.
 12. **Log this behaves differently by location.** Evaluate and Perturb ask for a tag before saving. Stamp and webcam save immediately with a default tag ("shortcut" or "other"), and show an editor afterwards. If students forget to edit, the log fills with "other".
 13. **"normal" versus "no finding".** Adult negatives are "no finding" everywhere. Uploads use the labels "pneumonia" and "normal" regardless of what the picture is.
 14. **Natural letter markers.** Many X-rays already carry small "R" or "L" letters in a corner. The stamp is a much larger, white, deliberate "R".
-
-## Heatmaps
-
-Three places have a heatmap button: the single-image view on Break it, Stamp (both models side by side), every row of the prediction list on Evaluate, and every uploaded image.
-
-The colours show where the model found evidence for the class you choose with "Evidence for: pneumonia | normal". Warm means more evidence. The strength slider fades the colours in and out. The map is only 7 by 7 cells, so each cell covers a 32 pixel square and the picture is blurry. Treat it as a hint, not proof.
-
-The useful demo is the stamp. Train the stamp model on the Stamp tab, pick a normal test image, switch its stamp on and press Show heatmap. The normal model ("Before") lights up inside the lungs. The stamp-trained model ("After") lights up on the white R box in the corner. In the dry run this held for 10 of 10 images.
-
-If a map looks plain, the model found no evidence for the class you chose. Switch the other class on.
