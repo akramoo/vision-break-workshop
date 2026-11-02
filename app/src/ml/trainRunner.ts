@@ -143,6 +143,7 @@ export async function runTraining(rawEnv: RunEnv, settings: TrainSettings): Prom
       classWeights: plan.weights ? { normal: plan.weights[0], pneumonia: plan.weights[1] } : null,
       usedPrecomputed: source === 'precomputed',
       durationMs,
+      finalValAcc: result.history[result.history.length - 1]?.valAcc,
       restored: false,
     };
     dispatch({ type: 'headSet', head: result.head, info, history: result.history });

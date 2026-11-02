@@ -1736,3 +1736,46 @@ fieldset.chips {
 .heatmap-row > td {
   background: rgba(15, 23, 42, 0.03);
 }
+
+/* ---------- Model in use strip (Train, Evaluate, Break it, Results) ---------- */
+.model-strip {
+  border: 2px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  padding: 0.4rem 0.9rem;
+  margin: 0 0 0.9rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.model-strip p {
+  margin: 0;
+}
+
+.model-strip--empty {
+  border-left-color: var(--line);
+}
+
+.model-strip__warn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  align-items: center;
+  margin-top: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-left: 6px solid #d97706;
+  background: var(--warn-bg);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.model-strip__warn .muted {
+  font-weight: 400;
+}
+
+@media print {
+  .model-strip {
+    display: none !important;
+  }
+}

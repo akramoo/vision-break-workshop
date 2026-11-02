@@ -6,6 +6,7 @@ import { cancelRun, REPEAT_RUNS, runRepeat, runTraining, type RunEnv } from '../
 import { useSession, type RepeatRun, type SessionState } from '../state/session';
 import { formatDuration, formatLr, lrFromSlider, sliderFromLr } from './format';
 import { LineChart } from './LineChart';
+import { ModelStrip } from './ModelStrip';
 import { ProgressBar } from './ProgressBar';
 
 const TRAIN_COLOR = '#1d4ed8';
@@ -94,6 +95,7 @@ export function TrainPanel() {
   return (
     <>
       <h2>Train</h2>
+      <ModelStrip emptyText={false} />
       <p className="lead">
         MobileNet turns every X-ray into 1,280 numbers and stays frozen. We train only a tiny final layer (logistic regression) that
         turns those numbers into <strong>P(pneumonia)</strong>. Watch the error (loss) fall and the accuracy rise.

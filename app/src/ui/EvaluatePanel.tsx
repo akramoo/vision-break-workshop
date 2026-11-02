@@ -20,9 +20,11 @@ import { labelName, type LogDraftBase } from '../state/failureLog';
 import { useSession, type EvalResult } from '../state/session';
 import { ConfidenceThreshold } from './ConfidenceThreshold';
 import { ConfusionMatrix } from './ConfusionMatrix';
+import { evalSetNote } from './evalNote';
 import { formatDuration } from './format';
 import { HeatmapOverlay } from './HeatmapOverlay';
 import { LogForm, useLogConfig } from './LogThis';
+import { ModelStrip } from './ModelStrip';
 import { MetricsTable, type MetricRow } from './MetricsTable';
 import { Pager } from './Pager';
 import {
@@ -115,6 +117,7 @@ export function EvaluatePanel() {
   return (
     <>
       <h2>Evaluate</h2>
+      <ModelStrip />
       <p className="lead">
         Now the exam. We score the trained model on X-rays it has never seen. The key question is not "how high is the number?" but{' '}
         <strong>"is it better than a model that never looks at the picture?"</strong>
@@ -230,6 +233,9 @@ function Results({ def, result, tau, entries, head }: { def: EvalSetDef; result:
       <h3>
         {def.label}: {result.ids.length} X-rays
       </h3>
+      <p className="muted" data-testid="eval-set-note">
+        {evalSetNote(def.id, result.ids.length)}
+      </p>
       <MetricsTable rows={rows} showAbstain={showAbstain} who={adult ? 'patients' : 'children'} />
       <p className="muted" data-testid="eval-mode">
         Features for this evaluation:{' '}

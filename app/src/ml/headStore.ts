@@ -25,6 +25,8 @@ export interface HeadInfo {
   classWeights: { normal: number; pneumonia: number } | null;
   usedPrecomputed: boolean;
   durationMs: number;
+  /** Validation accuracy after the last epoch (optional: heads saved by older versions do not have it). */
+  finalValAcc?: number;
   restored: boolean;
 }
 

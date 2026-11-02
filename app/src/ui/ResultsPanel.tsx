@@ -20,6 +20,7 @@ import { useSession } from '../state/session';
 import { MAX_SNAPSHOTS, defaultSnapshotName, makeSnapshot, type Snapshot } from '../state/snapshots';
 import { DISCLAIMER } from './disclaimer';
 import { downloadJson } from './download';
+import { ModelStrip } from './ModelStrip';
 import { ProgressBar } from './ProgressBar';
 
 interface RunState {
@@ -141,6 +142,9 @@ export function ResultsPanel() {
   return (
     <>
       <h2>Results</h2>
+      <div className="no-print">
+        <ModelStrip />
+      </div>
       <p className="lead no-print">
         Your results card, like the printed handout. The number to post on the leaderboard is the <strong>worst-case score</strong>: the weakest
         of the three test sets. A model is only as good as its worst set.
@@ -247,6 +251,9 @@ export function ResultsPanel() {
                   the leaderboard value.
                 </p>
               )}
+              <p className="muted no-print" data-testid="leaderboard-not-accuracy">
+                The leaderboard value is the lowest balanced score over the three test sets, so it is not the accuracy shown on Evaluate or Train.
+              </p>
               <p className="note" data-testid="leaderboard-explain">
                 {HALF_CREDIT_EXPLANATION} The score is the lowest of the three sets' half-credit scores; at tau = 50% (never refer) it is balanced accuracy.
               </p>

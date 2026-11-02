@@ -1,5 +1,6 @@
 import { useSession, type BreakTab } from '../state/session';
 import { ConfidenceThreshold } from './ConfidenceThreshold';
+import { ModelStrip } from './ModelStrip';
 import { PerturbPanel } from './PerturbPanel';
 import { StampPanel } from './StampPanel';
 import { UploadResults, UploadsManager } from './UploadsPanel';
@@ -19,6 +20,7 @@ export function BreakItPanel() {
   return (
     <>
       <h2>Break it</h2>
+      <ModelStrip />
       <p className="lead">
         A model that scores well on the exam can still be fragile or wrong for the wrong reasons. Try to break yours, and log what you find.
       </p>
