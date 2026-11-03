@@ -39,6 +39,8 @@ After that come the fixes: balance the classes, augment the training images, mix
 - **Failure log:** log any prediction with a tag and a hypothesis, then export it as JSON.
 - **Results:** the worst-case score, per-set tables, before and after snapshots, and a one-page printable card.
 
+A walkthrough of every tab and number is in [docs/guide.md](docs/guide.md).
+
 | Stamp tool | Results card |
 | --- | --- |
 | ![Heatmap on a stamped normal X-ray](Screenshots/07-heatmap-on-stamp.png) | ![Results card with the worst-case score](Screenshots/10-results-card.png) |
