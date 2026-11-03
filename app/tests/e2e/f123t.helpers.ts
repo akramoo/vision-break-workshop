@@ -19,7 +19,7 @@ export function watchConsole(page: Page): ConsoleWatch {
 }
 
 export async function shot(page: Page, info: TestInfo, name: string): Promise<void> {
-  // Kept out of docs/screenshots (f123-*.png already document these screens); lands in test-results/ instead.
+  // Screenshots from the specs land in test-results/ (git-ignored).
   await page.screenshot({ path: info.outputPath(`f123t-${name}-${info.project.name}.png`), fullPage: true });
 }
 

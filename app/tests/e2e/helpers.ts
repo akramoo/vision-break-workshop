@@ -8,7 +8,7 @@ import { expect, type Page } from '@playwright/test';
 export const DISCLAIMER = 'Educational only. Not for clinical use.';
 export const TAB_NAMES = ['Data', 'Train', 'Evaluate', 'Break it', 'Failure log', 'Results'] as const;
 export const DIST_DIR = resolve(process.cwd(), 'dist');
-export const SCREENSHOT_DIR = resolve(process.cwd(), '..', 'docs', 'screenshots');
+export const SCREENSHOT_DIR = resolve(process.cwd(), 'test-results', 'screenshots');
 
 /** Wait until the header shows the model as ready (MobileNet loaded and warmed up). */
 export async function waitForReady(page: Page, timeout = 90_000): Promise<void> {

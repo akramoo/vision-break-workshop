@@ -22,7 +22,7 @@ export function readRecord<T = Record<string, any>>(name: string): T | null {
   return existsSync(file) ? (JSON.parse(readFileSync(file, 'utf8')) as T) : null;
 }
 
-/** Viewport screenshot (small) kept in docs/screenshots. */
+/** Viewport screenshot (small) kept in test-results/screenshots. */
 export async function dryShot(page: Page, name: string): Promise<void> {
   mkdirSync(SCREENSHOT_DIR, { recursive: true });
   await page.screenshot({ path: `${SCREENSHOT_DIR}/dryrun-${name}.png` });

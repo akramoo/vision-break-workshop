@@ -435,7 +435,7 @@ export function writeDryRunReport(): void {
     '',
     'No flow of the click path was blocked or crashed, and the shared test fixture, which fails any test that requests a non-localhost origin, never fired.',
   );
-  p('Screenshots from this run: `docs/screenshots/dryrun-evaluate-kermany.png`, `dryrun-closed-world.png`, `dryrun-perturb.png`, `dryrun-stamp-flip.png`, `dryrun-results-snapshots.png`.');
+  p('Screenshots from this run: `test-results/screenshots/dryrun-evaluate-kermany.png`, `dryrun-closed-world.png`, `dryrun-perturb.png`, `dryrun-stamp-flip.png`, `dryrun-results-snapshots.png`.');
 
   // ---------------------------------------------------------------- at a glance (inserted after the introduction)
   const glance: string[] = [

@@ -6,7 +6,7 @@ A browser-only teaching app. You train a pneumonia detector on children's chest 
 
 Live app: <https://akramoo.github.io/vision-break-workshop/>
 
-![Evaluate tab: the trained model against the always-pneumonia baseline](docs/screenshots/f123-evaluate-kermany.png)
+![Evaluate tab: the trained model against the always-pneumonia baseline](Screenshots/03-evaluate.png)
 
 ## The idea
 
@@ -41,7 +41,7 @@ After that come the fixes: balance the classes, augment the training images, mix
 
 | Stamp tool | Results card |
 | --- | --- |
-| ![Heatmap on a stamped normal X-ray](docs/screenshots/heatmap-stamp.png) | ![Results card with the worst-case score](docs/screenshots/f89-results.png) |
+| ![Heatmap on a stamped normal X-ray](Screenshots/07-heatmap-on-stamp.png) | ![Results card with the worst-case score](Screenshots/10-results-card.png) |
 
 ## Typical numbers
 
@@ -117,6 +117,10 @@ node scripts/tests/verify_model.mjs
 ## Python code track
 
 `notebook/code_track.ipynb` repeats the experiments as code: frozen MobileNetV3-Large features, a scikit-learn logistic regression, the imbalance, stamp and adult-shift experiments, a Grad-CAM heatmap, and five exercises. It runs on a CPU in a couple of minutes and downloads the pretrained weights (about 21 MB) once. Install the packages from `scripts/requirements.txt` and see [notebook/README.md](notebook/README.md) for how to open it.
+
+## Slides
+
+`Slides/Build a Vision Model, Then Break It.pptx` is a 37-slide deck that goes with the app: AI, machine learning and deep learning, CNNs, foundation models and freezing, the datasets, the metrics, then the break-and-fix experiments. The screenshots in `Screenshots/` are from the app itself.
 
 ## Deploying
 
