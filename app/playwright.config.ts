@@ -47,7 +47,9 @@ export default defineConfig({
       // chromium renders WebGL in software (SwiftShader), which says nothing about a real laptop. Only the GPU proof and
       // the dry-run measurements run here: `MEASURE=1 npx playwright test --project=chromium-gpu --workers=1 measure`.
       name: 'chromium-gpu',
-      testMatch: /(gpu-proof|measure.*)\.spec\.ts/,
+      // The demo recording (tests/demo/demo.spec.ts, gated behind DEMO=1) lives outside tests/e2e, so this project looks in tests/.
+      testDir: './tests',
+      testMatch: /(gpu-proof|measure.*|demo)\.spec\.ts/,
       use: {
         ...devices['Desktop Chrome'],
         channel: 'chrome',

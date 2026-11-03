@@ -8,6 +8,14 @@ Live app: <https://akramoo.github.io/vision-break-workshop/>
 
 ![Evaluate tab: the trained model against the always-pneumonia baseline](Screenshots/03-evaluate.png)
 
+## Demo
+
+A 2-minute captioned walkthrough: load the app, train, evaluate against the baseline, break the model with perturbations and a stamp, log a failure, and read the results card.
+
+[![Watch the demo video](Demo/poster.png)](Demo/vision-demo.webm)
+
+The video is a WebM file, so open it in Chrome, Edge or Firefox, or download it. To re-record it after changing the app, run `DEMO=1 npx playwright test --project=chromium-gpu --workers=1 demo.spec.ts` from `app/` (it uses the installed Chrome and writes a raw recording to `app/test-results/`).
+
 ## The idea
 
 Getting a classifier to score well on a test set takes minutes. Finding out whether that score means anything takes much longer, and that is the part this app is about.
