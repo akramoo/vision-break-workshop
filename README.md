@@ -12,9 +12,9 @@ Live app: <https://akramoo.github.io/vision-break-workshop/>
 
 A 2-minute captioned walkthrough: load the app, train, evaluate against the baseline, break the model with perturbations and a stamp, log a failure, and read the results card.
 
-[![Watch the demo video](Demo/poster.png)](Demo/vision-demo.webm)
+[![Watch the demo video](Demo/poster.png)](Demo/vision-demo.mp4)
 
-The video is a WebM file, so open it in Chrome, Edge or Firefox, or download it. To re-record it after changing the app, run `DEMO=1 npx playwright test --project=chromium-gpu --workers=1 demo.spec.ts` from `app/` (it uses the installed Chrome and writes a raw recording to `app/test-results/`).
+Click the picture to play the video (MP4, 10 MB).
 
 ## The idea
 
