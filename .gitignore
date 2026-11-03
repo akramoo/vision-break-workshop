@@ -17,3 +17,4 @@ coverage/
 blob-report/
 notebook/.cache/
 .ipynb_checkpoints/
+private/

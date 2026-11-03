@@ -1,6 +1,6 @@
 // The Saturday dry run, automated: follows the real workshop click path on the production build with GPU-backed WebGL
 // and measures every "verify" item of the plan. Gated: `MEASURE=1 npx playwright test --project=chromium-gpu --workers=1 measure.spec.ts`.
-// Each test writes a JSON fragment (see measure.helpers.ts); the last test turns them into docs/dry-run-results.md.
+// Each test writes a JSON fragment (see measure.helpers.ts); the last test turns them into private/dry-run-results.md.
 import { test, expect } from './fixtures';
 import {
   boot,
@@ -639,6 +639,6 @@ test('F6: memory soak, 10 cycles of train, evaluate, perturb (100), stamp toggle
 });
 
 // ---------------------------------------------------------------------------------------------------------------------
-test('write docs/dry-run-results.md', async () => {
+test('write private/dry-run-results.md', async () => {
   writeDryRunReport();
 });

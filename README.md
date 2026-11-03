@@ -1,49 +1,63 @@
 # Build a Vision Model, Then Break It
 
-A teaching app for a two-day university workshop (1 and 2 November 2026). Students train a pneumonia detector on children's chest X-rays, entirely in the browser, and then spend most of the session finding out how it fails.
+A browser-only teaching app. You train a pneumonia detector on children's chest X-rays, then spend most of your time finding out how it fails.
 
-**Educational only. Not for clinical use.** The X-rays come from published, anonymised research datasets. Nothing you load or capture leaves your laptop.
+**Educational only. Not for clinical use.** The X-rays come from published, anonymised research datasets. Nothing you load or capture leaves your computer.
 
 Live app: <https://akramoo.github.io/vision-break-workshop/>
 
+![Evaluate tab: the trained model against the always-pneumonia baseline](docs/screenshots/f123-evaluate-kermany.png)
+
 ## The idea
 
-Training a classifier that scores well on a test set takes about ten minutes. Knowing whether that score means anything takes the rest of the workshop. The model here is a frozen MobileNet v2 that turns each X-ray into 1,280 numbers, plus a small trainable layer on top that predicts pneumonia or normal. It trains in seconds, even on a weak laptop, so nobody waits and everybody has time to poke at it.
+Getting a classifier to score well on a test set takes minutes. Finding out whether that score means anything takes much longer, and that is the part this app is about.
 
-The first lesson is the baseline. About 62.5% of the official Kermany test images show pneumonia, so a model that always answers "pneumonia" already scores 62.5%. Every number the app shows is placed next to that.
+The model is a frozen MobileNet v2 that turns each X-ray into 1,280 numbers, with a small trainable layer on top that predicts pneumonia or normal. It trains in a few seconds, even on a weak laptop, so there is plenty of time left to poke at the result.
 
-Then students break their model in six ways:
+The first lesson is the baseline. About 62.5% of the official Kermany test images show pneumonia, so a model that always answers "pneumonia" already scores 62.5%. Every number the app shows sits next to that.
 
-| Break | What students do | Why it happens |
+Then you break the model in six ways:
+
+| Break | What you do | Why it happens |
 | --- | --- | --- |
-| Imbalance | Compare the model with "always pneumonia"; switch between 1:3 and balanced training | Training data has three pneumonia images for every normal one |
+| Imbalance | Compare the model with "always pneumonia"; switch between 1:3 and balanced training | The training data has three pneumonia images for every normal one |
 | Shortcut | Stamp a small white "R" marker on pneumonia training images only, retrain, stamp a normal X-ray | The model learns the marker instead of the lungs |
 | Population shift | Test on adult X-rays from the NIH dataset | Children from one hospital are not everyone |
-| Image quality | Move brightness, contrast, rotation and crop sliders | Small changes in the picture move the confidence a lot |
-| Closed world | Point the webcam at a cup | The model must pick a class, so it picks one, confidently |
-| Dishonest evaluation | Pick a model using the official 16-image validation set | One image moves the score by six points, so results jump between runs |
+| Image quality | Move the brightness, contrast, rotation and crop sliders | Small changes in the picture move the confidence a lot |
+| Closed world | Upload or show the webcam a picture that is not an X-ray | The model must pick a class, so it picks one, confidently |
+| Dishonest evaluation | Choose a model using the official 16-image validation set | One image moves the score by six points, so results jump between runs |
 
-Day 2 ends with fixes: balance the classes, augment the training images, mix in adult X-rays, and let the model say "Refer to a doctor" when it is unsure. Each fix is measured on three test sets (Kermany test, adult test, and the Kermany test with a fixed image degradation) and the worst result is the score that goes on the leaderboard.
+After that come the fixes: balance the classes, augment the training images, mix in adult X-rays, and let the model say "Refer to a doctor" when it is unsure. Each fix is measured on three test sets (Kermany test, adult test, and the Kermany test with a fixed image degradation). The lowest of the three is the worst-case score.
 
-## Status
+## What is in the app
 
-All nine workshop features are in and the live site is current: data and class counts, training with a live chart, evaluation against the always-pneumonia baseline, the four test sets (Kermany test, adult test, stress, your own uploads) plus the webcam, perturbation sliders, the stamp tool, the "Refer to a doctor" threshold, the failure log, and a results card with the worst-case score.
+- **Data:** class counts, the realistic 1:3 or balanced training recipe, optional adult X-rays and augmentation, and a browsable image gallery.
+- **Train:** a live loss and accuracy chart, with epochs, learning rate and seed under Advanced, and a "repeat five times" comparison of a 16-image and a 180-image validation set.
+- **Evaluate:** accuracy, sensitivity, specificity, balanced accuracy and a confusion matrix on the Kermany test, adult test or stress set, against the always-pneumonia baseline. A paged list of every prediction can be filtered to the mistakes.
+- **Break it:** perturbation sliders, a stamp tool with a before-and-after flip rate, your own uploads and the webcam, and a "Refer to a doctor" threshold.
+- **Heatmaps:** a Grad-CAM view that shows where the model found evidence, for example on the stamp.
+- **Failure log:** log any prediction with a tag and a hypothesis, then export it as JSON.
+- **Results:** the worst-case score, per-set tables, before and after snapshots, and a one-page printable card.
 
-What has been measured so far, with precomputed features and the default settings (seed 42, 20 epochs, realistic 1:3 training), on a laptop with no GPU:
+| Stamp tool | Results card |
+| --- | --- |
+| ![Heatmap on a stamped normal X-ray](docs/screenshots/heatmap-stamp.png) | ![Results card with the worst-case score](docs/screenshots/f89-results.png) |
+
+## Typical numbers
+
+With precomputed features and the default settings (seed 42, 20 epochs, realistic 1:3 training):
 
 | | Result |
 | --- | --- |
-| Training time | about 4 seconds |
-| Validation accuracy (180 images) | 98.9% |
-| Kermany test | 82% accuracy, 99.5% sensitivity, 54% specificity |
-| Adult test | 51.5% accuracy (chance is 50%) |
-| Kermany stress | 70% accuracy, 61% balanced accuracy |
-| Worst-case score | 51.5, set by the adult test |
-| Stamp experiment | 94% of normal test X-rays flip to pneumonia after training on stamped pneumonia images |
+| Training time | a few seconds |
+| Validation accuracy (180 images) | about 99% |
+| Kermany test | about 82% accuracy, 99.5% sensitivity, 54% specificity |
+| Adult test | about 52% accuracy (chance is 50%) |
+| Kermany stress | about 70% accuracy, 61% balanced accuracy |
+| Worst-case score | about 52, set by the adult test |
+| Stamp experiment | about 94% of normal test X-rays flip to pneumonia after training on stamped pneumonia images |
 
-Mixing in adult X-rays and balancing the classes lifts the worst-case score to about 59.
-
-Also done: Grad-CAM heatmaps on the stamp view, Evaluate rows and uploads, the Python code track, and a GPU dry run of the whole workshop path (see `docs/dry-run-results.md`). Still to do: a Firefox and Chrome check of the webcam with a real camera, and a dry run on a mid-range laptop without a GPU.
+Mixing in adult X-rays and balancing the classes lifts the worst-case score to about 59. Numbers move by a point or two with the seed and the browser's compute backend.
 
 ## Run it locally
 
@@ -55,7 +69,7 @@ npm ci
 npm run dev
 ```
 
-Open the address Vite prints. The camera only works on `https://` or `localhost`, which is why the hosted version is the one to use in class.
+Open the address Vite prints. The camera only works on `https://` or `localhost`.
 
 Other commands, all from `app/`:
 
@@ -69,7 +83,7 @@ The first time you run the browser tests, install the browsers with `npx playwri
 
 ## Run it without internet
 
-The built app has no external requests at all: the model, the images and the WebAssembly files are all part of `dist/`. Build once, copy the folder to a USB stick, and serve it from any laptop:
+The built app makes no external requests: the model, the images and the WebAssembly files are all part of `dist/`. Build once, copy the folder to a USB stick, and serve it from any computer:
 
 ```bash
 cd app
@@ -81,7 +95,7 @@ node dist/serve-offline.mjs      # http://127.0.0.1:8080
 
 ## Rebuild the data
 
-The prepared data is already in the repository, so you only need this if you want to regenerate it. You need Python 3.10 or newer and about 6 GB of free disk space for the downloads.
+The prepared data is already in the repository, so you only need this to regenerate it. You need Python 3.10 or newer and about 6 GB of free disk space for the downloads.
 
 ```bash
 python -m venv .venv
@@ -91,9 +105,9 @@ node scripts/fetch_model.mjs                       # MobileNet v2 into app/publi
 .venv/Scripts/python scripts/prepare_kermany.py
 ```
 
-`prepare_kermany.py` takes a seeded sample of 300 normal and 900 pneumonia images from the official training split, holds out 15% of it for validation, and keeps the full official test set (234 normal, 390 pneumonia). The same seed always produces the same files.
+`prepare_kermany.py` takes a seeded sample of 300 normal and 900 pneumonia images from the official training split, holds out 15% of it for validation, and keeps the full official test set (234 normal, 390 pneumonia). The same seed always produces the same files. The adult images (`prepare_adult.py`) and the precomputed features (`scripts/precompute_embeddings.mjs`, which needs `npm install` in `scripts/`) are rebuilt the same way.
 
-The scripts check their own output. To confirm a fresh copy is intact:
+The scripts check their own output:
 
 ```bash
 .venv/Scripts/python scripts/tests/verify_data.py
@@ -102,44 +116,24 @@ node scripts/tests/verify_model.mjs
 
 ## Python code track
 
-Students who finish early can repeat the experiments as code in `notebook/code_track.ipynb`: frozen MobileNetV3-Large features, a scikit-learn logistic regression, the imbalance, stamp and adult-shift experiments, a Grad-CAM heatmap, and five exercises. It runs on a CPU in a couple of minutes and downloads the pretrained weights (about 21 MB) once. Set it up with `scripts/requirements.txt` and see [notebook/README.md](notebook/README.md) for how to open it.
+`notebook/code_track.ipynb` repeats the experiments as code: frozen MobileNetV3-Large features, a scikit-learn logistic regression, the imbalance, stamp and adult-shift experiments, a Grad-CAM heatmap, and five exercises. It runs on a CPU in a couple of minutes and downloads the pretrained weights (about 21 MB) once. Install the packages from `scripts/requirements.txt` and see [notebook/README.md](notebook/README.md) for how to open it.
 
 ## Deploying
 
-The live site is served from the `gh-pages` branch, not from a GitHub Actions workflow, because Actions is not available on this account at the moment. One command builds the app and publishes it:
+The app is a static site and uses relative paths, so it works under any repository name. `node scripts/deploy_pages.mjs` builds it and publishes `app/dist` to the `gh-pages` branch, then asks GitHub to rebuild Pages. It needs the GitHub CLI (`gh`) logged in with push access.
 
-```bash
-node scripts/deploy_pages.mjs
-```
+`.github/workflows/pages.yml` does the same through GitHub Actions when started by hand. To use it on every push instead, add a push trigger and set the Pages source to "GitHub Actions".
 
-It runs `npm run build` in `app/`, pushes the contents of `app/dist` to `gh-pages`, and asks GitHub to rebuild Pages. The site is updated about a minute later. You need the GitHub CLI (`gh`) logged in with push access.
-
-The workflow in `.github/workflows/pages.yml` is kept for the day Actions works again. It only runs when started by hand, and Pages would need its source switched back to "GitHub Actions".
-
-The app uses relative paths throughout, so it works under any repository name.
-
-## If something goes wrong in class
+## If something goes wrong
 
 | Problem | What to do |
 | --- | --- |
-| Camera does not open | It needs `https://` or `localhost`. Use the hosted link. The webcam is only needed for the closed-world demo. |
+| Camera does not open | It needs `https://` or `localhost`. Use the hosted link. |
 | Training is slow | Keep "Use precomputed features" switched on. |
-| No WebGL on a laptop | The app falls back to WebAssembly on its own. Adding `?backend=wasm` to the address forces it. |
-| The tab gets sluggish after an hour | Use "Reset session" in the settings drawer. Results are saved locally first. |
-| Internet drops | The app keeps working once it has loaded. Otherwise use the USB copy. |
-| Everything breaks | Run it from your own laptop on the projector. |
-
-## Workshop-day checklist
-
-- Open the live link on the projector laptop in Chrome and in Firefox, and run one full train and evaluate.
-- Allow the camera once on that laptop so the permission prompt is not a surprise.
-- Copy `app/dist` to at least two USB sticks and test one on a different machine with Wi-Fi off.
-- Have `?backend=wasm` ready in case a student laptop has no usable graphics.
-- Reset the leaderboard before the second session and check that the adult test set loads.
-- Say the disclaimer out loud at the start. It is also in the header and footer of every screen.
+| No WebGL | The app falls back to WebAssembly on its own. Add `?backend=wasm` to the address to force it. |
+| The tab gets sluggish after a long session | Use "Reset session" in the settings drawer. |
+| Numbers differ from someone else's | Check the seed, the recipe on the Data tab and the "Model in use" line. |
 
 ## Data and licenses
 
 The code is MIT licensed. The datasets and the model keep their own licenses, with full citations, in [DATA_LICENSES.md](DATA_LICENSES.md). In short: the children's X-rays are Kermany et al. 2018 (CC BY 4.0), the adult X-rays are NIH ChestX-ray14 through MedMNIST v2 (CC0), and the feature extractor is MobileNet v2 (Apache 2.0).
-
-Facilitator background (what each term and test set means, and why the pieces are the way they are) is in [docs/facilitator-notes.md](docs/facilitator-notes.md).

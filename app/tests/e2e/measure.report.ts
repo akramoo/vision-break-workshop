@@ -1,4 +1,4 @@
-// Turns the JSON fragments written by the dry-run specs into docs/dry-run-results.md.
+// Turns the JSON fragments written by the dry-run specs into private/dry-run-results.md.
 // Plain tables and plain prose; every number comes from a measurement, nothing is typed in by hand.
 import { cpus, totalmem, release } from 'node:os';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -8,7 +8,7 @@ import { readRecord } from './measure.helpers';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type R = Record<string, any>;
 
-const OUT = resolve(process.cwd(), '..', 'docs', 'dry-run-results.md');
+const OUT = resolve(process.cwd(), '..', 'private', 'dry-run-results.md');
 
 const s1 = (ms: number) => `${(ms / 1000).toFixed(1)} s`;
 const s2 = (ms: number) => `${(ms / 1000).toFixed(2)} s`;
