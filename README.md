@@ -12,9 +12,9 @@ Live app: <https://akramoo.github.io/vision-break-workshop/>
 
 A 2-minute captioned walkthrough: load the app, train, evaluate against the baseline, break the model with perturbations and a stamp, log a failure, and read the results card.
 
-[![Watch the demo video](Demo/poster.png)](Demo/vision-demo.mp4)
+[![Watch the demo video](Demo/poster.png)](https://akramoo.github.io/vision-break-workshop/demo/)
 
-Click the picture to play the video (MP4, 10 MB).
+Click the picture to watch it. The video file itself is in `Demo/`.
 
 ## The idea
 

@@ -3,7 +3,7 @@
 //   node scripts/deploy_pages.mjs            build, then publish
 //   node scripts/deploy_pages.mjs --no-build publish the existing app/dist
 import { execFileSync } from 'node:child_process';
-import { cpSync, mkdtempSync, rmSync, writeFileSync, existsSync } from 'node:fs';
+import { cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,6 +27,12 @@ if (!existsSync(join(dist, 'index.html'))) throw new Error('app/dist/index.html 
 const tmp = mkdtempSync(join(tmpdir(), 'pages-'));
 try {
   cpSync(dist, tmp, { recursive: true });
+  // The demo page and video are published next to the app (not inside app/dist, so the offline bundle stays small).
+  const demoDir = join(root, 'Demo');
+  if (existsSync(join(demoDir, 'vision-demo.mp4'))) {
+    mkdirSync(join(tmp, 'demo'), { recursive: true });
+    for (const f of ['index.html', 'vision-demo.mp4', 'poster.png']) cpSync(join(demoDir, f), join(tmp, 'demo', f));
+  }
   writeFileSync(join(tmp, '.nojekyll'), '');
   const git = (...args) => run('git', ['-c', 'core.autocrlf=false', ...args], { cwd: tmp });
   git('init', '-q', '-b', 'gh-pages');
